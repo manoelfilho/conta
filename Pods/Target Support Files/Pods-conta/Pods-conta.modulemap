@@ -1,0 +1,6 @@
+framework module Pods_conta {
+  umbrella header "Pods-conta-umbrella.h"
+
+  export *
+  module * { export * }
+}

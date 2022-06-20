@@ -1,0 +1,17 @@
+"home_search" = "Buscar";
+"new_transaction_cancell" = "Cancelar";
+"new_transaction_value" = "0,00";
+"new_transaction_credit" = "Crédito";
+"new_transaction_debit" = "Débito";
+"new_transaction_account" = "Conta";
+"new_transaction_new_account" = "Criar nova";
+"new_transaction_category" = "Categoria";
+"new_transaction_description" = "Descrição";
+"new_transaction_new_category" = "Cria nova";
+"new_transaction_save_transaction" = "Cadastrar";
+"new_transaction_edit_transaction" = "Editar";
+"error_return_data" = "Erro no retorno dos dados";
+"error_register_transaction" = "Erro no registro da transação";
+"new_transaction_success" = "Transação salva com sucesso";
+"alert_warning" = "Atenção";
+"alert_fill_all_fields" = "Todos os campos são obrigatórios";
