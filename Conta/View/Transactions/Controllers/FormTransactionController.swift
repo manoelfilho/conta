@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol FormTransactionControllerProtocol: NSObjectProtocol {
-    func didCloseModal()
+    func didCloseFormTransaction()
 }
 
 class FormTransactionController: UIViewController {
@@ -212,7 +212,7 @@ class FormTransactionController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         transaction?.managedObjectContext?.rollback()
-        delegate?.didCloseModal()
+        delegate?.didCloseFormTransaction()
     }
     
 }

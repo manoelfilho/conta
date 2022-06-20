@@ -153,6 +153,7 @@ extension TransactionsController {
         view.backgroundColor = UIColor(named: K.colorBG1)
         
         //MARK: Add Button
+        filterButton.addTarget(self, action: #selector(self.showFilterTransactionController), for: .touchUpInside)
         buttonAdd.addTarget(self, action: #selector(self.goToNewTransactionController), for: .touchUpInside);
         
         //MARK: Add to view
@@ -196,7 +197,11 @@ extension TransactionsController: TransactionsPresenterDelegate {
 }
 
 //MARK: Perfome
-extension TransactionsController: FormTransactionControllerProtocol {
+extension TransactionsController: FormTransactionControllerProtocol, FilterTransactionControllerProtocol {
+    
+    func didCloseFilterTransaction() {
+        
+    }
 
     @objc func goToNewTransactionController(){
         
@@ -210,7 +215,14 @@ extension TransactionsController: FormTransactionControllerProtocol {
         
     }
     
-    func didCloseModal() {
+    @objc func showFilterTransactionController(){
+       let filterTransactionController = FilterTransactionController()
+        filterTransactionController.setViewDelegate(transactionFilterViewDelegate: self)
+        filterTransactionController.modalTransitionStyle = .coverVertical
+        present(filterTransactionController, animated: true, completion: nil)
+    }
+    
+    func didCloseFormTransaction() {
         transactionsPresenter.returnTransactions(with: filter)
     }
 

@@ -23,6 +23,7 @@
 		BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0F0285B63B200945CBB /* CategoryService.swift */; };
 		BBC4B0FD285B83BC00945CBB /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0FC285B83BC00945CBB /* ServiceError.swift */; };
 		BBCAFA9A28496FA300C0F683 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */; };
+		BBD2A9B32860F27A002F77B8 /* FilterTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */; };
 		BBEC062628495DDE002D0311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062528495DDE002D0311 /* AppDelegate.swift */; };
 		BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062728495DDE002D0311 /* SceneDelegate.swift */; };
 		BBEC063028495DDE002D0311 /* conta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062E28495DDE002D0311 /* conta.xcdatamodeld */; };
@@ -101,6 +102,7 @@
 		BBC4B0F0285B63B200945CBB /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		BBC4B0FC285B83BC00945CBB /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionController.swift; sourceTree = "<group>"; };
 		BBEC062228495DDE002D0311 /* conta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEC062528495DDE002D0311 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBEC062728495DDE002D0311 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				BBB811852849BDC300BC67EF /* TransactionsController.swift */,
 				BB4E33872850D5B500A17E52 /* FormTransactionController.swift */,
+				BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				BBF861DC284AED8100A56B24 /* Category.swift in Sources */,
 				BBAD8E5E2852EE2A000074D9 /* ViewExtensions.swift in Sources */,
 				BBF8625A284C0B4C00A56B24 /* CustomTextField.swift in Sources */,
+				BBD2A9B32860F27A002F77B8 /* FilterTransactionController.swift in Sources */,
 				BBF861DE284AEDAC00A56B24 /* Transaction.swift in Sources */,
 				BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */,
 				BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */,

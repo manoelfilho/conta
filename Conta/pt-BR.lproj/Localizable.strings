@@ -9,6 +9,7 @@
 "new_transaction_description" = "Descrição";
 "new_transaction_new_category" = "Cria nova";
 "new_transaction_save_transaction" = "Cadastrar";
+"filter_transaction_button" = "Filtrar";
 "new_transaction_edit_transaction" = "Editar";
 "error_return_data" = "Erro no retorno dos dados";
 "error_register_transaction" = "Erro no registro da transação";

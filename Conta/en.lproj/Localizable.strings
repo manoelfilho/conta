@@ -10,6 +10,7 @@
 "new_transaction_new_category" = "New";
 "new_transaction_save_transaction" = "Save";
 "new_transaction_edit_transaction" = "Edit";
+"filter_transaction_button" = "Filter";
 "error_return_data" = "Erro returnig data";
 "error_register_transaction" = "Error";
 "new_transaction_success" = "Success";
