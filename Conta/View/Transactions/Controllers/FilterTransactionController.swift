@@ -2,9 +2,9 @@ import UIKit
 
 class FilterTransactionController: UIViewController {
     
-    private let notificationCenter = TransactionNotifications.shared
+    private let notificationCenter: TransactionNotifications = TransactionNotifications.shared
     
-    private let filter = TransactionsFilter.shared
+    private let filter:TransactionsFilter = TransactionsFilter.shared
     
     private let locale: String = Locale.current.regionCode!
         
@@ -142,6 +142,17 @@ extension FilterTransactionController {
         //MARK: Configs View
         view.backgroundColor = UIColor(named: K.colorBG1)
         
+        if let type = filter.options["type"] as? String {
+            switch type {
+                case Transaction.TYPE_TRANSACTION_DEBIT:
+                    segmentedTypeControll.selectedSegmentIndex = 1
+                case Transaction.TYPE_TRANSACTION_CREDIT:
+                    segmentedTypeControll.selectedSegmentIndex = 2
+                default:
+                    segmentedTypeControll.selectedSegmentIndex = 0
+            }
+        }
+        
         cancellButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
         clearButton.addTarget(self, action: #selector(clearFilter), for: .touchUpInside)
         segmentedTypeControll.addTarget(self, action: #selector(changeType), for: .valueChanged)
@@ -246,7 +257,18 @@ extension FilterTransactionController {
         }
     }
         
-    @objc private func changeType(){}
+    @objc private func changeType(sender:UISegmentedControl){
+        switch sender.selectedSegmentIndex {
+            case 0:
+                filter.options["type"] = nil
+            case 1:
+                filter.options["type"] = Transaction.TYPE_TRANSACTION_DEBIT
+            case 2:
+                filter.options["type"] = Transaction.TYPE_TRANSACTION_CREDIT
+            default:
+                filter.options["type"] = nil
+        }
+    }
     
     @objc private func filterTransactions(){
         _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
@@ -279,10 +301,14 @@ extension FilterTransactionController: FilterTransactionPresenterProtocol {
     private func configAccountButtons(){
         if let accounts = accounts {
             for (ind, account) in accounts.enumerated() {
-                let button: UIButton
+                let button: CustomButton
                 button = .buttonAccount(title: account.title!, textColor: .white)
                 button.addTarget(self, action: #selector(chooseAccount), for: .touchUpInside)
                 button.tag = ind+1
+                button.uuid = account.id
+                if let accountId = filter.options["accountId"] as? UUID {
+                    button.configuration!.baseBackgroundColor = accountId == account.id ? UIColor(named: K.colorGreenOne)! : UIColor(named: K.colorBG2)!
+                }
                 stackAccountButtons.addArrangedSubview(button)
                 stackAccountButtons.distribution = .fillProportionally
             }
@@ -294,7 +320,7 @@ extension FilterTransactionController: FilterTransactionPresenterProtocol {
             for (ind, category) in categories.enumerated() {
                 let stackButton: UIStackView = UIStackView()
                 stackButton.axis = .vertical
-                let button: UIButton
+                let button: CustomButton
                 button = .roundedSymbolButton(
                     symbolName: category.symbolName!,
                     pointSize: 50,
@@ -305,11 +331,17 @@ extension FilterTransactionController: FilterTransactionPresenterProtocol {
                     cornerRadius: 30
                 )
                 button.tag = ind+1
+                button.uuid = category.id
                 button.addTarget(self, action: #selector(chooseCategory), for: .touchUpInside)
                 let titleButton: UILabel = .textLabel(text: category.title!, fontSize: 12, numberOfLines: 2, color: UIColor(named: K.colorText)!)
                 titleButton.textAlignment = .center
                 stackButton.addArrangedSubview(button)
                 stackButton.addArrangedSubview(titleButton)
+                
+                if let categoryId = filter.options["categoryId"] as? UUID {
+                    button.backgroundColor = categoryId == category.id ? UIColor(named: K.colorGreenOne)! : UIColor(named: K.colorBG2)!
+                }
+                
                 stackCategoryButtons.addArrangedSubview(stackButton)
                 stackCategoryButtons.distribution = .fill
             }
