@@ -19,3 +19,6 @@
 "alert_fill_all_fields" = "Todos os campos são obrigatórios";
 "filter_transaction_all_types" = "Todas";
 "delete_transaction" = "Remover";
+"confirm_removal_transaction" = "Confirma a remoção da transação?";
+"confirm_removal_ok" = "Confirmar";
+"confirm_removal_not" = "Cancellar";

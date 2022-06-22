@@ -375,7 +375,7 @@ extension FormTransactionController {
         
         if transaction?.title == nil || transaction?.category == nil || transaction?.account == nil || transaction?.date == nil || transaction?.type == nil || transaction?.value == nil || transaction?.value == 0.00 {
             
-            let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_fill_all_fields".localized(), preferredStyle: .alert)
+            let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_fill_all_fields".localized(), preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true, completion: nil)
         

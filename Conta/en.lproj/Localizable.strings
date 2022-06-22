@@ -19,3 +19,6 @@
 "filter_transaction_button" = "Filter";
 "filter_transaction_all_types" = "All";
 "delete_transaction" = "Delete";
+"confirm_removal_transaction" = "Confirm removal?";
+"confirm_removal_ok" = "Ok";
+"confirm_removal_not" = "Cancell";

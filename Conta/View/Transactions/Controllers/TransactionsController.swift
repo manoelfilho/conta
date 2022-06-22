@@ -241,11 +241,24 @@ extension TransactionsController: UITableViewDelegate {
     
         let trash = UIContextualAction(style: .destructive, title: "delete_transaction".localized()) { (action, vieew, completionHandler) in
            
-            (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.delete(self.transactions[indexPath.row])
-            self.transactions.remove(at: indexPath.row)
-            self.loadData()
-        
+            let dialogMessage = UIAlertController(title: "alert_warning".localized(), message: "confirm_removal_transaction".localized(), preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "confirm_removal_ok".localized(), style: .default, handler: { (action) -> Void in
+                (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.delete(self.transactions[indexPath.row])
+                self.transactions.remove(at: indexPath.row)
+                self.loadData()
+            })
+            
+            let cancel = UIAlertAction(title: "confirm_removal_not".localized(), style: .cancel) { (action) -> Void in }
+            
+            dialogMessage.addAction(ok)
+            dialogMessage.addAction(cancel)
+            
+            self.present(dialogMessage, animated: true, completion: nil)
+            
         }
+        
+        trash.image = UIImage(named: "trash")
         
         trash.backgroundColor = UIColor(named: K.colorRedOne)
 
