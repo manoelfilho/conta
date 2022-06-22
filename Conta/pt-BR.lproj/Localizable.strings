@@ -1,13 +1,14 @@
 "home_search" = "Buscar";
 "new_transaction_cancell" = "Cancelar";
+"new_transaction_clear" = "Limpar";
 "new_transaction_value" = "0,00";
 "new_transaction_credit" = "Crédito";
 "new_transaction_debit" = "Débito";
 "new_transaction_account" = "Conta";
-"new_transaction_new_account" = "Criar nova";
+"new_transaction_new_account" = "Nova";
 "new_transaction_category" = "Categoria";
 "new_transaction_description" = "Descrição";
-"new_transaction_new_category" = "Cria nova";
+"new_transaction_new_category" = "Nova";
 "new_transaction_save_transaction" = "Cadastrar";
 "filter_transaction_button" = "Filtrar";
 "new_transaction_edit_transaction" = "Editar";
@@ -16,3 +17,5 @@
 "new_transaction_success" = "Transação salva com sucesso";
 "alert_warning" = "Atenção";
 "alert_fill_all_fields" = "Todos os campos são obrigatórios";
+"filter_transaction_all_types" = "Todas";
+"delete_transaction" = "Remover";

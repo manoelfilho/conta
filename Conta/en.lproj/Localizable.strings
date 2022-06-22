@@ -1,5 +1,6 @@
 "home_search" = "Search";
 "new_transaction_cancell" = "Cancell";
+"new_transaction_clear" = "Clear";
 "new_transaction_value" = "0,00";
 "new_transaction_credit" = "Credit";
 "new_transaction_debit" = "Debit";
@@ -10,9 +11,11 @@
 "new_transaction_new_category" = "New";
 "new_transaction_save_transaction" = "Save";
 "new_transaction_edit_transaction" = "Edit";
-"filter_transaction_button" = "Filter";
 "error_return_data" = "Erro returnig data";
 "error_register_transaction" = "Error";
 "new_transaction_success" = "Success";
 "alert_warning" = "Warning";
 "alert_fill_all_fields" = "All fields are mandatory";
+"filter_transaction_button" = "Filter";
+"filter_transaction_all_types" = "All";
+"delete_transaction" = "Delete";

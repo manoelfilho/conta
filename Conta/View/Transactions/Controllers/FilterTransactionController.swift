@@ -1,15 +1,20 @@
-import Foundation
 import UIKit
-
-protocol FilterTransactionControllerProtocol: NSObjectProtocol {
-    func didCloseFilterTransaction()
-}
 
 class FilterTransactionController: UIViewController {
     
-    private let locale: String = Locale.current.regionCode!
+    private let notificationCenter = TransactionNotifications.shared
     
-    weak private var delegate: FilterTransactionControllerProtocol?
+    private let filter = TransactionsFilter.shared
+    
+    private let locale: String = Locale.current.regionCode!
+        
+    private let filterTransactionPresenter: FilterTransactionPresenter = {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let accountService = AccountService(viewContext: context)
+        let categoryService = CategoryService(viewContext: context)
+        let filterTransactionPresenter = FilterTransactionPresenter(accountService: accountService, categorySerive: categoryService)
+        return filterTransactionPresenter
+   }()
     
     private var accounts: [Account]?
     
@@ -23,6 +28,13 @@ class FilterTransactionController: UIViewController {
     
     private let contentView = UIView()
     
+    private let stackTopButtons: UIStackView = {
+        let stackTopButtons: UIStackView = UIStackView()
+        stackTopButtons.distribution = .equalCentering
+        stackTopButtons.alignment = .center
+        return stackTopButtons
+    }()
+    
     private let cancellButton:UIButton = {
         let cancellButton: UIButton = UIButton()
         cancellButton.setTitle("new_transaction_cancell".localized(), for: .normal);
@@ -30,9 +42,16 @@ class FilterTransactionController: UIViewController {
         return cancellButton
     }()
     
+    private let clearButton:UIButton = {
+        let clearButton: UIButton = UIButton()
+        clearButton.setTitle("new_transaction_clear".localized(), for: .normal);
+        clearButton.tintColor = UIColor(named: K.colorText)
+        return clearButton
+    }()
+    
     private let segmentedTypeControll: UISegmentedControl = {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        let segmentedTypeControll = UISegmentedControl(items: [Transaction.TYPE_TRANSACTION_DEBIT.localized(), Transaction.TYPE_TRANSACTION_CREDIT.localized()])
+        let segmentedTypeControll = UISegmentedControl(items: [ "filter_transaction_all_types".localized(), Transaction.TYPE_TRANSACTION_DEBIT.localized(), Transaction.TYPE_TRANSACTION_CREDIT.localized()])
         segmentedTypeControll.selectedSegmentIndex = 0
         segmentedTypeControll.selectedSegmentTintColor = UIColor(named: K.colorGreenOne)
         segmentedTypeControll.backgroundColor = UIColor(named: K.colorBG2)
@@ -99,12 +118,18 @@ class FilterTransactionController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filterTransactionPresenter.setViewDelegate(filterViewDelegate: self)
+        
         configView()
+        
+        filterTransactionPresenter.returnAccounts()
+        filterTransactionPresenter.returnCategories()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.didCloseFilterTransaction()
     }
     
 }
@@ -112,27 +137,26 @@ class FilterTransactionController: UIViewController {
 //MARK: Functions
 extension FilterTransactionController {
     
-    func setViewDelegate(transactionFilterViewDelegate: FilterTransactionControllerProtocol?){
-        self.delegate = transactionFilterViewDelegate
-    }
-    
     private func configView(){
         
         //MARK: Configs View
         view.backgroundColor = UIColor(named: K.colorBG1)
         
-        //MARK: Config properties
         cancellButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
+        clearButton.addTarget(self, action: #selector(clearFilter), for: .touchUpInside)
         segmentedTypeControll.addTarget(self, action: #selector(changeType), for: .valueChanged)
         filterButton.addTarget(self, action: #selector(filterTransactions), for: .touchUpInside)
-        
         
         //MARK: Adding Layers
         view.addSubview(scrollView)
         
         scrollView.addSubview(contentView)
         
-        contentView.addSubview(cancellButton)
+        stackTopButtons.addArrangedSubview(cancellButton)
+        stackTopButtons.addArrangedSubview(clearButton)
+        
+        contentView.addSubview(stackTopButtons)
+        
         contentView.addSubview(segmentedTypeControll)
         contentView.addSubview(accountLabel)
         
@@ -160,10 +184,9 @@ extension FilterTransactionController {
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
-        cancellButton.fill(top: contentView.topAnchor,leading: nil,bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0), size: .init(width: 100, height: 20)
-        )
+        stackTopButtons.fill(top: contentView.topAnchor,leading: contentView.leadingAnchor,bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
         
-        segmentedTypeControll.fill(top: cancellButton.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30))
+        segmentedTypeControll.fill(top: stackTopButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30))
         
         accountLabel.fill(top: segmentedTypeControll.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20))
 
@@ -177,32 +200,63 @@ extension FilterTransactionController {
 
         stackCategoryButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
 
-
         filterButton.fill(top: stackCategoryButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: contentView.bottomAnchor, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 350, right: 20), size: .init(width: contentView.bounds.width, height: 40))
         
     }
-    
     
     @objc private func dismissController() {
         dismiss(animated: true)
     }
     
-    @objc private func chooseAccount(sender:UIButton){}
+    @objc private func clearFilter(){
+        filter.clearOptions()
+        for view in stackAccountButtons.arrangedSubviews {
+            if let button = view as? UIButton {
+                button.configuration!.baseBackgroundColor = UIColor(named: K.colorBG2)
+            }
+        }
+        for view in stackCategoryButtons.arrangedSubviews {
+            if let button = view as? UIStackView {
+                button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorBG2)
+            }
+        }
+        _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
+        dismiss(animated: true)
+    }
     
-    @objc private func createNewAccount(sender:UIButton){}
-    
-    @objc private func chooseCategory(sender:UIButton){}
-    
-    @objc private func createNewCategory(sender:UIButton){}
-    
+    @objc private func chooseAccount(sender:UIButton){
+        for view in stackAccountButtons.arrangedSubviews {
+            if let button = view as? UIButton, button.tag != sender.tag {
+                button.configuration!.baseBackgroundColor = UIColor(named: K.colorBG2)
+                filter.options["accountId"] = accounts![sender.tag-1].id
+            }else if let button = view as? UIButton {
+                button.configuration!.baseBackgroundColor = UIColor(named: K.colorGreenOne)
+            }
+        }
+    }
+        
+    @objc private func chooseCategory(sender:UIButton){
+        for view in stackCategoryButtons.arrangedSubviews {
+            if let button = view as? UIStackView, button.arrangedSubviews[0].tag != sender.tag {
+                button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorBG2)
+                filter.options["categoryId"] = categories![sender.tag-1].id
+            }else if let button = view as? UIStackView {
+                button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorGreenOne)
+            }
+        }
+    }
+        
     @objc private func changeType(){}
     
-    @objc private func filterTransactions(){}
+    @objc private func filterTransactions(){
+        _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
+        dismiss(animated: true)
+    }
     
 }
 
-//MARK: Functions newTransactionPresenter Delegate
-extension FilterTransactionController: FormTransactionPresenterDelegate {
+//MARK: Functions FilterTransactionPresenterProtocol
+extension FilterTransactionController: FilterTransactionPresenterProtocol {
     
     func showError(message: String) {
         

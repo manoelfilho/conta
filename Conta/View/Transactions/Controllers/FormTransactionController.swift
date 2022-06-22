@@ -31,21 +31,14 @@ class FormTransactionController: UIViewController {
             }
         }
     }
-    
-    private let filter: [String:Any] = {
-        var filter: [String:Any] = [:]
-            filter["accountId"] = nil
-            filter["categoryId"] = nil
-        return filter
-    }()
         
     private let formTransactionPresenter: FormTransactionPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService = AccountService(viewContext: context)
         let categoryService = CategoryService(viewContext: context)
         let transactionService = TransactionService(viewContext: context)
-        let newTransactionPresenter = FormTransactionPresenter(accountService: accountService, categorySerive: categoryService, transactionService: transactionService)
-        return newTransactionPresenter
+        let formTransactionPresenter = FormTransactionPresenter(accountService: accountService, categorySerive: categoryService, transactionService: transactionService)
+        return formTransactionPresenter
    }()
     
     private var accounts: [Account]?
@@ -204,8 +197,8 @@ class FormTransactionController: UIViewController {
 
         configView()
         
-        formTransactionPresenter.returnAccounts(with: filter)
-        formTransactionPresenter.returnCategories(with: filter)
+        formTransactionPresenter.returnAccounts()
+        formTransactionPresenter.returnCategories()
         
     }
     
@@ -397,7 +390,7 @@ extension FormTransactionController {
 }
 
 //MARK: Functions newTransactionPresenter Delegate
-extension FormTransactionController: FormTransactionPresenterDelegate {
+extension FormTransactionController: FormTransactionPresenterProtocol {
     
     func showError(message: String) {
         

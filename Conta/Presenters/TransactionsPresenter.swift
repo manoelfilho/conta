@@ -2,7 +2,7 @@ import Foundation
 
 protocol TransactionsPresenterDelegate: NSObjectProtocol {
     func presentTransactions(transactions: [Transaction])
-    func showError(message: String)
+    func presentErrorTransactions(message: String)
 }
 
 class TransactionsPresenter {
@@ -26,7 +26,7 @@ class TransactionsPresenter {
                 case .success(let transactions):
                     self.delegate?.presentTransactions(transactions: transactions)
                 case .failure(_):
-                    self.delegate?.showError(message: "error_return_data".localized())
+                    self.delegate?.presentErrorTransactions(message: "error_return_data".localized())
             }
         }
     }

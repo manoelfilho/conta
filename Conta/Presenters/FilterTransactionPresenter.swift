@@ -1,28 +1,26 @@
 import Foundation
 
-protocol FormTransactionPresenterProtocol: NSObjectProtocol {
+protocol FilterTransactionPresenterProtocol: NSObjectProtocol {
     func showError(message: String)
     func showSuccess(message: String)
     func presentAccounts(accounts: [Account])
     func presentCategories(categories: [Category])
 }
 
-class FormTransactionPresenter {
+class FilterTransactionPresenter {
     
     private let accountService: AccountService
     private let categoryService: CategoryService
-    private let transactionService: TransactionService
     
-    weak private var delegate: FormTransactionPresenterProtocol?
+    weak private var delegate: FilterTransactionPresenterProtocol?
     
-    init(accountService: AccountService, categorySerive: CategoryService, transactionService: TransactionService) {
+    init(accountService: AccountService, categorySerive: CategoryService) {
         self.accountService = accountService
         self.categoryService = categorySerive
-        self.transactionService = transactionService
     }
     
-    func setViewDelegate(accountsViewDelegate: FormTransactionPresenterProtocol?){
-        self.delegate = accountsViewDelegate
+    func setViewDelegate(filterViewDelegate: FilterTransactionPresenterProtocol?){
+        self.delegate = filterViewDelegate
     }
     
     func returnAccounts() {
@@ -45,17 +43,6 @@ class FormTransactionPresenter {
                     self.delegate?.presentCategories(categories: categories)
                 case .failure(_):
                     self.delegate?.showError(message: "error_return_data".localized())
-            }
-        }
-    }
-    
-    func createTransaction(){
-        transactionService.saveTransaction { result in
-            switch result {
-            case .success(_):
-                self.delegate?.showSuccess(message: "new_transaction_success".localized())
-            case .failure(_):
-                self.delegate?.showError(message: "error_register_transaction".localized())
             }
         }
     }

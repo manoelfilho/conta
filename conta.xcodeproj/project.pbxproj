@@ -14,7 +14,10 @@
 		BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6346284D099B001103DE /* ScrollMonthCell.swift */; };
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
 		BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */; };
+		BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */; };
+		BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8372B428628B5300A405CE /* TransactionsFilter.swift */; };
 		BB8DE31D2850524600AB1077 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8DE31C2850524600AB1077 /* Constants.swift */; };
+		BB8F955A2862504700B654AC /* TransactionNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F95592862504700B654AC /* TransactionNotifications.swift */; };
 		BB9C630B2859715500FDF7B2 /* TransactionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C630A2859715500FDF7B2 /* TransactionsPresenter.swift */; };
 		BB9C630D285971EE00FDF7B2 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C630C285971EE00FDF7B2 /* TransactionService.swift */; };
 		BBAD8E5E2852EE2A000074D9 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAD8E5D2852EE2A000074D9 /* ViewExtensions.swift */; };
@@ -92,7 +95,10 @@
 		BB5D6346284D099B001103DE /* ScrollMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMonthCell.swift; sourceTree = "<group>"; };
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
+		BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionPresenter.swift; sourceTree = "<group>"; };
+		BB8372B428628B5300A405CE /* TransactionsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsFilter.swift; sourceTree = "<group>"; };
 		BB8DE31C2850524600AB1077 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BB8F95592862504700B654AC /* TransactionNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNotifications.swift; sourceTree = "<group>"; };
 		BB9C63032859396900FDF7B2 /* conta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = conta.entitlements; path = conta/conta.entitlements; sourceTree = "<group>"; };
 		BB9C630A2859715500FDF7B2 /* TransactionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPresenter.swift; sourceTree = "<group>"; };
 		BB9C630C285971EE00FDF7B2 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
@@ -195,6 +201,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		BB8F95582862502100B654AC /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				BB8F95592862504700B654AC /* TransactionNotifications.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		BB9C630428596D8600FDF7B2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +222,7 @@
 		BB9C630528596D9900FDF7B2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB8372B428628B5300A405CE /* TransactionsFilter.swift */,
 				BBB811852849BDC300BC67EF /* TransactionsController.swift */,
 				BB4E33872850D5B500A17E52 /* FormTransactionController.swift */,
 				BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */,
@@ -245,6 +260,7 @@
 			children = (
 				BB9C630A2859715500FDF7B2 /* TransactionsPresenter.swift */,
 				BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */,
+				BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -300,6 +316,7 @@
 		BBEC062428495DDE002D0311 /* Conta */ = {
 			isa = PBXGroup;
 			children = (
+				BB8F95582862502100B654AC /* Notifications */,
 				BB6D64192852311E00A710E7 /* Service */,
 				BBEC06582849629D002D0311 /* CoreData */,
 				BBF861D8284AED4B00A56B24 /* Model */,
@@ -355,15 +372,15 @@
 		BBEC065D284966F0002D0311 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */,
+				BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */,
 				BB8DE31C2850524600AB1077 /* Constants.swift */,
 				BBEC065B2849662B002D0311 /* ConstraintExtensions.swift */,
 				BBF8625B284C13AC00A56B24 /* ControllerExtensions.swift */,
-				BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */,
-				BBF861D0284A58FB00A56B24 /* LabelExtensions.swift */,
 				BB247C1D285D4FF1005AE1C3 /* DateExtensions.swift */,
+				BBF861D0284A58FB00A56B24 /* LabelExtensions.swift */,
 				BBF861DF284B9F0800A56B24 /* StringExtension.swift */,
 				BBAD8E5D2852EE2A000074D9 /* ViewExtensions.swift */,
-				BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -415,6 +432,7 @@
 				BBEC061E28495DDE002D0311 /* Sources */,
 				BBEC061F28495DDE002D0311 /* Frameworks */,
 				BBEC062028495DDE002D0311 /* Resources */,
+				654138B175FB4E1F4CCF6F46 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -551,6 +569,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		654138B175FB4E1F4CCF6F46 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-conta/Pods-conta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-conta/Pods-conta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-conta/Pods-conta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F45063AE71A3C433383DE6C9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -592,6 +627,7 @@
 				BBF861E0284B9F0800A56B24 /* StringExtension.swift in Sources */,
 				BBF861D1284A58FB00A56B24 /* LabelExtensions.swift in Sources */,
 				BB247C1E285D4FF1005AE1C3 /* DateExtensions.swift in Sources */,
+				BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */,
 				BBEC065F28496773002D0311 /* BaseTabBarController.swift in Sources */,
 				BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */,
 				BBB811862849BDC300BC67EF /* TransactionsController.swift in Sources */,
@@ -605,11 +641,13 @@
 				BBF861DC284AED8100A56B24 /* Category.swift in Sources */,
 				BBAD8E5E2852EE2A000074D9 /* ViewExtensions.swift in Sources */,
 				BBF8625A284C0B4C00A56B24 /* CustomTextField.swift in Sources */,
+				BB8F955A2862504700B654AC /* TransactionNotifications.swift in Sources */,
 				BBD2A9B32860F27A002F77B8 /* FilterTransactionController.swift in Sources */,
 				BBF861DE284AEDAC00A56B24 /* Transaction.swift in Sources */,
 				BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */,
 				BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */,
 				BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */,
+				BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */,
 				BB9C630B2859715500FDF7B2 /* TransactionsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

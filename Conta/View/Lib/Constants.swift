@@ -1,6 +1,7 @@
 import Foundation
 
-struct K {
+class K {
+    
     static let colorText = "Text"
     
     static let colorGreenOne = "Green1"
@@ -18,4 +19,5 @@ struct K {
     static let colorBG5 = "BG5"
     
     static let margin = 20
+        
 }

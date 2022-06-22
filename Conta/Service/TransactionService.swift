@@ -11,7 +11,6 @@ class TransactionService {
     
     func getTransactions(filter: [String:Any], completion: @escaping (Result<[Transaction], ServiceError>) -> Void) {
         
-
         var predicates: [NSPredicate] = []
 
         //KeyWord
@@ -28,24 +27,19 @@ class TransactionService {
         }
 
         //Account filter
-        if let accounts = filter["accounts"] as? [Account], accounts.count > 0 {
-            var idAccounts: [String] = []
-            for account in accounts {
-                idAccounts.append(account.id!.uuidString)
-            }
-            let predicateAccounts = NSPredicate(format:"account.id IN %@", idAccounts)
-            predicates.append(predicateAccounts)
+        if let accountId = filter["accountId"] {
+            let filterAccountId = accountId as! UUID
+            let predicateAccount = NSPredicate(format: "account.id == %@", filterAccountId as CVarArg)
+            predicates.append(predicateAccount)
         }
 
         //Category filter
-        if let categories = filter["categories"] as? [Category], categories.count > 0 {
-            var idCategories: [String] = []
-            for category in categories {
-                idCategories.append(category.id!.uuidString)
-            }
-            let predicateCategories = NSPredicate(format:"category.id IN %@", idCategories)
-            predicates.append(predicateCategories)
+        if let categorytId = filter["categoryId"] {
+            let filterCategorytId = categorytId as! UUID
+            let predicateCategory = NSPredicate(format: "category.id == %@", filterCategorytId as CVarArg)
+            predicates.append(predicateCategory)
         }
+        
 
         //Month and Year filters
         let filterMonth = filter["month"] as! Int
@@ -56,7 +50,7 @@ class TransactionService {
         let lastDay = firstDay!.endOfMonth()
         let predicatePeriod = NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [firstDay!, lastDay])
         predicates.append(predicatePeriod)
-        
+                
         let request = Transaction.fetchRequest()
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         

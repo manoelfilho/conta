@@ -1,19 +1,10 @@
-import Foundation
 import UIKit
 
 class TransactionsController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, UITextFieldDelegate {
     
-    private var filter: [String:Any] = {
-        let calendar = Calendar.current.dateComponents([.month, .year], from: Date())
-        var filter: [String:Any] = [:]
-            filter["type"] = nil
-            filter["keyWord"] = nil
-            filter["accounts"] = [Account]()
-            filter["categories"] = [Category]()
-            filter["month"] = calendar.month!
-            filter["year"] = calendar.year!
-        return filter
-    }()
+    private let notificationCenter = TransactionNotifications.shared
+    
+    private let filter = TransactionsFilter.shared
     
     private let transactionsPresenter: TransactionsPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -116,7 +107,13 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         
         self.configView()
         
-        //MARK: Delegates
+        notificationCenter.addObserver(self, name: TransactionsFilter.nameNotification) { notificationName, filter in
+            if let filter = filter as? [String: Any] {
+                if let keyWord = filter["keyWord"] as? String { self.searchTextField.text = keyWord } else { self.searchTextField.text = "" }
+                self.transactionsPresenter.returnTransactions(with: filter)
+            }
+        }
+        
         transactionsPresenter.setViewDelegate(transactionsViewDelegate: self)
         
         searchTextField.delegate = self
@@ -138,7 +135,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
     }
     
     private func loadData(){
-        transactionsPresenter.returnTransactions(with: filter)
+        transactionsPresenter.returnTransactions(with: filter.options)
     }
     
 }
@@ -147,7 +144,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
 extension TransactionsController {
     
     private func configView(){
-                
+                        
         //MARK: View Configs
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(named: K.colorBG1)
@@ -183,28 +180,20 @@ extension TransactionsController {
 
 }
 
-//MARK: Presenter delegate
-extension TransactionsController: TransactionsPresenterDelegate {
+extension TransactionsController: TransactionsPresenterDelegate, FormTransactionControllerProtocol {
     
-    func showError(message: String) {
-        print(message)
-    }
+    func presentErrorTransactions(message: String) {}
     
     func presentTransactions(transactions: [Transaction]) {
         self.transactions = transactions
         tableTransactions.reloadData()
     }
-}
-
-//MARK: Perfome
-extension TransactionsController: FormTransactionControllerProtocol, FilterTransactionControllerProtocol {
     
-    func didCloseFilterTransaction() {
-        
+    func didCloseFormTransaction() {
+        transactionsPresenter.returnTransactions(with: filter.options)
     }
 
     @objc func goToNewTransactionController(){
-        
         let newTransactionController = FormTransactionController()
         newTransactionController.transaction = Transaction(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
         newTransactionController.setViewDelegate(transactionFormViewDelegate: self)
@@ -212,23 +201,17 @@ extension TransactionsController: FormTransactionControllerProtocol, FilterTrans
         newTransactionController.transaction?.date = Date.now
         newTransactionController.modalTransitionStyle = .coverVertical
         present(newTransactionController, animated: true, completion: nil)
-        
     }
     
     @objc func showFilterTransactionController(){
        let filterTransactionController = FilterTransactionController()
-        filterTransactionController.setViewDelegate(transactionFilterViewDelegate: self)
         filterTransactionController.modalTransitionStyle = .coverVertical
         present(filterTransactionController, animated: true, completion: nil)
     }
     
-    func didCloseFormTransaction() {
-        transactionsPresenter.returnTransactions(with: filter)
-    }
-
 }
 
-//MARK: TableView (tableTransactions) delegate methods
+//MARK: tableTransactions delegate
 extension TransactionsController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -254,15 +237,34 @@ extension TransactionsController: UITableViewDelegate {
         present(formTransactionController, animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    
+        let trash = UIContextualAction(style: .destructive, title: "delete_transaction".localized()) { (action, vieew, completionHandler) in
+           
+            (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.delete(self.transactions[indexPath.row])
+            self.transactions.remove(at: indexPath.row)
+            self.loadData()
+        
+        }
+        
+        trash.backgroundColor = UIColor(named: K.colorRedOne)
+
+        let configuration = UISwipeActionsConfiguration(actions: [trash])
+        
+        configuration.performsFirstActionWithFullSwipe = false
+
+        return configuration
+    }
+    
 }
 
-//MARK: CollectionView (collectionViewMonths) delegate methods
+//MARK: collectionViewMonths delegate
 extension TransactionsController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        filter["month"] = months[indexPath.row].intMonth
-        filter["year"] = months[indexPath.row].intYear
-        transactionsPresenter.returnTransactions(with: filter)
+        filter.options["month"] = months[indexPath.row].intMonth
+        filter.options["year"] = months[indexPath.row].intYear
+        _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -283,16 +285,16 @@ extension TransactionsController: UICollectionViewDelegate, UICollectionViewDele
    
 }
 
-//MARK: Text Fields (searchTextField) delegate
+//MARK: searchTextField delegate
 extension TransactionsController{
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let text = textField.text, text.count > 3 {
-            filter["keyWord"] = text
-            transactionsPresenter.returnTransactions(with: filter)
+            filter.options["keyWord"] = text
+            _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
         }else if let text = textField.text, text == "" {
-            filter["keyWord"] = nil
-            transactionsPresenter.returnTransactions(with: filter)
+            filter.options["keyWord"] = nil
+            _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
         }
     }
     
