@@ -50,9 +50,13 @@ class TransactionService {
         let lastDay = firstDay!.endOfMonth()
         let predicatePeriod = NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [firstDay!, lastDay])
         predicates.append(predicatePeriod)
+        
+        let sdSortDate = NSSortDescriptor.init(key: "date", ascending: true)
+        let sdSortDate2 = NSSortDescriptor.init(key: "title", ascending: true)
                 
         let request = Transaction.fetchRequest()
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        request.sortDescriptors = [sdSortDate, sdSortDate2]
         
         do {
             let transactions = try viewContext.fetch(request)

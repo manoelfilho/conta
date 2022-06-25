@@ -96,7 +96,9 @@ class FormTransactionController: UIViewController {
         datePicker.date = .now
         datePicker.datePickerMode = .date
         datePicker.contentHorizontalAlignment = .leading
-        datePicker.maximumDate = Date.now
+        datePicker.maximumDate = .now
+        let firstDate = Calendar.current.date(byAdding: .month, value: -1200, to: datePicker.date)
+        datePicker.minimumDate = firstDate!
         return datePicker
     }()
     
@@ -375,7 +377,7 @@ extension FormTransactionController {
         
         if transaction?.title == nil || transaction?.category == nil || transaction?.account == nil || transaction?.date == nil || transaction?.type == nil || transaction?.value == nil || transaction?.value == 0.00 {
             
-            let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_fill_all_fields".localized(), preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_fill_all_fields".localized(), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true, completion: nil)
         

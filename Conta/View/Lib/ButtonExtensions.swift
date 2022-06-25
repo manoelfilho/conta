@@ -2,7 +2,7 @@ import UIKit
 
 class CustomButton: UIButton
 {
-    @IBInspectable var uuid: UUID?
+    var uuid: UUID?
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

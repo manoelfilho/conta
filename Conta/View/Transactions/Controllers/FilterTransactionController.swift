@@ -7,14 +7,14 @@ class FilterTransactionController: UIViewController {
     private let filter:TransactionsFilter = TransactionsFilter.shared
     
     private let locale: String = Locale.current.regionCode!
-        
+    
     private let filterTransactionPresenter: FilterTransactionPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService = AccountService(viewContext: context)
         let categoryService = CategoryService(viewContext: context)
         let filterTransactionPresenter = FilterTransactionPresenter(accountService: accountService, categorySerive: categoryService)
         return filterTransactionPresenter
-   }()
+    }()
     
     private var accounts: [Account]?
     
@@ -144,12 +144,12 @@ extension FilterTransactionController {
         
         if let type = filter.options["type"] as? String {
             switch type {
-                case Transaction.TYPE_TRANSACTION_DEBIT:
-                    segmentedTypeControll.selectedSegmentIndex = 1
-                case Transaction.TYPE_TRANSACTION_CREDIT:
-                    segmentedTypeControll.selectedSegmentIndex = 2
-                default:
-                    segmentedTypeControll.selectedSegmentIndex = 0
+            case Transaction.TYPE_TRANSACTION_DEBIT:
+                segmentedTypeControll.selectedSegmentIndex = 1
+            case Transaction.TYPE_TRANSACTION_CREDIT:
+                segmentedTypeControll.selectedSegmentIndex = 2
+            default:
+                segmentedTypeControll.selectedSegmentIndex = 0
             }
         }
         
@@ -189,7 +189,7 @@ extension FilterTransactionController {
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-
+        
         contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
@@ -200,17 +200,17 @@ extension FilterTransactionController {
         segmentedTypeControll.fill(top: stackTopButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30))
         
         accountLabel.fill(top: segmentedTypeControll.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20))
-
+        
         wrapperAccountButtons.fill(top: accountLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 60))
         
         stackAccountButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
         
         categoryLabel.fill(top: stackAccountButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20))
-
+        
         wrapperCategoryButtons.fill(top: categoryLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 120))
-
+        
         stackCategoryButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
-
+        
         filterButton.fill(top: stackCategoryButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: contentView.bottomAnchor, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 350, right: 20), size: .init(width: contentView.bounds.width, height: 40))
         
     }
@@ -245,7 +245,7 @@ extension FilterTransactionController {
             }
         }
     }
-        
+    
     @objc private func chooseCategory(sender:UIButton){
         for view in stackCategoryButtons.arrangedSubviews {
             if let button = view as? UIStackView, button.arrangedSubviews[0].tag != sender.tag {
@@ -256,17 +256,17 @@ extension FilterTransactionController {
             }
         }
     }
-        
+    
     @objc private func changeType(sender:UISegmentedControl){
         switch sender.selectedSegmentIndex {
-            case 0:
-                filter.options["type"] = nil
-            case 1:
-                filter.options["type"] = Transaction.TYPE_TRANSACTION_DEBIT
-            case 2:
-                filter.options["type"] = Transaction.TYPE_TRANSACTION_CREDIT
-            default:
-                filter.options["type"] = nil
+        case 0:
+            filter.options["type"] = nil
+        case 1:
+            filter.options["type"] = Transaction.TYPE_TRANSACTION_DEBIT
+        case 2:
+            filter.options["type"] = Transaction.TYPE_TRANSACTION_CREDIT
+        default:
+            filter.options["type"] = nil
         }
     }
     

@@ -22,3 +22,12 @@
 "confirm_removal_transaction" = "Confirma a remoção da transação?";
 "confirm_removal_ok" = "Confirmar";
 "confirm_removal_not" = "Cancellar";
+"configurations_personal_data" = "Dados pessoais";
+"configurations_account" = "Contas";
+"configurations_categories" = "Categorias";
+"configurations_import" = "Importar extrato";
+"label_foot_configurations" = "Este aplicativo não possui nenhum tipo de conexão com a internet. Todos os registros ficam salvos no próprio aparelho. Todos os dados serão apagados em caso de remoção do app"; 
+"register" = "Cadastro";
+"auth_register_name" = "Nome";
+"auth_register_email" = "Email";
+"auth_save_button" = "Salvar";

@@ -11,10 +11,10 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         let transactionService: TransactionService = TransactionService(viewContext: context)
         let transactionsPresenter: TransactionsPresenter = TransactionsPresenter(transactionService: transactionService)
         return transactionsPresenter
-   }()
+    }()
     
     private var transactions: [Transaction] = []
-        
+    
     private var months:[(intMonth: Int, strMonth: String, intYear: Int)] = {
         var months:[(intMonth: Int, strMonth: String, intYear: Int)] = []
         let now = Date()
@@ -82,6 +82,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
     
     private var tableTransactions: UITableView = {
         let tableTransactions: UITableView = UITableView()
+        tableTransactions.separatorInset = .init(top: 0, left: 70, bottom: 0, right: 0)
         tableTransactions.register(TransactionCell.self, forCellReuseIdentifier: TransactionCell.cellTransaction)
         tableTransactions.backgroundColor = UIColor(named: K.colorBG1)
         tableTransactions.showsVerticalScrollIndicator = false
@@ -144,7 +145,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
 extension TransactionsController {
     
     private func configView(){
-                        
+        
         //MARK: View Configs
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(named: K.colorBG1)
@@ -169,15 +170,15 @@ extension TransactionsController {
         stackSearchView.fill(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 70, left: 20, bottom: 0, right: 20))
         
         borderScrollViewMonths.fill(top: stackSearchView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
-
+        
         collectionViewMonths.fill(top: borderScrollViewMonths.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: view.bounds.width, height: 35))
-
-        tableTransactions.fill(top: collectionViewMonths.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 20, bottom: 0, right: 20))
-
+        
+        tableTransactions.fill(top: collectionViewMonths.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 0, right: 0))
+        
         buttonAdd.fill(top: nil, leading: nil, bottom: view.bottomAnchor,trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 50, right: 20))
         
     }
-
+    
 }
 
 extension TransactionsController: TransactionsPresenterDelegate, FormTransactionControllerProtocol {
@@ -192,7 +193,7 @@ extension TransactionsController: TransactionsPresenterDelegate, FormTransaction
     func didCloseFormTransaction() {
         transactionsPresenter.returnTransactions(with: filter.options)
     }
-
+    
     @objc func goToNewTransactionController(){
         let newTransactionController = FormTransactionController()
         newTransactionController.transaction = Transaction(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
@@ -204,7 +205,7 @@ extension TransactionsController: TransactionsPresenterDelegate, FormTransaction
     }
     
     @objc func showFilterTransactionController(){
-       let filterTransactionController = FilterTransactionController()
+        let filterTransactionController = FilterTransactionController()
         filterTransactionController.modalTransitionStyle = .coverVertical
         present(filterTransactionController, animated: true, completion: nil)
     }
@@ -217,14 +218,14 @@ extension TransactionsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.transactions.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TransactionCell.cellTransaction, for: indexPath) as! TransactionCell
         cell.selectionStyle = .none
         cell.transaction = self.transactions[indexPath.row]
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -238,9 +239,9 @@ extension TransactionsController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    
+        
         let trash = UIContextualAction(style: .destructive, title: "delete_transaction".localized()) { (action, vieew, completionHandler) in
-           
+            
             let dialogMessage = UIAlertController(title: "alert_warning".localized(), message: "confirm_removal_transaction".localized(), preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "confirm_removal_ok".localized(), style: .default, handler: { (action) -> Void in
@@ -261,11 +262,11 @@ extension TransactionsController: UITableViewDelegate {
         trash.image = UIImage(named: "trash")
         
         trash.backgroundColor = UIColor(named: K.colorRedOne)
-
+        
         let configuration = UISwipeActionsConfiguration(actions: [trash])
         
         configuration.performsFirstActionWithFullSwipe = false
-
+        
         return configuration
     }
     
@@ -279,11 +280,11 @@ extension TransactionsController: UICollectionViewDelegate, UICollectionViewDele
         filter.options["year"] = months[indexPath.row].intYear
         _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.months.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrollMonthCell.cellScrollMonth, for: indexPath) as! ScrollMonthCell
         cell.label = "\(months[indexPath.row].strMonth) \(months[indexPath.row].intYear)"
@@ -295,7 +296,7 @@ extension TransactionsController: UICollectionViewDelegate, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {}
-   
+    
 }
 
 //MARK: searchTextField delegate

@@ -10,6 +10,7 @@
 		BB04DD07285A0D6600287495 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04DD06285A0D6600287495 /* AccountService.swift */; };
 		BB04DD09285A0F9D00287495 /* FormTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */; };
 		BB247C1E285D4FF1005AE1C3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB247C1D285D4FF1005AE1C3 /* DateExtensions.swift */; };
+		BB3D53082865EDC40025F19F /* AuthRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3D53072865EDC40025F19F /* AuthRegisterController.swift */; };
 		BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E33872850D5B500A17E52 /* FormTransactionController.swift */; };
 		BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6346284D099B001103DE /* ScrollMonthCell.swift */; };
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
@@ -26,7 +27,10 @@
 		BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0F0285B63B200945CBB /* CategoryService.swift */; };
 		BBC4B0FD285B83BC00945CBB /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0FC285B83BC00945CBB /* ServiceError.swift */; };
 		BBCAFA9A28496FA300C0F683 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */; };
+		BBCEB6682863D11400D6C0ED /* ConfigurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEB6672863D11400D6C0ED /* ConfigurationsController.swift */; };
 		BBD2A9B32860F27A002F77B8 /* FilterTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */; };
+		BBE714552867541C00CBD90F /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE714542867541C00CBD90F /* ConfigurationCell.swift */; };
+		BBE7145B28677FA700CBD90F /* AccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE7145A28677FA700CBD90F /* AccountsController.swift */; };
 		BBEC062628495DDE002D0311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062528495DDE002D0311 /* AppDelegate.swift */; };
 		BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062728495DDE002D0311 /* SceneDelegate.swift */; };
 		BBEC063028495DDE002D0311 /* conta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062E28495DDE002D0311 /* conta.xcdatamodeld */; };
@@ -91,6 +95,7 @@
 		BB04DD06285A0D6600287495 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTransactionPresenter.swift; sourceTree = "<group>"; };
 		BB247C1D285D4FF1005AE1C3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		BB3D53072865EDC40025F19F /* AuthRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRegisterController.swift; sourceTree = "<group>"; };
 		BB4E33872850D5B500A17E52 /* FormTransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTransactionController.swift; sourceTree = "<group>"; };
 		BB5D6346284D099B001103DE /* ScrollMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMonthCell.swift; sourceTree = "<group>"; };
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -108,7 +113,10 @@
 		BBC4B0F0285B63B200945CBB /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		BBC4B0FC285B83BC00945CBB /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		BBCEB6672863D11400D6C0ED /* ConfigurationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsController.swift; sourceTree = "<group>"; };
 		BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionController.swift; sourceTree = "<group>"; };
+		BBE714542867541C00CBD90F /* ConfigurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCell.swift; sourceTree = "<group>"; };
+		BBE7145A28677FA700CBD90F /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
 		BBEC062228495DDE002D0311 /* conta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEC062528495DDE002D0311 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBEC062728495DDE002D0311 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +220,7 @@
 		BB9C630428596D8600FDF7B2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				BB8372B428628B5300A405CE /* TransactionsFilter.swift */,
 				BBF86259284C0B4C00A56B24 /* CustomTextField.swift */,
 				BBB81188284A532200BC67EF /* TransactionCell.swift */,
 				BB5D6346284D099B001103DE /* ScrollMonthCell.swift */,
@@ -222,7 +231,6 @@
 		BB9C630528596D9900FDF7B2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BB8372B428628B5300A405CE /* TransactionsFilter.swift */,
 				BBB811852849BDC300BC67EF /* TransactionsController.swift */,
 				BB4E33872850D5B500A17E52 /* FormTransactionController.swift */,
 				BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */,
@@ -258,11 +266,39 @@
 		BB9C630928596E5900FDF7B2 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				BB9C630A2859715500FDF7B2 /* TransactionsPresenter.swift */,
-				BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */,
-				BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */,
+				BBE7145D2867802200CBD90F /* Configurations */,
+				BBE7145C28677FFD00CBD90F /* Transactions */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		BBCEB6662863D0E800D6C0ED /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				BBCEB66C2863E8B500D6C0ED /* Controllers */,
+				BBCEB66B2863E83F00D6C0ED /* Components */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		BBCEB66B2863E83F00D6C0ED /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BBE714542867541C00CBD90F /* ConfigurationCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		BBCEB66C2863E8B500D6C0ED /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BBCEB6672863D11400D6C0ED /* ConfigurationsController.swift */,
+				BBE7145628677F0300CBD90F /* Auth */,
+				BBE7145728677F1300CBD90F /* Accounts */,
+				BBE7145828677F2200CBD90F /* Categories */,
+				BBE7145928677F5500CBD90F /* Importer */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		BBDC20B0285A752F00E0A5D1 /* Util */ = {
@@ -288,6 +324,77 @@
 				BBFC347A285A87D7000D1B25 /* SF-Pro-Display-UltralightItalic.otf */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		BBE7145628677F0300CBD90F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				BB3D53072865EDC40025F19F /* AuthRegisterController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		BBE7145728677F1300CBD90F /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				BBE7145A28677FA700CBD90F /* AccountsController.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		BBE7145828677F2200CBD90F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		BBE7145928677F5500CBD90F /* Importer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Importer;
+			sourceTree = "<group>";
+		};
+		BBE7145C28677FFD00CBD90F /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				BB9C630A2859715500FDF7B2 /* TransactionsPresenter.swift */,
+				BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */,
+				BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		BBE7145D2867802200CBD90F /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				BBE7145E2867803300CBD90F /* Accounts */,
+				BBE7145F2867803A00CBD90F /* Categories */,
+				BBE714602867804800CBD90F /* Importer */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		BBE7145E2867803300CBD90F /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		BBE7145F2867803A00CBD90F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		BBE714602867804800CBD90F /* Importer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Importer;
 			sourceTree = "<group>";
 		};
 		BBEC061928495DDE002D0311 = {
@@ -361,6 +468,7 @@
 				BB9C630728596DE200FDF7B2 /* Base */,
 				BBEC066028496975002D0311 /* Home */,
 				BBF86256284BC08200A56B24 /* Transactions */,
+				BBCEB6662863D0E800D6C0ED /* Configurations */,
 				BBEC065D284966F0002D0311 /* Lib */,
 				BBEC063328495DE2002D0311 /* LaunchScreen.storyboard */,
 				BBEC062528495DDE002D0311 /* AppDelegate.swift */,
@@ -617,6 +725,7 @@
 			files = (
 				BBEC065C2849662B002D0311 /* ConstraintExtensions.swift in Sources */,
 				BB8DE31D2850524600AB1077 /* Constants.swift in Sources */,
+				BBCEB6682863D11400D6C0ED /* ConfigurationsController.swift in Sources */,
 				BBC4B0FD285B83BC00945CBB /* ServiceError.swift in Sources */,
 				BBF861DA284AED6000A56B24 /* Account.swift in Sources */,
 				BBCAFA9A28496FA300C0F683 /* ColorExtensions.swift in Sources */,
@@ -624,7 +733,10 @@
 				BBF8625C284C13AC00A56B24 /* ControllerExtensions.swift in Sources */,
 				BBEC06622849699D002D0311 /* HomeController.swift in Sources */,
 				BBFC3494285A8844000D1B25 /* Auth.swift in Sources */,
+				BBE714552867541C00CBD90F /* ConfigurationCell.swift in Sources */,
+				BB3D53082865EDC40025F19F /* AuthRegisterController.swift in Sources */,
 				BBF861E0284B9F0800A56B24 /* StringExtension.swift in Sources */,
+				BBE7145B28677FA700CBD90F /* AccountsController.swift in Sources */,
 				BBF861D1284A58FB00A56B24 /* LabelExtensions.swift in Sources */,
 				BB247C1E285D4FF1005AE1C3 /* DateExtensions.swift in Sources */,
 				BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */,

@@ -17,11 +17,11 @@ class BaseTabBarController: CustomTabBarController {
         
         let list = self.createTabBarItem(viewController: TransactionsController(), imageName: "list.bullet", imageSelectedName: "list.bullet")
         let home = self.createTabBarItem(viewController: HomeController(), imageName: "house.fill", imageSelectedName: "house.fill")
-        let profile = self.createTabBarItem(viewController: HomeController(), imageName: "person.fill", imageSelectedName: "person.fill")
+        let profile = self.createTabBarItem(viewController: ConfigurationsController(), imageName: "person.fill", imageSelectedName: "person.fill")
         
         viewControllers = [list, home, profile]
                 
-        selectedIndex = 0
+        selectedIndex = 2
         
     }
     

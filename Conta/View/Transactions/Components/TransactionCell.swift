@@ -94,7 +94,7 @@ class TransactionCell: UITableViewCell {
         
         let cellImage = UIView()
         cellImage.size(size: .init(width: 60, height: 60))
-        cellImage.backgroundColor = UIColor(named: K.colorBG3)
+        cellImage.backgroundColor = UIColor(named: K.colorBG2)
         cellImage.addSubview(iconImageCell)
         cellImage.layer.cornerRadius = 30
         iconImageCell.centralizeSuperview()
@@ -110,7 +110,7 @@ class TransactionCell: UITableViewCell {
         contentView.addSubview(stackViewCell)
         stackViewCell.spacing = 10
                         
-        stackViewCell.fillSuperview(padding: .init(top: 10, left: 0, bottom: 10, right: 0))
+        stackViewCell.fillSuperview(padding: .init(top: 10, left: 20, bottom: 10, right: 20))
         
     }
     

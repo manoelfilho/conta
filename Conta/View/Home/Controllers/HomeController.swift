@@ -20,6 +20,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         view.addSubview(label)
         label.frame = view.bounds
         
-        collectionView.backgroundColor = UIColor(named: "BG2")
+        collectionView.backgroundColor = UIColor(named: K.colorBG2)
     }
 }
