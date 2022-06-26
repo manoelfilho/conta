@@ -76,9 +76,19 @@ extension ConfigurationsController: UITableViewDelegate, UITableViewDataSource {
             let authRegister = AuthRegisterController()
             authRegister.modalTransitionStyle = .partialCurl
             self.navigationController?.pushViewController(authRegister, animated: true)
+            
+        case 1:
+            let accountsController = AccountsController()
+            accountsController.modalTransitionStyle = .partialCurl
+            self.navigationController?.pushViewController(accountsController, animated: true)
+            
+        case 2:
+            let categoriesController = CategoriesController()
+            categoriesController.modalTransitionStyle = .partialCurl
+            self.navigationController?.pushViewController(categoriesController, animated: true)
+            
         default:
             print()
-            
         }
     }
     
@@ -88,7 +98,6 @@ extension ConfigurationsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConfigurationCell.cellConfiguration, for: indexPath) as! ConfigurationCell
-        
         switch indexPath.row {
             case 0:
                 cell.configCell = ConfigCell(title: self.optionsTable["person"]?.localized(), symbolName: "person.fill", color: "#3ED598")
@@ -101,8 +110,6 @@ extension ConfigurationsController: UITableViewDelegate, UITableViewDataSource {
             default:
                 cell.configCell = ConfigCell(title: self.optionsTable["person"]?.localized(), symbolName: "person", color: "#FF565E")
         }
-        
-        //cell.accessoryType = .disclosureIndicator
         return cell
     }
     

@@ -31,3 +31,47 @@ class TransactionsFilter {
     }
     
 }
+
+class AccountsFilter {
+    
+    static let shared = AccountsFilter()
+    
+    var options: [String:Any]
+    
+    init() {
+        var filter: [String:Any] = [:]
+            filter["keyWord"] = nil
+            filter["accountId"] = nil
+        self.options = filter
+    }
+    
+    func clearOptions(){
+        var filter: [String:Any] = [:]
+            filter["keyWord"] = nil
+            filter["accountId"] = nil
+        self.options = filter
+    }
+    
+}
+
+class CategoriesFilter {
+    
+    static let shared = CategoriesFilter()
+    
+    var options: [String:Any]
+    
+    init() {
+        var filter: [String:Any] = [:]
+            filter["keyWord"] = nil
+            filter["categoryId"] = nil
+        self.options = filter
+    }
+    
+    func clearOptions(){
+        var filter: [String:Any] = [:]
+            filter["keyWord"] = nil
+            filter["categoryId"] = nil
+        self.options = filter
+    }
+    
+}

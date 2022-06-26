@@ -8,7 +8,7 @@ class AuthRegisterController: UIViewController{
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
         let nameLabel: UILabel = .textLabel(text: "register".localized(), fontSize: 30, color: .white, type: .Semibold)
-        let userImage = UIImageView(image: UIImage(named: "user"))
+        let userImage = UIImageView(image: UIImage(named: "icon_account"))
         headerStackView.addArrangedSubview(nameLabel)
         headerStackView.addArrangedSubview(userImage)
         headerView.addSubview(headerStackView)

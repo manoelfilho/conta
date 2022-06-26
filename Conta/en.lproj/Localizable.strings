@@ -31,5 +31,11 @@
 "auth_register_name" = "Name";
 "auth_register_email" = "Email";
 "auth_save_button" = "Save";
+"accounts_title_page" = "Accounts";
+"label_foot_account" = "XXX";
+"account_register_title" = "Account";
+"account_register_initial_value" = "Initial value";
+"categories_title_page" = "Categories";
+"category_register_title" = "Category";
 
 

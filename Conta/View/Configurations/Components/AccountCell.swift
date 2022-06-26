@@ -1,22 +1,19 @@
 import Foundation
 import UIKit
 
-struct ConfigCell {
+struct AccountCellModel {
     let title: String?
-    let symbolName: String?
     let color: String?
 }
 
-class ConfigurationCell: UITableViewCell {
+class AccountCell: UITableViewCell {
     
-    static let cellConfiguration = "cellConfiguration"
+    static let cellAccount = "cellAccount"
     
-    var configCell: ConfigCell? {
+    var accountCell: AccountCellModel? {
         didSet{
-            self.iconImageCell.image = UIImage.init(systemName: configCell?.symbolName ?? "asterisk")
-            self.titleLabel.text = configCell?.title
-            self.iconImageCell.tintColor = .white
-            self.cellImage.backgroundColor = UIColor(hexString: (configCell?.color)!)
+            self.titleLabel.text = accountCell?.title
+            self.cellImage.backgroundColor = UIColor(hexString: (accountCell?.color)!)
         }
     }
     
@@ -26,19 +23,10 @@ class ConfigurationCell: UITableViewCell {
         cellImage.layer.cornerRadius = 15
         return cellImage
     }()
-        
-    private let iconImageCell: UIImageView = {
-        let iconImageCell: UIImage = UIImage(systemName: "plus")!
-        let wrapperImage: UIImageView = UIImageView(image: iconImageCell)
-        wrapperImage.size(size: .init(width: 15, height: 15))
-        wrapperImage.tintColor = UIColor(named: K.colorText)!
-        
-        return wrapperImage
-    }()
     
     private let titleLabel: UILabel = {
         let titleLabel: UILabel = .textLabel(
-            text: "Configuration",
+            text: "Account",
             fontSize: 16,
             numberOfLines: 1,
             color: .white,
@@ -58,8 +46,6 @@ class ConfigurationCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor(named: K.colorBG2)
         self.accessoryType = .disclosureIndicator
-        cellImage.addSubview(iconImageCell)
-        iconImageCell.centralizeSuperview()
         self.stackCell.addArrangedSubview(cellImage)
         self.stackCell.addArrangedSubview(titleLabel)
         addSubview(stackCell)

@@ -1,44 +1,39 @@
 import Foundation
 import UIKit
 
-struct ConfigCell {
+struct CategoryCellModel {
     let title: String?
     let symbolName: String?
-    let color: String?
 }
 
-class ConfigurationCell: UITableViewCell {
+class CategoryCell: UITableViewCell {
     
-    static let cellConfiguration = "cellConfiguration"
+    static let cellCategory = "cellCategory"
     
-    var configCell: ConfigCell? {
+    var categoryCell: CategoryCellModel? {
         didSet{
-            self.iconImageCell.image = UIImage.init(systemName: configCell?.symbolName ?? "asterisk")
-            self.titleLabel.text = configCell?.title
-            self.iconImageCell.tintColor = .white
-            self.cellImage.backgroundColor = UIColor(hexString: (configCell?.color)!)
+            self.titleLabel.text = categoryCell?.title
+            self.uiImageView.image = UIImage(systemName: (categoryCell?.symbolName)!)!
         }
     }
     
+    private let uiImageView: UIImageView = {
+        let image: UIImage = UIImage(systemName: "star")!
+        let uiImageView: UIImageView = UIImageView(image: image)
+        uiImageView.tintColor = UIColor(named: K.colorText)
+        return uiImageView
+    }()
+    
     private let cellImage: UIView = {
         let cellImage = UIView()
-        cellImage.size(size: .init(width: 30, height: 30))
+        cellImage.size(size: .init(width: 40, height: 40))
         cellImage.layer.cornerRadius = 15
         return cellImage
-    }()
-        
-    private let iconImageCell: UIImageView = {
-        let iconImageCell: UIImage = UIImage(systemName: "plus")!
-        let wrapperImage: UIImageView = UIImageView(image: iconImageCell)
-        wrapperImage.size(size: .init(width: 15, height: 15))
-        wrapperImage.tintColor = UIColor(named: K.colorText)!
-        
-        return wrapperImage
     }()
     
     private let titleLabel: UILabel = {
         let titleLabel: UILabel = .textLabel(
-            text: "Configuration",
+            text: "Account",
             fontSize: 16,
             numberOfLines: 1,
             color: .white,
@@ -58,12 +53,14 @@ class ConfigurationCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = UIColor(named: K.colorBG2)
         self.accessoryType = .disclosureIndicator
-        cellImage.addSubview(iconImageCell)
-        iconImageCell.centralizeSuperview()
+        
+        cellImage.addSubview(uiImageView)
+        uiImageView.centralizeSuperview()
+        
         self.stackCell.addArrangedSubview(cellImage)
         self.stackCell.addArrangedSubview(titleLabel)
         addSubview(stackCell)
-        stackCell.fillSuperview(padding: .init(top: 15, left: 20, bottom: 15, right: 20))
+        stackCell.fillSuperview(padding: .init(top: 10, left: 20, bottom: 10, right: 20))
     }
     
     required init?(coder: NSCoder) {

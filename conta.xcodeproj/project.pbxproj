@@ -16,6 +16,16 @@
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
 		BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */; };
 		BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */; };
+		BB80BBF42867F62500EECE44 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF32867F62500EECE44 /* HomeCell.swift */; };
+		BB80BBF628686BE300EECE44 /* AccountsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */; };
+		BB80BBFA2868735800EECE44 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF92868735800EECE44 /* AccountCell.swift */; };
+		BB80BBFC2868812D00EECE44 /* FormAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBFB2868812D00EECE44 /* FormAccountController.swift */; };
+		BB80BBFE28689D3500EECE44 /* FormAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBFD28689D3500EECE44 /* FormAccountPresenter.swift */; };
+		BB80BC002868AD8900EECE44 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBFF2868AD8900EECE44 /* CategoriesPresenter.swift */; };
+		BB80BC022868ADA700EECE44 /* FormCategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC012868ADA700EECE44 /* FormCategoryPresenter.swift */; };
+		BB80BC042868AF5A00EECE44 /* CategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC032868AF5A00EECE44 /* CategoriesController.swift */; };
+		BB80BC062868B12800EECE44 /* FormCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC052868B12800EECE44 /* FormCategoryController.swift */; };
+		BB80BC082868B38200EECE44 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC072868B38200EECE44 /* CategoryCell.swift */; };
 		BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8372B428628B5300A405CE /* TransactionsFilter.swift */; };
 		BB8DE31D2850524600AB1077 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8DE31C2850524600AB1077 /* Constants.swift */; };
 		BB8F955A2862504700B654AC /* TransactionNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F95592862504700B654AC /* TransactionNotifications.swift */; };
@@ -101,6 +111,16 @@
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
 		BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionPresenter.swift; sourceTree = "<group>"; };
+		BB80BBF32867F62500EECE44 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPresenter.swift; sourceTree = "<group>"; };
+		BB80BBF92868735800EECE44 /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		BB80BBFB2868812D00EECE44 /* FormAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormAccountController.swift; sourceTree = "<group>"; };
+		BB80BBFD28689D3500EECE44 /* FormAccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormAccountPresenter.swift; path = Conta/Presenters/Configurations/Accounts/FormAccountPresenter.swift; sourceTree = SOURCE_ROOT; };
+		BB80BBFF2868AD8900EECE44 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesPresenter.swift; path = Conta/Presenters/Configurations/Categories/CategoriesPresenter.swift; sourceTree = SOURCE_ROOT; };
+		BB80BC012868ADA700EECE44 /* FormCategoryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FormCategoryPresenter.swift; path = Conta/Presenters/Configurations/Categories/FormCategoryPresenter.swift; sourceTree = SOURCE_ROOT; };
+		BB80BC032868AF5A00EECE44 /* CategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesController.swift; sourceTree = "<group>"; };
+		BB80BC052868B12800EECE44 /* FormCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCategoryController.swift; sourceTree = "<group>"; };
+		BB80BC072868B38200EECE44 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		BB8372B428628B5300A405CE /* TransactionsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsFilter.swift; sourceTree = "<group>"; };
 		BB8DE31C2850524600AB1077 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB8F95592862504700B654AC /* TransactionNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNotifications.swift; sourceTree = "<group>"; };
@@ -209,6 +229,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		BB80BBF22867F5E800EECE44 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BB80BBF32867F62500EECE44 /* HomeCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		BB8F95582862502100B654AC /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				BBEC06612849699D002D0311 /* HomeController.swift */,
+				BB80BBF22867F5E800EECE44 /* Components */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -285,6 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				BBE714542867541C00CBD90F /* ConfigurationCell.swift */,
+				BB80BBF92868735800EECE44 /* AccountCell.swift */,
+				BB80BC072868B38200EECE44 /* CategoryCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -338,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				BBE7145A28677FA700CBD90F /* AccountsController.swift */,
+				BB80BBFB2868812D00EECE44 /* FormAccountController.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -345,6 +377,8 @@
 		BBE7145828677F2200CBD90F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				BB80BC032868AF5A00EECE44 /* CategoriesController.swift */,
+				BB80BC052868B12800EECE44 /* FormCategoryController.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -379,6 +413,8 @@
 		BBE7145E2867803300CBD90F /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */,
+				BB80BBFD28689D3500EECE44 /* FormAccountPresenter.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -386,6 +422,8 @@
 		BBE7145F2867803A00CBD90F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				BB80BBFF2868AD8900EECE44 /* CategoriesPresenter.swift */,
+				BB80BC012868ADA700EECE44 /* FormCategoryPresenter.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -724,13 +762,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBEC065C2849662B002D0311 /* ConstraintExtensions.swift in Sources */,
+				BB80BBFE28689D3500EECE44 /* FormAccountPresenter.swift in Sources */,
 				BB8DE31D2850524600AB1077 /* Constants.swift in Sources */,
 				BBCEB6682863D11400D6C0ED /* ConfigurationsController.swift in Sources */,
+				BB80BBFA2868735800EECE44 /* AccountCell.swift in Sources */,
 				BBC4B0FD285B83BC00945CBB /* ServiceError.swift in Sources */,
+				BB80BC002868AD8900EECE44 /* CategoriesPresenter.swift in Sources */,
 				BBF861DA284AED6000A56B24 /* Account.swift in Sources */,
 				BBCAFA9A28496FA300C0F683 /* ColorExtensions.swift in Sources */,
 				BB04DD09285A0F9D00287495 /* FormTransactionPresenter.swift in Sources */,
 				BBF8625C284C13AC00A56B24 /* ControllerExtensions.swift in Sources */,
+				BB80BC082868B38200EECE44 /* CategoryCell.swift in Sources */,
 				BBEC06622849699D002D0311 /* HomeController.swift in Sources */,
 				BBFC3494285A8844000D1B25 /* Auth.swift in Sources */,
 				BBE714552867541C00CBD90F /* ConfigurationCell.swift in Sources */,
@@ -742,10 +784,15 @@
 				BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */,
 				BBEC065F28496773002D0311 /* BaseTabBarController.swift in Sources */,
 				BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */,
+				BB80BBF42867F62500EECE44 /* HomeCell.swift in Sources */,
+				BB80BC022868ADA700EECE44 /* FormCategoryPresenter.swift in Sources */,
 				BBB811862849BDC300BC67EF /* TransactionsController.swift in Sources */,
 				BBB81189284A532200BC67EF /* TransactionCell.swift in Sources */,
 				BBEC062628495DDE002D0311 /* AppDelegate.swift in Sources */,
+				BB80BC042868AF5A00EECE44 /* CategoriesController.swift in Sources */,
 				BB9C630D285971EE00FDF7B2 /* TransactionService.swift in Sources */,
+				BB80BBFC2868812D00EECE44 /* FormAccountController.swift in Sources */,
+				BB80BC062868B12800EECE44 /* FormCategoryController.swift in Sources */,
 				BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */,
 				BB04DD07285A0D6600287495 /* AccountService.swift in Sources */,
 				BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */,
@@ -756,6 +803,7 @@
 				BB8F955A2862504700B654AC /* TransactionNotifications.swift in Sources */,
 				BBD2A9B32860F27A002F77B8 /* FilterTransactionController.swift in Sources */,
 				BBF861DE284AEDAC00A56B24 /* Transaction.swift in Sources */,
+				BB80BBF628686BE300EECE44 /* AccountsPresenter.swift in Sources */,
 				BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */,
 				BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */,
 				BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */,
