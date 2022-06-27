@@ -7,13 +7,15 @@ protocol FormCategoryControllerProtocol: NSObjectProtocol {
 
 class FormCategoryController: UIViewController{
     
-    weak private var delegate: FormCategoryControllerProtocol?
-    
     var category: Category? {
         didSet {
             titleTextField.text = category?.title
+            let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20), scale: .large)
+            self.iconSymbolButton.setImage(UIImage(systemName: category?.symbolName ?? "star", withConfiguration: config), for: .normal)
         }
     }
+    
+    weak private var delegate: FormCategoryControllerProtocol?
     
     private let formCategoryPresenter: FormCategoryPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -44,11 +46,29 @@ class FormCategoryController: UIViewController{
         return headerView
     }()
     
-    private var formView: UIStackView = {
+    private let formView: UIStackView = {
         let formView: UIStackView = UIStackView()
         formView.spacing = 10
         formView.axis = .vertical
         return formView
+    }()
+    
+    private let symbolPicker: SymbolPicker = {
+        let symbolPicker: SymbolPicker = SymbolPicker()
+        return symbolPicker
+    }()
+    
+    private var iconSymbolButton: UIButton = {
+        let button: UIButton = .roundedSymbolButton(
+            symbolName: "questionmark.diamond.fill",
+            pointSize: 30,
+            weight: .light,
+            scale: .default,
+            color: UIColor(named: K.colorBG2)!,
+            size: .init(width: 60, height: 60),
+            cornerRadius: 15
+        )
+        return button
     }()
     
     private var colorAndTitleStack: UIStackView = {
@@ -97,15 +117,21 @@ class FormCategoryController: UIViewController{
     func configView(){
         view.backgroundColor = UIColor(named: K.colorBG1)
         
+        symbolPicker.delegate = self
+        
         cancellButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(saveCategory), for: .touchUpInside)
+        iconSymbolButton.addTarget(self, action: #selector(chooseSymbol), for: .touchUpInside)
         
         view.addSubview(cancellButton)
         view.addSubview(headerView)
         
+        colorAndTitleStack.addArrangedSubview(iconSymbolButton)
         colorAndTitleStack.addArrangedSubview(titleTextField)
         
         colorAndTitleStack.size(size: .init(width: view.bounds.width-40, height: 60))
+        
+        iconSymbolButton.translatesAutoresizingMaskIntoConstraints = false
         
         formView.addArrangedSubview(colorAndTitleStack)
         formView.addArrangedSubview(saveButton)
@@ -126,13 +152,18 @@ class FormCategoryController: UIViewController{
         self.delegate = formCategoryControllerDelegate
     }
     
+    @objc func chooseSymbol(){
+        symbolPicker.modalTransitionStyle = .coverVertical
+        present(symbolPicker, animated: true, completion: nil)
+    }
+    
     @objc func cancel(){
         dismiss(animated: true)
     }
     
     @objc func saveCategory(){
-        
-        if category?.title == nil || category?.title == "" {
+                
+        if category?.title == nil || category?.title == "" || category?.symbolName == nil {
 
             let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_fill_all_fields".localized(), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -155,6 +186,14 @@ extension FormCategoryController: FormCategoryPresenterProtocol {
     
     func showSuccess(message: String) {
         dismiss(animated: true)
+    }
+}
+
+extension FormCategoryController: SymbolPickerProtocol {
+    func didSelectSymbol(symbol: String) {
+        category?.symbolName = symbol
+        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20), scale: .large)
+        iconSymbolButton.setImage(UIImage(systemName: symbol, withConfiguration: config), for: .normal)
     }
 }
 

@@ -13,22 +13,22 @@ class CategoryCell: UITableViewCell {
     var categoryCell: CategoryCellModel? {
         didSet{
             self.titleLabel.text = categoryCell?.title
-            self.uiImageView.image = UIImage(systemName: (categoryCell?.symbolName)!)!
+            let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20), scale: .large)
+            self.iconButtonCell.setImage(UIImage(systemName: categoryCell?.symbolName ?? "star", withConfiguration: config), for: .normal)
         }
     }
     
-    private let uiImageView: UIImageView = {
-        let image: UIImage = UIImage(systemName: "star")!
-        let uiImageView: UIImageView = UIImageView(image: image)
-        uiImageView.tintColor = UIColor(named: K.colorText)
-        return uiImageView
-    }()
-    
-    private let cellImage: UIView = {
-        let cellImage = UIView()
-        cellImage.size(size: .init(width: 40, height: 40))
-        cellImage.layer.cornerRadius = 15
-        return cellImage
+    private var iconButtonCell: UIButton = {
+        let iconImageCell: UIButton = .roundedSymbolButton(
+            symbolName: "star",
+            pointSize: 30,
+            weight: .light,
+            scale: .default,
+            color: UIColor(named: K.colorBG2)!,
+            size: .init(width: 30, height: 30),
+            cornerRadius: 30
+        )
+        return iconImageCell
     }()
     
     private let titleLabel: UILabel = {
@@ -54,13 +54,10 @@ class CategoryCell: UITableViewCell {
         self.backgroundColor = UIColor(named: K.colorBG2)
         self.accessoryType = .disclosureIndicator
         
-        cellImage.addSubview(uiImageView)
-        uiImageView.centralizeSuperview()
-        
-        self.stackCell.addArrangedSubview(cellImage)
+        self.stackCell.addArrangedSubview(iconButtonCell)
         self.stackCell.addArrangedSubview(titleLabel)
         addSubview(stackCell)
-        stackCell.fillSuperview(padding: .init(top: 10, left: 20, bottom: 10, right: 20))
+        stackCell.fillSuperview(padding: .init(top: 15, left: 20, bottom: 15, right: 20))
     }
     
     required init?(coder: NSCoder) {

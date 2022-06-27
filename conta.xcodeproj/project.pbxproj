@@ -26,6 +26,9 @@
 		BB80BC042868AF5A00EECE44 /* CategoriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC032868AF5A00EECE44 /* CategoriesController.swift */; };
 		BB80BC062868B12800EECE44 /* FormCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC052868B12800EECE44 /* FormCategoryController.swift */; };
 		BB80BC082868B38200EECE44 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC072868B38200EECE44 /* CategoryCell.swift */; };
+		BB80BC0A2868EAB700EECE44 /* SymbolPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC092868EAB700EECE44 /* SymbolPicker.swift */; };
+		BB80BC0C2868FCDE00EECE44 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC0B2868FCDE00EECE44 /* Symbols.swift */; };
+		BB80BC0E2869159100EECE44 /* SymbolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC0D2869159100EECE44 /* SymbolCell.swift */; };
 		BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8372B428628B5300A405CE /* TransactionsFilter.swift */; };
 		BB8DE31D2850524600AB1077 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8DE31C2850524600AB1077 /* Constants.swift */; };
 		BB8F955A2862504700B654AC /* TransactionNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F95592862504700B654AC /* TransactionNotifications.swift */; };
@@ -121,6 +124,9 @@
 		BB80BC032868AF5A00EECE44 /* CategoriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesController.swift; sourceTree = "<group>"; };
 		BB80BC052868B12800EECE44 /* FormCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCategoryController.swift; sourceTree = "<group>"; };
 		BB80BC072868B38200EECE44 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		BB80BC092868EAB700EECE44 /* SymbolPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPicker.swift; sourceTree = "<group>"; };
+		BB80BC0B2868FCDE00EECE44 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		BB80BC0D2869159100EECE44 /* SymbolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCell.swift; sourceTree = "<group>"; };
 		BB8372B428628B5300A405CE /* TransactionsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsFilter.swift; sourceTree = "<group>"; };
 		BB8DE31C2850524600AB1077 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB8F95592862504700B654AC /* TransactionNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNotifications.swift; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 				BBE714542867541C00CBD90F /* ConfigurationCell.swift */,
 				BB80BBF92868735800EECE44 /* AccountCell.swift */,
 				BB80BC072868B38200EECE44 /* CategoryCell.swift */,
+				BB80BC0D2869159100EECE44 /* SymbolCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -379,6 +386,8 @@
 			children = (
 				BB80BC032868AF5A00EECE44 /* CategoriesController.swift */,
 				BB80BC052868B12800EECE44 /* FormCategoryController.swift */,
+				BB80BC092868EAB700EECE44 /* SymbolPicker.swift */,
+				BB80BC0B2868FCDE00EECE44 /* Symbols.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -766,6 +775,7 @@
 				BB8DE31D2850524600AB1077 /* Constants.swift in Sources */,
 				BBCEB6682863D11400D6C0ED /* ConfigurationsController.swift in Sources */,
 				BB80BBFA2868735800EECE44 /* AccountCell.swift in Sources */,
+				BB80BC0C2868FCDE00EECE44 /* Symbols.swift in Sources */,
 				BBC4B0FD285B83BC00945CBB /* ServiceError.swift in Sources */,
 				BB80BC002868AD8900EECE44 /* CategoriesPresenter.swift in Sources */,
 				BBF861DA284AED6000A56B24 /* Account.swift in Sources */,
@@ -797,6 +807,7 @@
 				BB04DD07285A0D6600287495 /* AccountService.swift in Sources */,
 				BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */,
 				BBEC063028495DDE002D0311 /* conta.xcdatamodeld in Sources */,
+				BB80BC0A2868EAB700EECE44 /* SymbolPicker.swift in Sources */,
 				BBF861DC284AED8100A56B24 /* Category.swift in Sources */,
 				BBAD8E5E2852EE2A000074D9 /* ViewExtensions.swift in Sources */,
 				BBF8625A284C0B4C00A56B24 /* CustomTextField.swift in Sources */,
@@ -808,6 +819,7 @@
 				BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */,
 				BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */,
 				BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */,
+				BB80BC0E2869159100EECE44 /* SymbolCell.swift in Sources */,
 				BB9C630B2859715500FDF7B2 /* TransactionsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

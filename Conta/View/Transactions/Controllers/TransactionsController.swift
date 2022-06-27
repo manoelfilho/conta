@@ -133,6 +133,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         super.viewWillAppear(animated)
         let indexPath = IndexPath(item: months.count-1, section: 0)
         collectionViewMonths.scrollToItem(at:indexPath, at: .right, animated: true)
+        loadData()
     }
     
     private func loadData(){

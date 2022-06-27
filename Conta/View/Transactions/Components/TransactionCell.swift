@@ -16,7 +16,9 @@ class TransactionCell: UITableViewCell {
                 formatterNumber.locale = Locale.current
                 formatterNumber.numberStyle = .currency
                 
-                self.iconImageCell.image = UIImage.init(systemName: transaction.category?.symbolName ?? "asterisk")
+                let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20), scale: .large)
+                self.iconButtonCell.setImage(UIImage(systemName: transaction.category?.symbolName ?? "star", withConfiguration: config), for: .normal)
+                
                 self.titleLabel.text = transaction.title
                 self.dataLabel.text = formatterDate.string(from: transaction.date ?? Date.now)
                 self.valueLabel.text = formatterNumber.string(from: NSNumber(value: transaction.value))
@@ -26,12 +28,17 @@ class TransactionCell: UITableViewCell {
         }
     }
     
-    private let iconImageCell: UIImageView = {
-        let iconImageCell: UIImage = UIImage(systemName: "plus")!
-        let wrapperImage: UIImageView = UIImageView(image: iconImageCell)
-        wrapperImage.size(size: .init(width: 30, height: 30))
-        wrapperImage.tintColor = UIColor(named: K.colorText)!
-        return wrapperImage
+    private var iconButtonCell: UIButton = {
+        let iconImageCell: UIButton = .roundedSymbolButton(
+            symbolName: "star",
+            pointSize: 30,
+            weight: .light,
+            scale: .default,
+            color: UIColor(named: K.colorBG2)!,
+            size: .init(width: 60, height: 60),
+            cornerRadius: 30
+        )
+        return iconImageCell
     }()
     
     private let titleLabel: UILabel = {
@@ -95,16 +102,16 @@ class TransactionCell: UITableViewCell {
         let cellImage = UIView()
         cellImage.size(size: .init(width: 60, height: 60))
         cellImage.backgroundColor = UIColor(named: K.colorBG2)
-        cellImage.addSubview(iconImageCell)
+        cellImage.addSubview(iconButtonCell)
         cellImage.layer.cornerRadius = 30
-        iconImageCell.centralizeSuperview()
         
         let stackAccountLabel = UIStackView(arrangedSubviews: [accountMarker, accountLabel])
         stackAccountLabel.spacing = 10
         
         let stackDescription = UIStackView(arrangedSubviews: [titleLabel, dataLabel, stackAccountLabel])
         stackDescription.axis = .vertical
-        stackDescription.distribution = .equalSpacing
+        stackDescription.alignment = .leading
+        stackDescription.distribution = .equalCentering
         
         let stackViewCell = UIStackView(arrangedSubviews: [cellImage, stackDescription, valueLabel])
         contentView.addSubview(stackViewCell)

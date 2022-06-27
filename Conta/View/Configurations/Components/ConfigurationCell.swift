@@ -56,14 +56,18 @@ class ConfigurationCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor(named: K.colorBG2)
-        self.accessoryType = .disclosureIndicator
+        contentView.backgroundColor = UIColor(named: K.colorBG2)
+        
         cellImage.addSubview(iconImageCell)
         iconImageCell.centralizeSuperview()
+        
         self.stackCell.addArrangedSubview(cellImage)
         self.stackCell.addArrangedSubview(titleLabel)
+                
         addSubview(stackCell)
+        
         stackCell.fillSuperview(padding: .init(top: 15, left: 20, bottom: 15, right: 20))
+                
     }
     
     required init?(coder: NSCoder) {
