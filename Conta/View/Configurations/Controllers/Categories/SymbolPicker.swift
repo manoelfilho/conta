@@ -5,9 +5,9 @@ protocol SymbolPickerProtocol {
     func didSelectSymbol(symbol: String)
 }
 
-class SymbolPicker: UICollectionViewController {
+class SymbolPicker: UIViewController {
     
-    private let symbolNames: [String] = SymbolsCategories.shared.symbolNames
+    private var symbolNames: [String] = SymbolsCategories.shared.symbolNames
     
     var delegate: SymbolPickerProtocol?
         
@@ -17,33 +17,42 @@ class SymbolPicker: UICollectionViewController {
         cancellButton.tintColor = UIColor(named: K.colorText)
         return cancellButton
     }()
-        
-    init(){
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private let searchTextField: UITextField = {
+        let searchTextField: UITextField = CustomTextField()
+        searchTextField.backgroundColor = UIColor(named: K.colorBG3)
+        searchTextField.layer.cornerRadius = 10
+        searchTextField.textColor = UIColor(named: K.colorText)
+        searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "home_search".localized(),
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: K.colorText)!]
+        )
+        return searchTextField
+    }()
+    
+    private var collectionView: UICollectionView = {
+        let collection: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collection.showsHorizontalScrollIndicator = false
+        collection.register(SymbolCell.self, forCellWithReuseIdentifier: SymbolCell.cellCollectionSymbol)
+        collection.backgroundColor = UIColor(named: K.colorBG1)
+        return collection
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor(named: K.colorBG1)
+        
+        view.addSubview(cancellButton)
+        view.addSubview(searchTextField)
+        view.addSubview(collectionView)
         
         cancellButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         
-        collectionView.backgroundColor = UIColor(named: K.colorBG1)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
-        
-        collectionView.register(SymbolCell.self, forCellWithReuseIdentifier: SymbolCell.cellCollectionSymbol)
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "collectionViewHeaderCell")
-        
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.sectionHeadersPinToVisibleBounds = true
-        }
-        
+        cancellButton.fill(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 20, right: 20))
+        searchTextField.fill(top: cancellButton.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
+        collectionView.fill(top: searchTextField.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+
+        searchTextField.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -56,13 +65,13 @@ class SymbolPicker: UICollectionViewController {
 }
 
 
-extension SymbolPicker{
+extension SymbolPicker: UICollectionViewDataSource{
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return symbolNames.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SymbolCell.cellCollectionSymbol, for: indexPath) as! SymbolCell
         cell.symbolName = symbolNames[indexPath.row]
         return cell
@@ -80,21 +89,35 @@ extension SymbolPicker: UICollectionViewDelegateFlowLayout {
         return 10
     }
     
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "collectionViewHeaderCell", for: indexPath)
-        cell.addSubview(self.cancellButton)
-        cancellButton.fill(top: cell.topAnchor, leading: nil, bottom: nil, trailing: cell.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
-        cell.backgroundColor = UIColor(named: K.colorBG1)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: 80)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.delegate?.didSelectSymbol(symbol: symbolNames[indexPath.row])
         dismiss(animated: true)
     }
     
+}
+
+extension SymbolPicker: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let text = textField.text {
+            
+            if text.count >= 3 {
+                let filteredSymbols = self.symbolNames.filter { $0.range(of: text, options: [ .caseInsensitive, .anchored ]) != nil }
+                self.symbolNames = filteredSymbols
+                self.collectionView.reloadData()
+            } else {
+                self.symbolNames = SymbolsCategories.shared.symbolNames
+                self.collectionView.reloadData()
+            }
+            
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
 }

@@ -10,13 +10,22 @@ class SymbolCell: UICollectionViewCell {
     
     var symbolName: String? {
         didSet{
-            uiImage.image = UIImage(systemName: symbolName ?? "star")
+            let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20), scale: .large)
+            self.iconSymbolButton.setImage(UIImage(systemName: symbolName ?? "star", withConfiguration: config), for: .normal)
         }
     }
     
-    private let uiImage: UIImageView = {
-        let uiImage: UIImageView = UIImageView(image: UIImage(systemName: "star"))
-        return uiImage
+    private var iconSymbolButton: UIButton = {
+        let button: UIButton = .roundedSymbolButton(
+            symbolName: "questionmark.diamond.fill",
+            pointSize: 30,
+            weight: .light,
+            scale: .default,
+            color: UIColor(named: K.colorBG2)!,
+            size: .init(width: 60, height: 60),
+            cornerRadius: 15
+        )
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -26,9 +35,8 @@ class SymbolCell: UICollectionViewCell {
         layer.cornerRadius = 16
         clipsToBounds = true
         
-        addSubview(uiImage)
-        uiImage.fillSuperview(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
-        uiImage.tintColor = .white
+        addSubview(iconSymbolButton)
+        iconSymbolButton.centralizeSuperview()
         
     }
     

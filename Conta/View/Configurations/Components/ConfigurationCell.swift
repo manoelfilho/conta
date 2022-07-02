@@ -32,7 +32,6 @@ class ConfigurationCell: UITableViewCell {
         let wrapperImage: UIImageView = UIImageView(image: iconImageCell)
         wrapperImage.size(size: .init(width: 15, height: 15))
         wrapperImage.tintColor = UIColor(named: K.colorText)!
-        
         return wrapperImage
     }()
     

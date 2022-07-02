@@ -38,6 +38,7 @@ class TransactionCell: UITableViewCell {
             size: .init(width: 60, height: 60),
             cornerRadius: 30
         )
+        iconImageCell.tintColor = UIColor(named: K.colorText)
         return iconImageCell
     }()
     
