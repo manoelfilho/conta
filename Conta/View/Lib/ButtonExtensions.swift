@@ -3,6 +3,8 @@ import UIKit
 class CustomButton: UIButton
 {
     var uuid: UUID?
+    var name: String?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
