@@ -4,7 +4,7 @@ class BaseTabBarController: CustomTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = UIColor(named: "Green2")
+        tabBar.tintColor = UIColor(named: K.colorGreenTwo)
         tabBar.unselectedItemTintColor = UIColor.gray
         
         if #available(iOS 15.0, *) {
@@ -15,13 +15,22 @@ class BaseTabBarController: CustomTabBarController {
             self.tabBar.scrollEdgeAppearance = appearance
         }
         
-        let list = self.createTabBarItem(viewController: TransactionsController(), imageName: "list.bullet", imageSelectedName: "list.bullet")
-        let home = self.createTabBarItem(viewController: HomeController(), imageName: "house.fill", imageSelectedName: "house.fill")
-        let profile = self.createTabBarItem(viewController: ConfigurationsController(), imageName: "person.fill", imageSelectedName: "person.fill")
+        let list = self.createTabBarItem(
+            viewController: TransactionsController(),
+            imageName: "list.bullet",
+            imageSelectedName: "list.bullet")
+        let home = self.createTabBarItem(
+            viewController: HomeController(),
+            imageName: "house.fill",
+            imageSelectedName: "house.fill")
+        let profile = self.createTabBarItem(
+            viewController: ConfigurationsController(),
+            imageName: "person.fill",
+            imageSelectedName: "person.fill")
         
         viewControllers = [list, home, profile]
                 
-        selectedIndex = 2
+        selectedIndex = 0
         
     }
     

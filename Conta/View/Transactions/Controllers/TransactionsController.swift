@@ -13,9 +13,19 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return transactionsPresenter
     }()
     
-    private var transactions: [Transaction] = []
+    private lazy var transactions: [Transaction] = []
     
-    private var months:[(intMonth: Int, strMonth: String, intYear: Int)] = {
+    private lazy var tableTransactions: UITableView = {
+        let tableTransactions: UITableView = UITableView()
+        tableTransactions.separatorInset = .init(top: 0, left: 70, bottom: 0, right: 0)
+        tableTransactions.register(TransactionCell.self, forCellReuseIdentifier: TransactionCell.cellTransaction)
+        tableTransactions.backgroundColor = UIColor(named: K.colorBG1)
+        tableTransactions.showsVerticalScrollIndicator = false
+        tableTransactions.separatorColor = UIColor(named: K.colorText)?.withAlphaComponent(0.3)
+        return tableTransactions
+    }()
+    
+    private let months:[(intMonth: Int, strMonth: String, intYear: Int)] = {
         var months:[(intMonth: Int, strMonth: String, intYear: Int)] = []
         let now = Date()
         let calendar = Calendar.current.dateComponents([.month, .year], from: now)
@@ -60,14 +70,14 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return stackSearchView
     }()
     
-    private var borderScrollViewMonths: UIView = {
+    private let borderScrollViewMonths: UIView = {
         let borderScrollViewMonths:UIView = UIView()
         borderScrollViewMonths.backgroundColor = UIColor(named: K.colorBG2)
         borderScrollViewMonths.size(size: .init(width: UIScreen.main.bounds.width, height: 5))
         return borderScrollViewMonths
     }()
     
-    private var collectionViewMonths: UICollectionView = {
+    private let collectionViewMonths: UICollectionView = {
         let layoutScrollMonth: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layoutScrollMonth.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layoutScrollMonth.itemSize = CGSize(width: 100, height: 35)
@@ -80,17 +90,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return collectionViewMonths
     }()
     
-    private var tableTransactions: UITableView = {
-        let tableTransactions: UITableView = UITableView()
-        tableTransactions.separatorInset = .init(top: 0, left: 70, bottom: 0, right: 0)
-        tableTransactions.register(TransactionCell.self, forCellReuseIdentifier: TransactionCell.cellTransaction)
-        tableTransactions.backgroundColor = UIColor(named: K.colorBG1)
-        tableTransactions.showsVerticalScrollIndicator = false
-        tableTransactions.separatorColor = UIColor(named: K.colorText)?.withAlphaComponent(0.3)
-        return tableTransactions
-    }()
-    
-    private var buttonAdd: UIButton = {
+    private let buttonAdd: UIButton = {
         let buttonAdd: UIButton = .roundedCustomIconButton(
             imageName: "IconPlus",
             pointSize: 30,
