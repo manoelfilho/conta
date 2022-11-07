@@ -97,8 +97,6 @@ class FormTransactionController: UIViewController {
         datePicker.datePickerMode = .date
         datePicker.contentHorizontalAlignment = .leading
         datePicker.maximumDate = .now
-        let firstDate = Calendar.current.date(byAdding: .month, value: -1200, to: datePicker.date)
-        datePicker.minimumDate = firstDate!
         return datePicker
     }()
     
