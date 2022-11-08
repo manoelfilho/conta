@@ -1,6 +1,6 @@
 import UIKit
 
-class TransactionsController: UIViewController, UITableViewDataSource, UICollectionViewDataSource, UITextFieldDelegate {
+class TransactionsController: UIViewController, UITableViewDataSource, UICollectionViewDataSource {
     
     private let notificationCenter = TransactionNotifications.shared
     
@@ -25,19 +25,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return tableTransactions
     }()
     
-    private let months:[(intMonth: Int, strMonth: String, intYear: Int)] = {
-        var months:[(intMonth: Int, strMonth: String, intYear: Int)] = []
-        let now = Date()
-        let calendar = Calendar.current.dateComponents([.month, .year], from: now)
-        let listMonths: [String] = Calendar.current.shortMonthSymbols
-        months.append((intMonth: calendar.month!, strMonth: listMonths[calendar.month!-1].uppercased(), intYear: calendar.year!))
-        for m in (1...1200){
-            let dateBeforeMonth = Calendar.current.date(byAdding: .month, value: -m, to: now)
-            let calendarBeforeMonth = Calendar.current.dateComponents([.month, .year], from: dateBeforeMonth!)
-            months.append((intMonth: calendarBeforeMonth.month!, strMonth: listMonths[calendarBeforeMonth.month!-1].uppercased(), intYear: calendarBeforeMonth.year!))
-        }
-        return months.reversed()
-    }()
+    private lazy var months:[(intMonth: Int, strMonth: String, intYear: Int)] = []
     
     private let searchTextField: UITextField = {
         let searchTextField: UITextField = CustomTextField()
@@ -138,11 +126,12 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
     
     private func loadData(){
         transactionsPresenter.returnTransactions(with: filter.options)
+        transactionsPresenter.returnFirstOfAllTransactions()
     }
     
 }
 
-//MARK: Config View
+//MARK: CONFIG VIEW
 extension TransactionsController {
     
     private func configView(){
@@ -182,18 +171,8 @@ extension TransactionsController {
     
 }
 
-extension TransactionsController: TransactionsPresenterDelegate, FormTransactionControllerProtocol {
-    
-    func presentErrorTransactions(message: String) {}
-    
-    func presentTransactions(transactions: [Transaction]) {
-        self.transactions = transactions
-        tableTransactions.reloadData()
-    }
-    
-    func didCloseFormTransaction() {
-        transactionsPresenter.returnTransactions(with: filter.options)
-    }
+//MARK: PRESENT FUNCTIONS
+extension TransactionsController {
     
     @objc func goToNewTransactionController(){
         let newTransactionController = FormTransactionController()
@@ -210,10 +189,54 @@ extension TransactionsController: TransactionsPresenterDelegate, FormTransaction
         filterTransactionController.modalTransitionStyle = .coverVertical
         present(filterTransactionController, animated: true, completion: nil)
     }
+}
+
+//MARK: TRANSACTIONSPRESENTER DELEGATE
+extension TransactionsController: TransactionsPresenterDelegate {
+    
+    func presentErrorTransactions(message: String) {}
+    
+    func presentTransactions(transactions: [Transaction]) {
+        self.transactions = transactions
+        tableTransactions.reloadData()
+        transactionsPresenter.returnFirstOfAllTransactions()
+    }
+    
+    func presentFirstOfAllTransactions(transaction: Transaction) {
+        let listMonths: [String] = Calendar.current.shortMonthSymbols
+        var months:[(intMonth: Int, strMonth: String, intYear: Int)] = []
+        
+        let now = Date()
+        let calendar = Calendar.current.dateComponents([.month, .year], from: now)
+        
+        months.append((intMonth: calendar.month!, strMonth: listMonths[calendar.month!-1].uppercased(), intYear: calendar.year!))
+        
+        let startDateComponents = Calendar.current.dateComponents([.year, .month], from: transaction.date!)
+        let endDateComponents = Calendar.current.dateComponents([.year, .month], from: now)
+        let diffInDate = Calendar.current.dateComponents([.month], from: startDateComponents, to: endDateComponents).month!
+        
+        for m in (1...diffInDate){
+            let dateBeforeMonth = Calendar.current.date(byAdding: .month, value: -m, to: now)
+            let calendarBeforeMonth = Calendar.current.dateComponents([.month, .year], from: dateBeforeMonth!)
+            months.append((intMonth: calendarBeforeMonth.month!, strMonth: listMonths[calendarBeforeMonth.month!-1].uppercased(), intYear: calendarBeforeMonth.year!))
+        }
+        
+        self.months = months.reversed()
+        collectionViewMonths.reloadData()
+    }
     
 }
 
-//MARK: tableTransactions delegate
+//MARK: FORMTRANSACTIONSCONTROLLER DELEGATE
+extension TransactionsController: FormTransactionControllerProtocol {
+    
+    func didCloseFormTransaction() {
+        transactionsPresenter.returnTransactions(with: filter.options)
+    }
+    
+}
+
+//MARK: TABLEVIEW DELEGATE
 extension TransactionsController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -273,7 +296,7 @@ extension TransactionsController: UITableViewDelegate {
     
 }
 
-//MARK: collectionViewMonths delegate
+//MARK: COLLECTIONVIE DELEGATE
 extension TransactionsController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -300,8 +323,8 @@ extension TransactionsController: UICollectionViewDelegate, UICollectionViewDele
     
 }
 
-//MARK: searchTextField delegate
-extension TransactionsController{
+//MARK: TEXTFIELD DELEGATE
+extension TransactionsController: UITextFieldDelegate{
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let text = textField.text, text.count > 3 {

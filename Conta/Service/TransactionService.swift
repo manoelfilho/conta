@@ -40,7 +40,6 @@ class TransactionService {
             predicates.append(predicateCategory)
         }
         
-
         //Month and Year filters
         let filterMonth = filter["month"] as! Int
         let filterYear = filter["year"] as! Int
@@ -61,6 +60,20 @@ class TransactionService {
         do {
             let transactions = try viewContext.fetch(request)
             completion(.success(transactions))
+        }catch{
+            completion(.failure(.unexpectedError))
+        }
+    }
+    
+    func getFirstOfAllTransactions(completion: @escaping(Result<Transaction, ServiceError>) -> Void){
+        let sortDate = NSSortDescriptor.init(key: "date", ascending: true)
+        let request = Transaction.fetchRequest()
+        request.sortDescriptors = [sortDate]
+        do {
+            let transaction = try viewContext.fetch(request).first
+            if let savedTransaction = transaction {
+                completion(.success(savedTransaction))
+            }
         }catch{
             completion(.failure(.unexpectedError))
         }

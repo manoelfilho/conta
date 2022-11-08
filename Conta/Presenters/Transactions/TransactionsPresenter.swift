@@ -2,6 +2,7 @@ import Foundation
 
 protocol TransactionsPresenterDelegate: NSObjectProtocol {
     func presentTransactions(transactions: [Transaction])
+    func presentFirstOfAllTransactions(transaction: Transaction)
     func presentErrorTransactions(message: String)
 }
 
@@ -27,6 +28,18 @@ class TransactionsPresenter {
                     self.delegate?.presentTransactions(transactions: transactions)
                 case .failure(_):
                     self.delegate?.presentErrorTransactions(message: "error_return_data".localized())
+            }
+        }
+    }
+    
+    func returnFirstOfAllTransactions(){
+        transactionService.getFirstOfAllTransactions { [weak self] transaction in
+            guard let self = self else { return }
+            switch transaction {
+            case .success(let transaction):
+                self.delegate?.presentFirstOfAllTransactions(transaction: transaction)
+            case .failure(_):
+                self.delegate?.presentErrorTransactions(message: "error_return_data".localized())
             }
         }
     }
