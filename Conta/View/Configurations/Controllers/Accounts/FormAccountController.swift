@@ -14,7 +14,16 @@ class FormAccountController: UIViewController{
             titleTextField.text = account?.title
             collorButton.backgroundColor = UIColor(hexString: (account?.color)!)
             colorPicker.selectedColor = UIColor(hexString: (account?.color)!)
-            valueTextField.text = Locale.current.regionCode! == "BR" ? account?.initialValue.description.replacingOccurrences(of: ".", with: ",") : account?.initialValue.description
+            
+            if let account = account {
+                let formatterNumber = NumberFormatter()
+                formatterNumber.locale = Locale.current
+                formatterNumber.numberStyle = .currency
+                if let formattedTipAmount = formatterNumber.string(from: account.initialValue as NSNumber) {
+                    valueTextField.text = formattedTipAmount
+                }
+            }
+            
         }
     }
     
@@ -114,9 +123,7 @@ class FormAccountController: UIViewController{
         saveButton.layer.cornerRadius = 10
         return saveButton
     }()
-    
-    private let locale: String = Locale.current.regionCode!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -233,18 +240,10 @@ extension FormAccountController: UITextFieldDelegate {
         
         //INITIAL VALUE
         if textField.tag == 1 {
-            if locale == "BR" {
-                if let value = Double(strValue.replacingOccurrences(of: ",", with: ".")) {
-                    account?.initialValue = value
-                } else {
-                    account?.initialValue = 0.00
-                }
-            } else {
-                if let value = Double(strValue) {
-                    account?.initialValue = value
-                } else {
-                    account?.initialValue = 0.00
-                }
+            self.valueTextField.text = strValue.currencyFormat()
+            let number = strValue.currencyToDouble()
+            if number != 0 {
+                account?.initialValue = number.doubleValue
             }
         }
         

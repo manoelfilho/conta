@@ -36,7 +36,7 @@
 "accounts_title_page" = "Accounts";
 "label_foot_account" = "XXX";
 "account_register_title" = "Account";
-"account_register_initial_value" = "Initial value";
+"account_register_initial_value" = "$ 0.00";
 "categories_title_page" = "Categories";
 "category_register_title" = "Category";
 "confirm_removal_account" = "Do you confirm the removal of account? Every transaction will be removed too!";

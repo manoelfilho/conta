@@ -45,8 +45,6 @@
 		<key>UIDefaultLaunchScreen</key>
 		<string></string>
 	</dict>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
