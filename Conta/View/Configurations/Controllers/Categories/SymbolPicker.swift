@@ -24,7 +24,7 @@ class SymbolPicker: UIViewController {
         searchTextField.layer.cornerRadius = 10
         searchTextField.textColor = UIColor(named: K.colorText)
         searchTextField.attributedPlaceholder = NSAttributedString(
-            string: "home_search".localized(),
+            string: "symbolpicker_search".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: K.colorText)!]
         )
         return searchTextField
@@ -61,7 +61,9 @@ class SymbolPicker: UIViewController {
         
         cancellButton.fill(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 20, right: 20))
         searchTextField.fill(top: cancellButton.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
-        stackCollectionSymbols.fill(top: searchTextField.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        
+        stackCollectionSymbols.fill(top: searchTextField.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
+        
         collectionSymbols.fillSuperview()
         
         searchTextField.delegate = self
