@@ -1,7 +1,7 @@
 "home_search" = "Buscar";
 "new_transaction_cancell" = "Cancelar";
 "new_transaction_clear" = "Limpar";
-"new_transaction_value" = "R$ 0,00";
+"new_transaction_value" = "R$ 0";
 "new_transaction_credit" = "Crédito";
 "new_transaction_debit" = "Débito";
 "new_transaction_account" = "Conta";
@@ -21,7 +21,8 @@
 "delete_transaction" = "Remover";
 "confirm_removal_transaction" = "Confirma a remoção da transação?";
 "confirm_removal_ok" = "Confirmar";
-"confirm_removal_not" = "Cancellar";
+"confirm_removal_not" = "Cancelar";
+"configurations_title_page" = "Configurações";
 "configurations_personal_data" = "Dados pessoais";
 "configurations_account" = "Contas";
 "configurations_categories" = "Categorias";
@@ -37,3 +38,4 @@
 "account_register_initial_value" = "Valor inicial";
 "categories_title_page" = "Categorias";
 "category_register_title" = "Categoria";
+"confirm_removal_account" = "Confirma a remoção da conta? Todas as transações também serão removidas!";

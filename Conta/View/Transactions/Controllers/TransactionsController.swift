@@ -212,11 +212,14 @@ extension TransactionsController: TransactionsPresenterDelegate {
         let endDateComponents = Calendar.current.dateComponents([.year, .month], from: now)
         let diffInDate = Calendar.current.dateComponents([.month], from: startDateComponents, to: endDateComponents).month!
         
-        for m in (1...diffInDate){
-            let dateBeforeMonth = Calendar.current.date(byAdding: .month, value: -m, to: now)
-            let calendarBeforeMonth = Calendar.current.dateComponents([.month, .year], from: dateBeforeMonth!)
-            months.append((intMonth: calendarBeforeMonth.month!, strMonth: listMonths[calendarBeforeMonth.month!-1].uppercased(), intYear: calendarBeforeMonth.year!))
+        if diffInDate > 0 {
+            for m in (1...diffInDate){
+                let dateBeforeMonth = Calendar.current.date(byAdding: .month, value: -m, to: now)
+                let calendarBeforeMonth = Calendar.current.dateComponents([.month, .year], from: dateBeforeMonth!)
+                months.append((intMonth: calendarBeforeMonth.month!, strMonth: listMonths[calendarBeforeMonth.month!-1].uppercased(), intYear: calendarBeforeMonth.year!))
+            }
         }
+            
         
         self.months = months.reversed()
         collectionViewMonths.reloadData()

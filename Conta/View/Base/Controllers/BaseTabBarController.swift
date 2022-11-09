@@ -25,8 +25,8 @@ class BaseTabBarController: CustomTabBarController {
             imageSelectedName: "house.fill")
         let profile = self.createTabBarItem(
             viewController: ConfigurationsController(),
-            imageName: "person.fill",
-            imageSelectedName: "person.fill")
+            imageName: "gear",
+            imageSelectedName: "gear")
         
         viewControllers = [list, home, profile]
                 

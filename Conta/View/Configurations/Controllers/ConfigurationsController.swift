@@ -14,7 +14,7 @@ class ConfigurationsController: UIViewController{
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
-        let nameLabel: UILabel = .textLabel(text: "Nome", fontSize: 30, color: .white, type: .Semibold)
+        let nameLabel: UILabel = .textLabel(text: "configurations_title_page".localized(), fontSize: 30, color: .white, type: .Semibold)
         let userImage = UIImageView(image: UIImage(named: "user"))
         headerStackView.addArrangedSubview(nameLabel)
         headerStackView.addArrangedSubview(userImage)

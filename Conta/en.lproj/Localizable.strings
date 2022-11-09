@@ -1,7 +1,7 @@
 "home_search" = "Search";
 "new_transaction_cancell" = "Cancell";
 "new_transaction_clear" = "Clear";
-"new_transaction_value" = "$ 0.00";
+"new_transaction_value" = "$ 0";
 "new_transaction_credit" = "Credit";
 "new_transaction_debit" = "Debit";
 "new_transaction_account" = "Account";
@@ -22,11 +22,12 @@
 "confirm_removal_transaction" = "Confirm removal?";
 "confirm_removal_ok" = "Ok";
 "confirm_removal_not" = "Cancell";
+"configurations_title_page" = "Configurations";
 "configurations_personal_data" = "Personal data";
 "configurations_account" = "Accounts";
 "configurations_categories" = "Categories";
 "configurations_import" = "Import data";
-"label_foot_configurations" = "xxxxx";
+"label_foot_configurations" = "This app does not have conections with the internt. All data are saved in the device. Everything is trashed if the app is removed";
 "register" = "Register";
 "auth_register_name" = "Name";
 "auth_register_email" = "Email";
@@ -37,5 +38,6 @@
 "account_register_initial_value" = "Initial value";
 "categories_title_page" = "Categories";
 "category_register_title" = "Category";
+"confirm_removal_account" = "Do you confirm the removal of account? Every transaction will be removed too!";
 
 

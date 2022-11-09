@@ -111,7 +111,7 @@ extension AccountsController: AccountsPresenterProtocol {
     
 }
 
-//MARK: TableView Datasource and Delegate Methods
+//MARK: TABLEVIEW DELEGATE
 extension AccountsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -137,6 +137,35 @@ extension AccountsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let trash = UIContextualAction(style: .destructive, title: "delete_transaction".localized()) { (action, vieew, completionHandler) in
+            
+            let dialogMessage = UIAlertController(title: "alert_warning".localized(), message: "confirm_removal_account".localized(), preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "confirm_removal_ok".localized(), style: .default, handler: { (action) -> Void in
+                (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.delete(self.accounts[indexPath.row])
+                self.accounts.remove(at: indexPath.row)
+                self.accountsPresenter.returnAccounts(filter: self.filter.options)
+            })
+            
+            let cancel = UIAlertAction(title: "confirm_removal_not".localized(), style: .cancel) { (action) -> Void in }
+            
+            dialogMessage.addAction(ok)
+            dialogMessage.addAction(cancel)
+            
+            self.present(dialogMessage, animated: true, completion: nil)
+            
+        }
+        
+        trash.image = UIImage(named: "trash")
+        trash.backgroundColor = UIColor(named: K.colorRedOne)
+        let configuration = UISwipeActionsConfiguration(actions: [trash])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+        
     }
     
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Account" representedClassName=".Account" syncable="YES" codeGenerationType="category">
         <attribute name="color" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -28,10 +28,4 @@
         <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" inverseName="transactions" inverseEntity="Account"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="transactions" inverseEntity="Category"/>
     </entity>
-    <elements>
-        <element name="Account" positionX="413.938232421875" positionY="-486.9491577148438" width="128" height="118"/>
-        <element name="Auth" positionX="218.4964599609375" positionY="-301.8477172851562" width="128" height="89"/>
-        <element name="Category" positionX="-24.1220703125" positionY="-438.56201171875" width="128" height="103"/>
-        <element name="Transaction" positionX="209.2710571289062" positionY="-502.4331665039062" width="128" height="148"/>
-    </elements>
 </model>
