@@ -13,6 +13,7 @@
 "filter_transaction_button" = "Filtrar";
 "new_transaction_edit_transaction" = "Editar";
 "error_return_data" = "Erro no retorno dos dados";
+"error_removing_data" = "Erro da remoção dos dados";
 "error_register_transaction" = "Erro no registro da transação";
 "new_transaction_success" = "Transação salva com sucesso";
 "alert_warning" = "Atenção";
@@ -39,3 +40,7 @@
 "categories_title_page" = "Categorias";
 "category_register_title" = "Categoria";
 "confirm_removal_account" = "Confirma a remoção da conta? Todas as transações também serão removidas!";
+"confirm_removal_category" = "Confirma a remoção da categoria? Todas as transações também serão removidas!";
+"remove_transaction_success" = "Sucesso ao remover transação";
+"remove_account_success" = "Sucesso ao remover conta";
+"remove_category_success" = "Sucesso ao remover categoria";

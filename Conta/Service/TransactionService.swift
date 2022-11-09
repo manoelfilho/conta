@@ -88,4 +88,14 @@ class TransactionService {
         }
     }
     
+    func removeTransaction(_ transaction: Transaction, completion: @escaping(Result<Bool, ServiceError>) -> Void){
+        do {
+            viewContext.delete(transaction)
+            try viewContext.save()
+            completion(.success(true))
+        }catch{
+            completion(.failure(.unexpectedError))
+        }
+    }
+    
 }

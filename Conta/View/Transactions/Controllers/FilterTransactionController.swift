@@ -5,9 +5,7 @@ class FilterTransactionController: UIViewController {
     private let notificationCenter: TransactionNotifications = TransactionNotifications.shared
     
     private let filter:TransactionsFilter = TransactionsFilter.shared
-    
-    private let locale: String = Locale.current.regionCode!
-    
+        
     private let filterTransactionPresenter: FilterTransactionPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService = AccountService(viewContext: context)

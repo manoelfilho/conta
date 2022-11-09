@@ -191,6 +191,8 @@ extension TransactionsController {
 //MARK: TRANSACTIONSPRESENTER DELEGATE
 extension TransactionsController: TransactionsPresenterDelegate {
     
+    func presentSuccessRemovingTransaction(message: String) {}
+    
     func presentErrorTransactions(message: String) {}
     
     func presentTransactions(transactions: [Transaction]) {
@@ -269,7 +271,7 @@ extension TransactionsController: UITableViewDelegate {
             let dialogMessage = UIAlertController(title: "alert_warning".localized(), message: "confirm_removal_transaction".localized(), preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "confirm_removal_ok".localized(), style: .default, handler: { (action) -> Void in
-                (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.delete(self.transactions[indexPath.row])
+                self.transactionsPresenter.removeTransaction(self.transactions[indexPath.row])
                 self.transactions.remove(at: indexPath.row)
                 self.loadData()
             })

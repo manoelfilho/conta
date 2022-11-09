@@ -4,6 +4,7 @@ protocol TransactionsPresenterDelegate: NSObjectProtocol {
     func presentTransactions(transactions: [Transaction])
     func presentFirstOfAllTransactions(transaction: Transaction)
     func presentErrorTransactions(message: String)
+    func presentSuccessRemovingTransaction(message: String)
 }
 
 class TransactionsPresenter {
@@ -39,6 +40,18 @@ class TransactionsPresenter {
             case .success(let transaction):
                 self.delegate?.presentFirstOfAllTransactions(transaction: transaction)
             case .failure(_):
+                self.delegate?.presentErrorTransactions(message: "error_return_data".localized())
+            }
+        }
+    }
+    
+    func removeTransaction(_ transaction: Transaction){
+        transactionService.removeTransaction(transaction) { [weak self] operation in
+            guard let self = self else { return }
+            switch operation {
+            case .success(_):
+                self.delegate?.presentSuccessRemovingTransaction(message: "remove_transaction_success".localized())
+            case .failure(.unexpectedError):
                 self.delegate?.presentErrorTransactions(message: "error_return_data".localized())
             }
         }
