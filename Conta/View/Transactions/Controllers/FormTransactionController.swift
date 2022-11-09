@@ -13,7 +13,14 @@ class FormTransactionController: UIViewController {
         didSet {
             if let transaction = transaction {
                 if transaction.id != nil { saveButton.setTitle("new_transaction_edit_transaction".localized(), for: .normal) }
-                inputValue.text = transaction.value.description.currencyFormat()
+                
+                let formatterNumber = NumberFormatter()
+                formatterNumber.locale = Locale.current
+                formatterNumber.numberStyle = .currency
+                if let formattedTipAmount = formatterNumber.string(from: transaction.value as NSNumber) {
+                    inputValue.text = formattedTipAmount
+                }
+                
                 switch transaction.type {
                     case Transaction.TYPE_TRANSACTION_DEBIT:
                         segmentedTypeControll.selectedSegmentIndex = 0
@@ -22,6 +29,7 @@ class FormTransactionController: UIViewController {
                     default:
                         segmentedTypeControll.selectedSegmentIndex = 0
                 }
+                
                 datePicker.date = transaction.date ?? Date.now
                 inputDescription.text = transaction.title
             }
@@ -58,6 +66,7 @@ class FormTransactionController: UIViewController {
     
     private let inputValue: UITextField = {
         let inputValue: CustomTextField = CustomTextField()
+        inputValue.padding = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 10)
         inputValue.tag = 1
         inputValue.textColor = .white
         inputValue.attributedPlaceholder = NSAttributedString(

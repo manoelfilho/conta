@@ -88,7 +88,9 @@ extension ConfigurationsController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(categoriesController, animated: true)
             
         default:
-            print()
+            let accountsController = AccountsController()
+            accountsController.modalTransitionStyle = .partialCurl
+            self.navigationController?.pushViewController(accountsController, animated: true)
         }
     }
     
