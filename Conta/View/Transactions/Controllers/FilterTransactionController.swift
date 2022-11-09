@@ -277,7 +277,7 @@ extension FilterTransactionController {
     
 }
 
-//MARK: Functions FilterTransactionPresenterProtocol
+//MARK: FILTERTRANSACTIONPRESENTERPROTOCOL DELEGATE
 extension FilterTransactionController: FilterTransactionPresenterProtocol {
     
     func showError(message: String) {
@@ -333,7 +333,7 @@ extension FilterTransactionController: FilterTransactionPresenterProtocol {
                 button.tag = ind+1
                 button.uuid = category.id
                 button.addTarget(self, action: #selector(chooseCategory), for: .touchUpInside)
-                let titleButton: UILabel = .textLabel(text: category.title!, fontSize: 12, numberOfLines: 2, color: UIColor(named: K.colorText)!)
+                let titleButton: UILabel = .textLabel(text: category.title!, fontSize: 12, numberOfLines: 1, color: UIColor(named: K.colorText)!)
                 titleButton.textAlignment = .center
                 stackButton.addArrangedSubview(button)
                 stackButton.addArrangedSubview(titleButton)
