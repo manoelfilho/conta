@@ -3,6 +3,7 @@ import Foundation
 protocol AccountsPresenterProtocol: NSObjectProtocol {
     func presentAccounts(accounts: [Account])
     func presentErrorAccounts(message: String)
+    func presentSuccessRemovingAccount(message: String)
 }
 
 class AccountsPresenter {
@@ -30,5 +31,16 @@ class AccountsPresenter {
         }
     }
     
+    func removeAccount(_ account: Account){
+        accountService.removeAccount(account) { [weak self] operation in
+            guard let self = self else { return }
+            switch operation {
+            case .success(_):
+                self.delegate?.presentSuccessRemovingAccount(message: "remove_account_success".localized())
+            case .failure(.unexpectedError):
+                self.delegate?.presentErrorAccounts(message: "error_removing_data".localized())
+            }
+        }
+    }
     
 }

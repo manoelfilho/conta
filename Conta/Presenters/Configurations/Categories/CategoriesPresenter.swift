@@ -3,6 +3,7 @@ import Foundation
 protocol CategoriesPresenterProtocol: NSObjectProtocol {
     func presentCategories(categories: [Category])
     func presentErrorCategories(message: String)
+    func presentSuccessRemovingCategory(message: String)
 }
 
 class CategoriesPresenter {
@@ -30,6 +31,17 @@ class CategoriesPresenter {
         }
     }
     
+    func removeCategory(_ category: Category){
+        categoryService.removeCategory(category) { [weak self] operation in
+            guard let self = self else { return }
+            switch operation {
+            case .success(_):
+                self.delegate?.presentSuccessRemovingCategory(message: "remove_category_success".localized())
+            case .failure(.unexpectedError):
+                self.delegate?.presentErrorCategories(message: "error_removing_data".localized())
+            }
+        }
+    }
     
 }
 

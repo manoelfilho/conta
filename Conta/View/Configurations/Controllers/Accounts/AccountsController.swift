@@ -109,6 +109,8 @@ extension AccountsController: AccountsPresenterProtocol {
     
     func presentErrorAccounts(message: String) {}
     
+    func presentSuccessRemovingAccount(message: String) {}
+    
 }
 
 //MARK: TABLEVIEW DELEGATE
@@ -146,7 +148,7 @@ extension AccountsController: UITableViewDelegate, UITableViewDataSource {
             let dialogMessage = UIAlertController(title: "alert_warning".localized(), message: "confirm_removal_account".localized(), preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "confirm_removal_ok".localized(), style: .default, handler: { (action) -> Void in
-                (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.delete(self.accounts[indexPath.row])
+                self.accountsPresenter.removeAccount(self.accounts[indexPath.row])
                 self.accounts.remove(at: indexPath.row)
                 self.accountsPresenter.returnAccounts(filter: self.filter.options)
             })

@@ -107,6 +107,8 @@ extension CategoriesController: CategoriesPresenterProtocol {
     
     func presentErrorCategories(message: String) {}
     
+    func presentSuccessRemovingCategory(message: String) {}
+    
 }
 
 //MARK: TABLEVIEW DELEGATE
@@ -144,7 +146,7 @@ extension CategoriesController: UITableViewDelegate, UITableViewDataSource {
             let dialogMessage = UIAlertController(title: "alert_warning".localized(), message: "confirm_removal_account".localized(), preferredStyle: .alert)
             
             let ok = UIAlertAction(title: "confirm_removal_ok".localized(), style: .default, handler: { (action) -> Void in
-                (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.delete(self.categories[indexPath.row])
+                self.categoriesPresenter.removeCategory(self.categories[indexPath.row])
                 self.categories.remove(at: indexPath.row)
                 self.categoriesPresenter.returnCategories(filter: self.filter.options)
             })

@@ -44,4 +44,14 @@ class CategoryService {
         }
     }
     
+    func removeCategory(_ category: Category, completion: @escaping(Result<Bool, ServiceError>) -> Void){
+        do {
+            viewContext.delete(category)
+            try viewContext.save()
+            completion(.success(true))
+        }catch{
+            completion(.failure(.unexpectedError))
+        }
+    }
+    
 }

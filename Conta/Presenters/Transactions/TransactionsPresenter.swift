@@ -52,7 +52,7 @@ class TransactionsPresenter {
             case .success(_):
                 self.delegate?.presentSuccessRemovingTransaction(message: "remove_transaction_success".localized())
             case .failure(.unexpectedError):
-                self.delegate?.presentErrorTransactions(message: "error_return_data".localized())
+                self.delegate?.presentErrorTransactions(message: "error_removing_data".localized())
             }
         }
     }

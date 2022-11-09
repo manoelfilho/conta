@@ -44,4 +44,14 @@ class AccountService {
         }
     }
     
+    func removeAccount(_ account: Account, completion: @escaping(Result<Bool, ServiceError>) -> Void){
+        do {
+            viewContext.delete(account)
+            try viewContext.save()
+            completion(.success(true))
+        }catch{
+            completion(.failure(.unexpectedError))
+        }
+    }
+    
 }
