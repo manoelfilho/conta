@@ -136,26 +136,23 @@ extension TransactionsController {
     
     private func configView(){
         
-        //MARK: View Configs
+        //MARK: CONFIG VIEWS
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(named: K.colorBG1)
         
-        //MARK: Add Button
+        //MARK: ACTIONS OF BUTTONS
         filterButton.addTarget(self, action: #selector(self.showFilterTransactionController), for: .touchUpInside)
         buttonAdd.addTarget(self, action: #selector(self.goToNewTransactionController), for: .touchUpInside);
         
-        //MARK: Add to view
+        //MARK: VIEWS AND CONSTRAINTS
         stackSearchView.addArrangedSubview(searchTextField)
         stackSearchView.addArrangedSubview(filterButton)
         
-        //MARK: Collections View Month
         view.addSubview(stackSearchView)
         view.addSubview(borderScrollViewMonths)
         view.addSubview(collectionViewMonths)
         view.addSubview(tableTransactions)
         view.addSubview(buttonAdd)
-        
-        //MARK: Constraints
         
         stackSearchView.fill(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 70, left: 20, bottom: 0, right: 20))
         
