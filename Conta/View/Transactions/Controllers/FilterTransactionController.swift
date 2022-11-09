@@ -134,7 +134,7 @@ class FilterTransactionController: UIViewController {
     
 }
 
-//MARK: Functions
+//MARK: FUNCTIONS
 extension FilterTransactionController {
     
     private func configView(){

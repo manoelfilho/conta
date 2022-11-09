@@ -13,11 +13,7 @@ class FormTransactionController: UIViewController {
         didSet {
             if let transaction = transaction {
                 if transaction.id != nil { saveButton.setTitle("new_transaction_edit_transaction".localized(), for: .normal) }
-                if transaction.value == 0.0 { inputValue.text = "" } else {
-                    inputValue.text = Locale.current.regionCode! == "BR" ?
-                    transaction.value.description.replacingOccurrences(of: ".", with: ",").replacingOccurrences(of: "-", with: "") :
-                    transaction.value.description.replacingOccurrences(of: "-", with: "")
-                }
+                inputValue.text = transaction.value.description.currencyFormat()
                 switch transaction.type {
                     case Transaction.TYPE_TRANSACTION_DEBIT:
                         segmentedTypeControll.selectedSegmentIndex = 0
@@ -60,12 +56,6 @@ class FormTransactionController: UIViewController {
         return cancellButton
     }()
     
-    private let dollarSign: UILabel = {
-        let dollarSign: UILabel = .textLabel(text: "$", fontSize: 35, color: UIColor(named: K.colorText)!, type: .Bold)
-        dollarSign.size(size: .init(width: 40, height: 40))
-        return dollarSign
-    }()
-    
     private let inputValue: UITextField = {
         let inputValue: CustomTextField = CustomTextField()
         inputValue.tag = 1
@@ -75,7 +65,6 @@ class FormTransactionController: UIViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: K.colorText) ?? UIColor.white]
         )
         inputValue.font = UIFont(name: "SFProDisplay-Regular", size: 35)
-        inputValue.keyboardType = .decimalPad
         inputValue.becomeFirstResponder()
         return inputValue
     }()
@@ -125,13 +114,15 @@ class FormTransactionController: UIViewController {
     private let inputDescription: UITextField = {
         let inputDescription: CustomTextField = CustomTextField()
         inputDescription.tag = 2
-        inputDescription.padding = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 10)
+        //inputDescription.padding = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         inputDescription.textColor = .white
         inputDescription.attributedPlaceholder = NSAttributedString(
             string: "new_transaction_description".localized(),
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: K.colorText) ?? UIColor.white]
         )
         inputDescription.font = UIFont(name: "SFProDisplay-Regular", size: 20)
+        inputDescription.backgroundColor = UIColor(named: K.colorBG2)
+        inputDescription.layer.cornerRadius = 10
         return inputDescription
     }()
     
@@ -174,7 +165,14 @@ class FormTransactionController: UIViewController {
         let stackViewDescription: UIStackView = UIStackView()
         stackViewDescription.distribution = .fillProportionally
         stackViewDescription.alignment = .center
-        stackViewDescription.addBorder(on: [.bottom(thickness: 1.0, color: UIColor(named: K.colorText)!)])
+        /*
+         stackViewDescription.addBorder(on: [
+            .bottom(thickness: 1.0, color: UIColor(named: K.colorText)!),
+            .left(thickness: 1.0, color: UIColor(named: K.colorText)!),
+            .top(thickness: 1.0, color: UIColor(named: K.colorText)!),
+            .right(thickness: 1.0, color: UIColor(named: K.colorText)!)
+        ])
+         */
         return stackViewDescription
     }()
     
@@ -185,8 +183,6 @@ class FormTransactionController: UIViewController {
         saveButton.layer.cornerRadius = 10
         return saveButton
     }()
-    
-    private let locale: String = Locale.current.regionCode!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -210,7 +206,7 @@ class FormTransactionController: UIViewController {
     
 }
 
-//MARK: Functions
+//MARK: FUNCTIONS
 extension FormTransactionController {
     
     func setViewDelegate(transactionFormViewDelegate: FormTransactionControllerProtocol?){
@@ -219,28 +215,25 @@ extension FormTransactionController {
     
     private func configView(){
         
-        //MARK: Notification Center Keyboard
+        //MARK: KEYBOARD NOTIFICATION
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShown), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name:UIResponder.keyboardWillHideNotification, object: nil)
         
-        //MARK: Configs View
+        //MARK: CONFIG VIEW
         view.backgroundColor = UIColor(named: K.colorBG1)
         self.hideKeyboardWhenTappedAround()
         
-        //MARK: Config properties
+        //MARK: TARGET FUNCTIONS
         cancellButton.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
         segmentedTypeControll.addTarget(self, action: #selector(changeType), for: .valueChanged)
         datePicker.addTarget(self, action: #selector(changeDate), for: .valueChanged)
         saveButton.addTarget(self, action: #selector(saveTransaction), for: .touchUpInside)
         
-        //MARK: StackView Input Value
-        stackViewInputValue.addArrangedSubview(dollarSign)
+        //MARK: VIEWS AND CONSTRAINTS
         stackViewInputValue.addArrangedSubview(inputValue)
         
-        //MARK: StackView Description Value
         stackViewDescription.addArrangedSubview(inputDescription)
         
-        //MARK: Adding Layers
         view.addSubview(scrollView)
         
         scrollView.addSubview(contentView)
@@ -262,7 +255,7 @@ extension FormTransactionController {
         contentView.addSubview(stackViewDescription)
         contentView.addSubview(saveButton)
         
-        //MARK: Constraints
+        //MARK: CONSTRAINTS
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -281,23 +274,23 @@ extension FormTransactionController {
         
         stackViewInputValue.fill(top: cancellButton.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 50))
         
-        segmentedTypeControll.fill(top: stackViewInputValue.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30))
+        segmentedTypeControll.fill(top: stackViewInputValue.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30))
         
-        datePicker.fill(top: segmentedTypeControll.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 50))
+        datePicker.fill(top: segmentedTypeControll.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 50))
 
-        accountLabel.fill(top: datePicker.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20))
+        accountLabel.fill(top: datePicker.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
 
         wrapperAccountButtons.fill(top: accountLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 60))
         
         stackAccountButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
         
-        categoryLabel.fill(top: stackAccountButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20))
+        categoryLabel.fill(top: stackAccountButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
 
         wrapperCategoryButtons.fill(top: categoryLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 120))
 
         stackCategoryButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
 
-        stackViewDescription.fill(top: stackCategoryButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 40))
+        stackViewDescription.fill(top: stackCategoryButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 40))
 
         saveButton.fill(top: stackViewDescription.bottomAnchor, leading: contentView.leadingAnchor, bottom: contentView.bottomAnchor, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 350, right: 20), size: .init(width: contentView.bounds.width, height: 40))
         
@@ -389,7 +382,7 @@ extension FormTransactionController {
     
 }
 
-//MARK: Functions newTransactionPresenter Delegate
+//MARK: FORMTRANSACTIONPRESENTERPROTOCOL DELEGATE
 extension FormTransactionController: FormTransactionPresenterProtocol {
     
     func showError(message: String) {
@@ -424,10 +417,10 @@ extension FormTransactionController: FormTransactionPresenterProtocol {
                 stackAccountButtons.addArrangedSubview(button)
                 stackAccountButtons.distribution = .fillProportionally
             }
-            let buttonNewAccount: UIButton = .buttonAccount(title: "new_transaction_new_account".localized(), textColor: UIColor(hexString: "#FFFFFF"))
+            /*let buttonNewAccount: UIButton = .buttonAccount(title: "new_transaction_new_account".localized(), textColor: UIColor(hexString: "#FFFFFF"))
             buttonNewAccount.addTarget(self, action: #selector(createNewAccount), for: .touchUpInside)
             buttonNewAccount.tag = 0
-            stackAccountButtons.addArrangedSubview(buttonNewAccount)
+            stackAccountButtons.addArrangedSubview(buttonNewAccount)*/
         }
     }
     
@@ -462,14 +455,14 @@ extension FormTransactionController: FormTransactionPresenterProtocol {
                 
                 button.tag = ind+1
                 button.addTarget(self, action: #selector(chooseCategory), for: .touchUpInside)
-                let titleButton: UILabel = .textLabel(text: category.title!, fontSize: 12, numberOfLines: 2, color: UIColor(named: K.colorText)!)
+                let titleButton: UILabel = .textLabel(text: category.title!, fontSize: 12, numberOfLines: 1, color: UIColor(named: K.colorText)!)
                 titleButton.textAlignment = .center
                 stackButton.addArrangedSubview(button)
                 stackButton.addArrangedSubview(titleButton)
                 stackCategoryButtons.addArrangedSubview(stackButton)
                 stackCategoryButtons.distribution = .fill
             }
-            
+            /*
             let stackButton: UIStackView = UIStackView()
             stackButton.axis = .vertical
             let titleButton: UILabel = .textLabel(text: "new_transaction_new_category".localized(), fontSize: 12, numberOfLines: 2, color: UIColor(named: K.colorText)!)
@@ -489,12 +482,12 @@ extension FormTransactionController: FormTransactionPresenterProtocol {
             stackButton.addArrangedSubview(titleButton)
             
             stackCategoryButtons.addArrangedSubview(stackButton)
-            stackCategoryButtons.distribution = .fill
+            stackCategoryButtons.distribution = .fill*/
         }
     }
 }
 
-//MARK: Text Fields (inputValue, descriptionValue) delegate
+//MARK: TEXTFIELDS DELEGATES
 extension FormTransactionController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -502,18 +495,10 @@ extension FormTransactionController: UITextFieldDelegate {
         
         //VALUE
         if textField.tag == 1 {
-            if locale == "BR" {
-                if let value = Double(strValue.replacingOccurrences(of: ",", with: ".")) {
-                    transaction?.value = value
-                } else {
-                    transaction?.value = 0.00
-                }
-            } else {
-                if let value = Double(strValue) {
-                    transaction?.value = value
-                } else {
-                    transaction?.value = 0.00
-                }
+            self.inputValue.text = strValue.currencyFormat()
+            let number = strValue.currencyToDouble()
+            if number != 0 {
+                transaction?.value = number.doubleValue
             }
         }
         

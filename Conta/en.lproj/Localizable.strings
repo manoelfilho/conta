@@ -1,7 +1,7 @@
 "home_search" = "Search";
 "new_transaction_cancell" = "Cancell";
 "new_transaction_clear" = "Clear";
-"new_transaction_value" = "0,00";
+"new_transaction_value" = "$ 0.00";
 "new_transaction_credit" = "Credit";
 "new_transaction_debit" = "Debit";
 "new_transaction_account" = "Account";
