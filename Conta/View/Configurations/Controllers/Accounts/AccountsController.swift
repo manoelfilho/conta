@@ -77,9 +77,28 @@ class AccountsController: UIViewController {
         view.addSubview(tableAccounts)
         view.addSubview(buttonAdd)
         
-        headerView.fill(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 120, left: 0, bottom: 0, right: 0))
-        tableAccounts.fill(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
-        buttonAdd.fill(top: nil, leading: nil, bottom: view.bottomAnchor,trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 120, right: 20))
+        headerView.fill(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 120, left: 0, bottom: 0, right: 0)
+        )
+        
+        tableAccounts.fill(
+            top: headerView.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor
+        )
+        
+        buttonAdd.fill(
+            top: nil,
+            leading: nil,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 0, bottom: 120, right: 20)
+        )
     
     }
     
