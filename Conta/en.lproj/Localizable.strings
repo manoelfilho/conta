@@ -50,5 +50,6 @@
 "import_file_transactions_button" = "Select the file";
 "description_import_label" = "...";
 "invalid_file_text" = "Invalid file";
+"alert_import_success" = "File imported with success!";
 
 

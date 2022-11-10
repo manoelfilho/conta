@@ -102,14 +102,15 @@ class ImporterController: UIViewController{
         return filterButton
     }()
     
-    
-    private var urls: [URL]?
-    
     private var firstFileURL: URL?
     
     private var fileExtension: String?
     
     private var fileName: String?
+    
+    private var account: Account?
+    
+    private var category: Category?
     
     override func viewDidLoad() {
         
@@ -140,20 +141,18 @@ extension ImporterController: UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         
-        if urls[0].description.fileExtension() == "ofx"{
+        if urls[0].description.fileExtension() == "ofc"{
             
-            self.urls = urls
             self.firstFileURL = urls[0]
             self.fileName = urls[0].description.fileName()
             self.fileExtension = urls[0].description.fileExtension()
             
-            self.selectFileButton.setTitle("\(urls[0].description.fileName()).ofx", for: .normal)
+            self.selectFileButton.setTitle("\(urls[0].description.fileName()).ofc", for: .normal)
             self.importButton.isEnabled = true
             self.importButton.backgroundColor = UIColor(named: K.colorGreenOne)
             
         } else {
             
-            self.urls = nil
             self.firstFileURL = nil
             self.fileName = nil
             self.fileExtension = nil
@@ -169,12 +168,7 @@ extension ImporterController: UIDocumentPickerDelegate {
     
     @objc func importFile(){
         
-        if  let firstFileURL = self.firstFileURL {
-           
-            let isSecuredURL = (firstFileURL.startAccessingSecurityScopedResource() == true)
-            
-            var blockSuccess = false
-            var outputFileURL: URL? = nil
+        if  let firstFileURL = self.firstFileURL, let account = self.account, let category = self.category {
             
             let coordinator = NSFileCoordinator()
             var error: NSError? = nil
@@ -195,21 +189,59 @@ extension ImporterController: UIDocumentPickerDelegate {
                     //print("Attempting move file to: \(tempURL.path) ")
                     try FileManager.default.moveItem(atPath: externalFileURL.path, toPath: tempURL.path)
                     
-                    blockSuccess = true
-                    outputFileURL = tempURL
+                    let fileData: [String] = try String(contentsOf: tempURL).split(whereSeparator: \.isNewline).map({ string in
+                        return string.description.trimmingCharacters(in: .whitespaces)
+                    })
                     
-                    let fileData = try String(contentsOf: tempURL)
-                    print(fileData)
+                    var transactions: [Transaction] = []
+                    var i: Int = 0
+                    var tempTransaction: Transaction?
                     
-                }
-                
-                catch {
+                    for text in fileData {
+                        
+                        if text == "<STMTTRN>" { tempTransaction = Transaction(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext) }
+                        
+                        if text == "</STMTTRN>" {
+                            tempTransaction?.account = account
+                            tempTransaction?.category = category
+                            transactions.append(tempTransaction!)
+                            i+=1
+                        }
+                        
+                        if text.hasPrefix("<TRNTYPE>") {
+                            if text["<TRNTYPE>".count...text.count-1].replacingOccurrences(of: "</TRNTYPE>", with: "") == "0" { tempTransaction?.type = Transaction.TYPE_TRANSACTION_CREDIT}
+                            if text["<TRNTYPE>".count...text.count-1].replacingOccurrences(of: "</TRNTYPE>", with: "") == "1" { tempTransaction?.type = Transaction.TYPE_TRANSACTION_DEBIT}
+                        }
+                        
+                        if text.hasPrefix("<TRNAMT>") { tempTransaction?.value = Double(text["<TRNAMT>".count...text.count-1].replacingOccurrences(of: "</TRNAMT>", with: "")) ?? 0.0 }
+                        
+                        if text.hasPrefix("<MEMO>") { tempTransaction?.title = text["<MEMO>".count...text.count-1].replacingOccurrences(of: "</MEMO>", with: "") }
+                        
+                        if text.hasPrefix("<DTPOSTED>") {
+                            let textDate = text["<DTPOSTED>".count...text.count-1].replacingOccurrences(of: "</DTPOSTED>", with: "")
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "yyyyMMdd"
+                            tempTransaction?.date = formatter.date(from: textDate)
+                        }
+                        
+                    }
+                    
+                    try (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.save()
+                    
+                    let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_import_success".localized(), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } catch {
                     print("File operation error: " + error.localizedDescription)
-                    blockSuccess = false
                 }
                 
             }
             
+        } else {
+            let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_fill_all_fields".localized(), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
         }
         
     }
@@ -333,9 +365,7 @@ extension ImporterController {
 //MARK: FILTERTRANSACTIONPRESENTERPROTOCOL DELEGATE
 extension ImporterController: FilterTransactionPresenterProtocol {
     
-    func showError(message: String) {
-        
-    }
+    func showError(message: String) {}
     
     func showSuccess(message: String) {
         dismiss(animated: true)
@@ -406,9 +436,7 @@ extension ImporterController: FilterTransactionPresenterProtocol {
         for view in stackAccountButtons.arrangedSubviews {
             if let button = view as? UIButton, button.tag != sender.tag {
                 button.configuration!.baseBackgroundColor = UIColor(named: K.colorBG2)
-                
-                //Ao selecionar conta ...
-                
+                self.account = self.accounts![sender.tag-1]
             }else if let button = view as? UIButton {
                 button.configuration!.baseBackgroundColor = UIColor(named: K.colorGreenOne)
             }
@@ -419,9 +447,7 @@ extension ImporterController: FilterTransactionPresenterProtocol {
         for view in stackCategoryButtons.arrangedSubviews {
             if let button = view as? UIStackView, button.arrangedSubviews[0].tag != sender.tag {
                 button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorBG2)
-                
-                //Ao selecionar categoria ...
-                
+                self.category = self.categories![sender.tag-1]
             }else if let button = view as? UIStackView {
                 button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorGreenOne)
             }
