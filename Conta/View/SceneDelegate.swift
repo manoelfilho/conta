@@ -9,7 +9,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = BaseTabBarController()
+        window?.rootViewController = ImporterController()
         window?.makeKeyAndVisible()
         
         window?.overrideUserInterfaceStyle = .dark

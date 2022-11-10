@@ -49,5 +49,6 @@
 "import_transactions_button" = "Import data";
 "import_file_transactions_button" = "Select the file";
 "description_import_label" = "...";
+"invalid_file_text" = "Invalid file";
 
 

@@ -95,11 +95,21 @@ class ImporterController: UIViewController{
     
     private lazy var importButton: UIButton = {
         let filterButton: UIButton = UIButton()
-        filterButton.backgroundColor = UIColor(named: K.colorGreenOne)
+        filterButton.backgroundColor = UIColor(named: K.colorBG4)
         filterButton.setTitle("import_transactions_button".localized(), for: .normal)
         filterButton.layer.cornerRadius = 10
+        filterButton.isEnabled = false
         return filterButton
     }()
+    
+    
+    private var urls: [URL]?
+    
+    private var firstFileURL: URL?
+    
+    private var fileExtension: String?
+    
+    private var fileName: String?
     
     override func viewDidLoad() {
         
@@ -129,9 +139,79 @@ extension ImporterController: UIDocumentPickerDelegate {
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        print("----")
-        print(urls)
-        print("----")
+        
+        if urls[0].description.fileExtension() == "ofx"{
+            
+            self.urls = urls
+            self.firstFileURL = urls[0]
+            self.fileName = urls[0].description.fileName()
+            self.fileExtension = urls[0].description.fileExtension()
+            
+            self.selectFileButton.setTitle("\(urls[0].description.fileName()).ofx", for: .normal)
+            self.importButton.isEnabled = true
+            self.importButton.backgroundColor = UIColor(named: K.colorGreenOne)
+            
+        } else {
+            
+            self.urls = nil
+            self.firstFileURL = nil
+            self.fileName = nil
+            self.fileExtension = nil
+            
+            self.selectFileButton.setTitle("invalid_file_text".localized(), for: .normal)
+            self.importButton.isEnabled = false
+            self.importButton.backgroundColor = UIColor(named: K.colorBG4)
+        }
+        
+        //navigationController?.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @objc func importFile(){
+        
+        if  let firstFileURL = self.firstFileURL {
+           
+            let isSecuredURL = (firstFileURL.startAccessingSecurityScopedResource() == true)
+            
+            var blockSuccess = false
+            var outputFileURL: URL? = nil
+            
+            let coordinator = NSFileCoordinator()
+            var error: NSError? = nil
+            
+            coordinator.coordinate(readingItemAt: firstFileURL, options: [], error: &error) { (externalFileURL) -> Void in
+                 
+                var tempURL = URL(fileURLWithPath: NSTemporaryDirectory())
+                tempURL.appendPathComponent(externalFileURL.lastPathComponent)
+                //print("Will attempt to copy file to tempURL = \(tempURL)")
+                
+                do {
+                    
+                    if FileManager.default.fileExists(atPath: tempURL.path) {
+                        //print("Deleting existing file at: \(tempURL.path) ")
+                        try FileManager.default.removeItem(atPath: tempURL.path)
+                    }
+                    
+                    //print("Attempting move file to: \(tempURL.path) ")
+                    try FileManager.default.moveItem(atPath: externalFileURL.path, toPath: tempURL.path)
+                    
+                    blockSuccess = true
+                    outputFileURL = tempURL
+                    
+                    let fileData = try String(contentsOf: tempURL)
+                    print(fileData)
+                    
+                }
+                
+                catch {
+                    print("File operation error: " + error.localizedDescription)
+                    blockSuccess = false
+                }
+                
+            }
+            
+        }
+        
     }
 
 }
@@ -147,6 +227,7 @@ extension ImporterController {
         
         //MARK: ACTIONS OF BUTTONS
         selectFileButton.addTarget(self, action: #selector(self.goToDocumentSelectController), for: .touchUpInside);
+        importButton.addTarget(self, action: #selector(self.importFile), for: .touchUpInside);
         
         //MARK: LAYERS AND CONSTRAINTS
         view.addSubview(scrollView)
