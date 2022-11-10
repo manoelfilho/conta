@@ -194,28 +194,63 @@ extension FilterTransactionController {
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
         stackTopButtons.fill(
-            top: contentView.topAnchor,leading: contentView.leadingAnchor,bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
-        
-        segmentedTypeControll.fill(top: stackTopButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30))
-        
+            top: contentView.topAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil,
+            trailing: contentView.trailingAnchor,
+            padding: .init(top: 20, left: 20, bottom: 0, right: 20)
+        )
+
+        segmentedTypeControll.fill(
+            top: stackTopButtons.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil,
+            trailing: contentView.trailingAnchor,
+            padding: .init(top: 15, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30)
+        )
+
         accountLabel.fill(
-            top: segmentedTypeControll.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20))
-        
+            top: segmentedTypeControll.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil,
+            trailing: contentView.trailingAnchor,
+            padding: .init(top: 15, left: 20, bottom: 0, right: 20)
+        )
+
         wrapperAccountButtons.fill(
-            top: accountLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 60))
-        
+            top: accountLabel.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil,
+            trailing: contentView.trailingAnchor,
+            padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 60)
+        )
+
         stackAccountButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
-        
+
         categoryLabel.fill(
-            top: stackAccountButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 20, bottom: 0, right: 20))
-        
+            top: stackAccountButtons.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil,
+            trailing: contentView.trailingAnchor,
+            padding: .init(top: 15, left: 20, bottom: 0, right: 20)
+        )
+
         wrapperCategoryButtons.fill(
-            top: categoryLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 120))
-        
+            top: categoryLabel.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: nil, trailing: contentView.trailingAnchor,
+            padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 120)
+        )
+
         stackCategoryButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
-        
+
         filterButton.fill(
-            top: stackCategoryButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: contentView.bottomAnchor, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 350, right: 20), size: .init(width: contentView.bounds.width, height: 40))
+            top: stackCategoryButtons.bottomAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: contentView.bottomAnchor,
+            trailing: contentView.trailingAnchor,
+            padding: .init(top: 20, left: 20, bottom: 350, right: 20), size: .init(width: contentView.bounds.width, height: 40)
+        )
         
     }
     
