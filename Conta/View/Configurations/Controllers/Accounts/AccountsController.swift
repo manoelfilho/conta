@@ -1,21 +1,20 @@
 import Foundation
 import UIKit
 
-
 class AccountsController: UIViewController {
     
     var filter: AccountsFilter = AccountsFilter.shared
     
-    private var accounts: [Account] = []
+    private lazy var accounts: [Account] = []
     
-    private let accountsPresenter: AccountsPresenter = {
+    private lazy var accountsPresenter: AccountsPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService: AccountService = AccountService(viewContext: context)
         let accountsPresenter: AccountsPresenter = AccountsPresenter(accountService: accountService)
         return accountsPresenter
     }()
     
-    private let headerView: UIView = {
+    private lazy var headerView: UIView = {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
@@ -30,7 +29,7 @@ class AccountsController: UIViewController {
         return headerView
     }()
     
-    private let tableAccounts: UITableView = {
+    private lazy var tableAccounts: UITableView = {
         let tableAccounts: UITableView = UITableView()
         tableAccounts.register(AccountCell.self, forCellReuseIdentifier: AccountCell.cellAccount)
         tableAccounts.backgroundColor = UIColor(named: K.colorBG1)
@@ -39,7 +38,7 @@ class AccountsController: UIViewController {
         return tableAccounts
     }()
     
-    private var buttonAdd: UIButton = {
+    private lazy var buttonAdd: UIButton = {
         let buttonAdd: UIButton = .roundedCustomIconButton(
             imageName: "IconPlus",
             pointSize: 30,
@@ -70,6 +69,8 @@ class AccountsController: UIViewController {
     
     private func configView(){
         
+        tabBarController?.tabBar.isHidden = true
+        
         buttonAdd.addTarget(self, action: #selector(addAccount), for: .touchUpInside)
         
         view.addSubview(headerView)
@@ -78,7 +79,7 @@ class AccountsController: UIViewController {
         
         headerView.fill(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 120, left: 0, bottom: 0, right: 0))
         tableAccounts.fill(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
-        buttonAdd.fill(top: nil, leading: nil, bottom: view.bottomAnchor,trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 50, right: 20))
+        buttonAdd.fill(top: nil, leading: nil, bottom: view.bottomAnchor,trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 120, right: 20))
     
     }
     
@@ -95,9 +96,11 @@ class AccountsController: UIViewController {
 }
 
 extension AccountsController: FormAccountControllerProtocol{
+    
     func didCloseFormAccount() {
         accountsPresenter.returnAccounts(filter: filter.options)
     }
+    
 }
 
 extension AccountsController: AccountsPresenterProtocol {

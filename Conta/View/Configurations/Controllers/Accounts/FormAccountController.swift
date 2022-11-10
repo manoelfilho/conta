@@ -27,21 +27,21 @@ class FormAccountController: UIViewController{
         }
     }
     
-    private let formAccountPresenter: FormAccountPresenter = {
+    private lazy var formAccountPresenter: FormAccountPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService: AccountService = AccountService(viewContext: context)
         let formAccountPresenter: FormAccountPresenter = FormAccountPresenter(accountService: accountService)
         return formAccountPresenter
     }()
     
-    private let cancellButton:UIButton = {
+    private lazy var cancellButton:UIButton = {
         let cancellButton: UIButton = UIButton()
         cancellButton.setTitle("new_transaction_cancell".localized(), for: .normal);
         cancellButton.tintColor = UIColor(named: K.colorText)
         return cancellButton
     }()
     
-    private let headerView: UIView = {
+    private lazy var headerView: UIView = {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
@@ -56,21 +56,21 @@ class FormAccountController: UIViewController{
         return headerView
     }()
     
-    private var formView: UIStackView = {
+    private lazy var formView: UIStackView = {
         let formView: UIStackView = UIStackView()
         formView.spacing = 10
         formView.axis = .vertical
         return formView
     }()
     
-    private var colorAndTitleStack: UIStackView = {
+    private lazy var colorAndTitleStack: UIStackView = {
         let colorAndTitleStack: UIStackView = UIStackView()
         colorAndTitleStack.spacing = 10
         colorAndTitleStack.axis = .horizontal
         return colorAndTitleStack
     }()
     
-    private let collorButton: UIButton = {
+    private lazy var collorButton: UIButton = {
         let collorButton: UIButton = .roundedCustomIconButton(
             imageName: "collor_picker",
             pointSize: 30,
@@ -83,7 +83,7 @@ class FormAccountController: UIViewController{
         return collorButton
     }()
     
-    private let titleTextField: UITextField = {
+    private lazy var titleTextField: UITextField = {
         let nameTextField: UITextField = CustomTextField()
         nameTextField.backgroundColor = UIColor(named: K.colorBG3)
         nameTextField.layer.cornerRadius = 10
@@ -96,13 +96,13 @@ class FormAccountController: UIViewController{
         return nameTextField
     }()
     
-    private let colorPicker: UIColorPickerViewController = {
+    private lazy var colorPicker: UIColorPickerViewController = {
         let colorPicker: UIColorPickerViewController = UIColorPickerViewController()
         colorPicker.selectedColor = UIColor(named: K.colorBG2)!
         return colorPicker
     }()
     
-    private let valueTextField: UITextField = {
+    private lazy var valueTextField: UITextField = {
         let valueTextField: UITextField = CustomTextField()
         valueTextField.backgroundColor = UIColor(named: K.colorBG3)
         valueTextField.layer.cornerRadius = 10
@@ -116,7 +116,7 @@ class FormAccountController: UIViewController{
         return valueTextField
     }()
     
-    private let saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let saveButton: UIButton = UIButton()
         saveButton.backgroundColor = UIColor(named: K.colorGreenOne)
         saveButton.setTitle("auth_save_button".localized(), for: .normal)

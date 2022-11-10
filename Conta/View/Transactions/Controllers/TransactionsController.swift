@@ -2,11 +2,11 @@ import UIKit
 
 class TransactionsController: UIViewController, UITableViewDataSource, UICollectionViewDataSource {
     
-    private let notificationCenter = TransactionNotifications.shared
+    private lazy var notificationCenter = TransactionNotifications.shared
     
-    private let filter = TransactionsFilter.shared
+    private lazy var filter = TransactionsFilter.shared
     
-    private let transactionsPresenter: TransactionsPresenter = {
+    private lazy var transactionsPresenter: TransactionsPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let transactionService: TransactionService = TransactionService(viewContext: context)
         let transactionsPresenter: TransactionsPresenter = TransactionsPresenter(transactionService: transactionService)
@@ -27,7 +27,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
     
     private lazy var months:[(intMonth: Int, strMonth: String, intYear: Int)] = []
     
-    private let searchTextField: UITextField = {
+    private lazy var searchTextField: UITextField = {
         let searchTextField: UITextField = CustomTextField()
         searchTextField.backgroundColor = UIColor(named: K.colorBG3)
         searchTextField.layer.cornerRadius = 10
@@ -39,7 +39,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return searchTextField
     }()
     
-    private let filterButton: UIButton = {
+    private lazy var filterButton: UIButton = {
         let filterButton: UIButton = .roundedCustomIconButton(
             imageName: "IconFilter",
             pointSize: 30,
@@ -52,20 +52,20 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return filterButton
     }()
     
-    private let stackSearchView: UIStackView = {
+    private lazy var stackSearchView: UIStackView = {
         let stackSearchView: UIStackView = UIStackView()
         stackSearchView.spacing = 10
         return stackSearchView
     }()
     
-    private let borderScrollViewMonths: UIView = {
+    private lazy var borderScrollViewMonths: UIView = {
         let borderScrollViewMonths:UIView = UIView()
         borderScrollViewMonths.backgroundColor = UIColor(named: K.colorBG2)
         borderScrollViewMonths.size(size: .init(width: UIScreen.main.bounds.width, height: 5))
         return borderScrollViewMonths
     }()
     
-    private let collectionViewMonths: UICollectionView = {
+    private lazy var collectionViewMonths: UICollectionView = {
         let layoutScrollMonth: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layoutScrollMonth.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layoutScrollMonth.itemSize = CGSize(width: 100, height: 35)
@@ -78,7 +78,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return collectionViewMonths
     }()
     
-    private let buttonAdd: UIButton = {
+    private lazy var buttonAdd: UIButton = {
         let buttonAdd: UIButton = .roundedCustomIconButton(
             imageName: "IconPlus",
             pointSize: 30,
@@ -154,15 +154,46 @@ extension TransactionsController {
         view.addSubview(tableTransactions)
         view.addSubview(buttonAdd)
         
-        stackSearchView.fill(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 70, left: 20, bottom: 0, right: 20))
+        stackSearchView.fill(
+            top: view.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 70, left: 20, bottom: 0, right: 20)
+        )
         
-        borderScrollViewMonths.fill(top: stackSearchView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
+        borderScrollViewMonths.fill(
+            top: stackSearchView.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+        )
         
-        collectionViewMonths.fill(top: borderScrollViewMonths.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 0), size: .init(width: view.bounds.width, height: 35))
+        collectionViewMonths.fill(
+            top: borderScrollViewMonths.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 0, bottom: 0, right: 0),
+            size: .init(width: view.bounds.width, height: 35)
+        )
         
-        tableTransactions.fill(top: collectionViewMonths.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 5, left: 0, bottom: 0, right: 0))
+        tableTransactions.fill(
+            top: collectionViewMonths.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 5, left: 0, bottom: 0, right: 0)
+        )
         
-        buttonAdd.fill(top: nil, leading: nil, bottom: view.bottomAnchor,trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 50, right: 20))
+        buttonAdd.fill(
+            top: nil,
+            leading: nil,
+            bottom: view.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 0, bottom: 120, right: 20)
+        )
         
     }
     

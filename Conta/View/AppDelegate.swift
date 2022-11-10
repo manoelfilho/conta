@@ -5,7 +5,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UITabBar.appearance().isTranslucent = false
+        //UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().barTintColor = UIColor(named: K.colorBG2)
         return true
     }

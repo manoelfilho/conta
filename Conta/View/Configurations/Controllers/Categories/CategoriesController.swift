@@ -5,16 +5,16 @@ class CategoriesController: UIViewController {
     
     var filter: CategoriesFilter = CategoriesFilter.shared
     
-    private var categories: [Category] = []
+    private lazy var categories: [Category] = []
     
-    private let categoriesPresenter: CategoriesPresenter = {
+    private lazy var categoriesPresenter: CategoriesPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let categoryService: CategoryService = CategoryService(viewContext: context)
         let categoriesPresenter: CategoriesPresenter = CategoriesPresenter(categoryService: categoryService)
         return categoriesPresenter
     }()
     
-    private let headerView: UIView = {
+    private lazy var headerView: UIView = {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
@@ -29,7 +29,7 @@ class CategoriesController: UIViewController {
         return headerView
     }()
     
-    private let tableCategories: UITableView = {
+    private lazy var tableCategories: UITableView = {
         let tableCategories: UITableView = UITableView()
         tableCategories.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.cellCategory)
         tableCategories.backgroundColor = UIColor(named: K.colorBG1)
@@ -38,7 +38,7 @@ class CategoriesController: UIViewController {
         return tableCategories
     }()
     
-    private var buttonAdd: UIButton = {
+    private lazy var buttonAdd: UIButton = {
         let buttonAdd: UIButton = .roundedCustomIconButton(
             imageName: "IconPlus",
             pointSize: 30,
@@ -69,6 +69,8 @@ class CategoriesController: UIViewController {
     
     private func configView(){
         
+        tabBarController?.tabBar.isHidden = true
+        
         buttonAdd.addTarget(self, action: #selector(addCategory), for: .touchUpInside)
         
         view.addSubview(headerView)
@@ -77,7 +79,7 @@ class CategoriesController: UIViewController {
         
         headerView.fill(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 120, left: 0, bottom: 0, right: 0))
         tableCategories.fill(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
-        buttonAdd.fill(top: nil, leading: nil, bottom: view.bottomAnchor,trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 50, right: 20))
+        buttonAdd.fill(top: nil, leading: nil, bottom: view.bottomAnchor,trailing: view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 120, right: 20))
     
     }
     

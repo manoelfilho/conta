@@ -11,14 +11,14 @@ class SymbolPicker: UIViewController {
     
     var delegate: SymbolPickerProtocol?
         
-    private let cancellButton:UIButton = {
+    private lazy var cancellButton:UIButton = {
         let cancellButton: UIButton = UIButton()
         cancellButton.setTitle("new_transaction_cancell".localized(), for: .normal);
         cancellButton.tintColor = UIColor(named: K.colorText)
         return cancellButton
     }()
     
-    private let searchTextField: UITextField = {
+    private lazy var searchTextField: UITextField = {
         let searchTextField: UITextField = CustomTextField()
         searchTextField.backgroundColor = UIColor(named: K.colorBG3)
         searchTextField.layer.cornerRadius = 10
@@ -30,7 +30,7 @@ class SymbolPicker: UIViewController {
         return searchTextField
     }()
     
-    private let stackCollectionSymbols: UIStackView = {
+    private lazy var stackCollectionSymbols: UIStackView = {
         let stackCollectionSymbols: UIStackView = UIStackView()
         return stackCollectionSymbols
     }()

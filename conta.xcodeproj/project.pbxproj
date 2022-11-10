@@ -10,6 +10,7 @@
 		BB04DD07285A0D6600287495 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04DD06285A0D6600287495 /* AccountService.swift */; };
 		BB04DD09285A0F9D00287495 /* FormTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */; };
 		BB247C1E285D4FF1005AE1C3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB247C1D285D4FF1005AE1C3 /* DateExtensions.swift */; };
+		BB26B0DB291C50670006C70D /* ImporterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0DA291C50670006C70D /* ImporterController.swift */; };
 		BB3D53082865EDC40025F19F /* AuthRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3D53072865EDC40025F19F /* AuthRegisterController.swift */; };
 		BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E33872850D5B500A17E52 /* FormTransactionController.swift */; };
 		BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6346284D099B001103DE /* ScrollMonthCell.swift */; };
@@ -108,6 +109,7 @@
 		BB04DD06285A0D6600287495 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTransactionPresenter.swift; sourceTree = "<group>"; };
 		BB247C1D285D4FF1005AE1C3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		BB26B0DA291C50670006C70D /* ImporterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImporterController.swift; path = Conta/View/Configurations/Controllers/Importer/ImporterController.swift; sourceTree = SOURCE_ROOT; };
 		BB3D53072865EDC40025F19F /* AuthRegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRegisterController.swift; sourceTree = "<group>"; };
 		BB4E33872850D5B500A17E52 /* FormTransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTransactionController.swift; sourceTree = "<group>"; };
 		BB5D6346284D099B001103DE /* ScrollMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMonthCell.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		BBE7145928677F5500CBD90F /* Importer */ = {
 			isa = PBXGroup;
 			children = (
+				BB26B0DA291C50670006C70D /* ImporterController.swift */,
 			);
 			path = Importer;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				BB9C630D285971EE00FDF7B2 /* TransactionService.swift in Sources */,
 				BB80BBFC2868812D00EECE44 /* FormAccountController.swift in Sources */,
 				BB80BC062868B12800EECE44 /* FormCategoryController.swift in Sources */,
+				BB26B0DB291C50670006C70D /* ImporterController.swift in Sources */,
 				BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */,
 				BB04DD07285A0D6600287495 /* AccountService.swift in Sources */,
 				BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */,

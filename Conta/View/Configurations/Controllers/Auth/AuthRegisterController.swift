@@ -3,7 +3,7 @@ import UIKit
 
 class AuthRegisterController: UIViewController{
     
-    private let headerView: UIView = {
+    private lazy var headerView: UIView = {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
@@ -18,19 +18,19 @@ class AuthRegisterController: UIViewController{
         return headerView
     }()
     
-    private var footerView: UIView = {
+    private lazy var footerView: UIView = {
         let footer: UIView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
         return footer
     }()
     
-    private var formView: UIStackView = {
+    private lazy var formView: UIStackView = {
         let formView: UIStackView = UIStackView()
         formView.spacing = 10
         formView.axis = .vertical
         return formView
     }()
     
-    private let nameTextField: UITextField = {
+    private lazy var nameTextField: UITextField = {
         let nameTextField: UITextField = CustomTextField()
         nameTextField.backgroundColor = UIColor(named: K.colorBG3)
         nameTextField.layer.cornerRadius = 10
@@ -42,7 +42,7 @@ class AuthRegisterController: UIViewController{
         return nameTextField
     }()
     
-    private let emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let emailTextField: UITextField = CustomTextField()
         emailTextField.backgroundColor = UIColor(named: K.colorBG3)
         emailTextField.layer.cornerRadius = 10
@@ -55,7 +55,7 @@ class AuthRegisterController: UIViewController{
         return emailTextField
     }()
     
-    private let saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let saveButton: UIButton = UIButton()
         saveButton.backgroundColor = UIColor(named: K.colorGreenOne)
         saveButton.setTitle("auth_save_button".localized(), for: .normal)
@@ -63,7 +63,7 @@ class AuthRegisterController: UIViewController{
         return saveButton
     }()
     
-    private let labelFooter: UILabel = {
+    private lazy var labelFooter: UILabel = {
         let labelFooter: UILabel = .textLabel(text: "label_foot_configurations".localized(), fontSize: 15, numberOfLines: 4, color: UIColor(named: K.colorText)!, type: .Light)
         labelFooter.textAlignment = .center
         return labelFooter
@@ -73,6 +73,8 @@ class AuthRegisterController: UIViewController{
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(named: K.colorBG1)
+        
+        tabBarController?.tabBar.isHidden = true
         
         view.addSubview(headerView)
         formView.addArrangedSubview(nameTextField)

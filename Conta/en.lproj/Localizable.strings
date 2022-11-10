@@ -45,5 +45,9 @@
 "remove_transaction_success" = "Success removing transaction";
 "remove_account_success" = "Success removing account";
 "remove_category_success" = "Success removing category";
+"importer" = "Importer data";
+"import_transactions_button" = "Import data";
+"import_file_transactions_button" = "Select the file";
+"description_import_label" = "...";
 
 

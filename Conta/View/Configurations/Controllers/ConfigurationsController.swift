@@ -3,14 +3,14 @@ import UIKit
 
 class ConfigurationsController: UIViewController{
     
-    private let optionsTable: [String:String] = [
+    private lazy var optionsTable: [String:String] = [
         "person":"configurations_personal_data",
         "wallet.pass":"configurations_account",
         "tag":"configurations_categories",
         "gear":"configurations_import"
     ]
     
-    private let headerView: UIView = {
+    private lazy var headerView: UIView = {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
@@ -25,7 +25,7 @@ class ConfigurationsController: UIViewController{
         return headerView
     }()
     
-    private let tableOptions: UITableView = {
+    private lazy var tableOptions: UITableView = {
         let tableOptions: UITableView = UITableView()
         tableOptions.register(ConfigurationCell.self, forCellReuseIdentifier: ConfigurationCell.cellConfiguration)
         tableOptions.backgroundColor = UIColor(named: K.colorBG1)
@@ -34,12 +34,12 @@ class ConfigurationsController: UIViewController{
         return tableOptions
     }()
     
-    private var footerView: UIView = {
+    private lazy var footerView: UIView = {
         let footer: UIView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
         return footer
     }()
     
-    private let labelFooter: UILabel = {
+    private lazy var labelFooter: UILabel = {
         let labelFooter: UILabel = .textLabel(text: "label_foot_configurations".localized(), fontSize: 15, numberOfLines: 4, color: UIColor(named: K.colorText)!, type: .Light)
         labelFooter.textAlignment = .center
         return labelFooter
@@ -64,6 +64,9 @@ class ConfigurationsController: UIViewController{
         labelFooter.fillSuperview(padding: .init(top: 0, left: 25, bottom: 25, right: 25))
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
     
 }
 
@@ -74,23 +77,23 @@ extension ConfigurationsController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let authRegister = AuthRegisterController()
-            authRegister.modalTransitionStyle = .partialCurl
+            authRegister.modalTransitionStyle = .coverVertical
             self.navigationController?.pushViewController(authRegister, animated: true)
             
         case 1:
             let accountsController = AccountsController()
-            accountsController.modalTransitionStyle = .partialCurl
+            accountsController.modalTransitionStyle = .coverVertical
             self.navigationController?.pushViewController(accountsController, animated: true)
             
         case 2:
             let categoriesController = CategoriesController()
-            categoriesController.modalTransitionStyle = .partialCurl
+            categoriesController.modalTransitionStyle = .coverVertical
             self.navigationController?.pushViewController(categoriesController, animated: true)
             
         default:
-            let accountsController = AccountsController()
-            accountsController.modalTransitionStyle = .partialCurl
-            self.navigationController?.pushViewController(accountsController, animated: true)
+            let importerController = ImporterController()
+            importerController.modalTransitionStyle = .coverVertical
+            self.navigationController?.pushViewController(importerController, animated: true)
         }
     }
     

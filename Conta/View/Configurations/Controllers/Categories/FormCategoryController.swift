@@ -17,21 +17,21 @@ class FormCategoryController: UIViewController{
     
     weak private var delegate: FormCategoryControllerProtocol?
     
-    private let formCategoryPresenter: FormCategoryPresenter = {
+    private lazy var formCategoryPresenter: FormCategoryPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let categoryService: CategoryService = CategoryService(viewContext: context)
         let formCategoryPresenter: FormCategoryPresenter = FormCategoryPresenter(categoryService: categoryService)
         return formCategoryPresenter
     }()
     
-    private let cancellButton:UIButton = {
+    private lazy var cancellButton:UIButton = {
         let cancellButton: UIButton = UIButton()
         cancellButton.setTitle("new_transaction_cancell".localized(), for: .normal);
         cancellButton.tintColor = UIColor(named: K.colorText)
         return cancellButton
     }()
     
-    private let headerView: UIView = {
+    private lazy var headerView: UIView = {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
@@ -46,19 +46,19 @@ class FormCategoryController: UIViewController{
         return headerView
     }()
     
-    private let formView: UIStackView = {
+    private lazy var formView: UIStackView = {
         let formView: UIStackView = UIStackView()
         formView.spacing = 10
         formView.axis = .vertical
         return formView
     }()
     
-    private let symbolPicker: SymbolPicker = {
+    private lazy var symbolPicker: SymbolPicker = {
         let symbolPicker: SymbolPicker = SymbolPicker()
         return symbolPicker
     }()
     
-    private var iconSymbolButton: UIButton = {
+    private lazy var iconSymbolButton: UIButton = {
         let button: UIButton = .roundedSymbolButton(
             symbolName: "questionmark.diamond.fill",
             pointSize: 30,
@@ -71,14 +71,14 @@ class FormCategoryController: UIViewController{
         return button
     }()
     
-    private var colorAndTitleStack: UIStackView = {
+    private lazy var colorAndTitleStack: UIStackView = {
         let colorAndTitleStack: UIStackView = UIStackView()
         colorAndTitleStack.spacing = 10
         colorAndTitleStack.axis = .horizontal
         return colorAndTitleStack
     }()
     
-    private let titleTextField: UITextField = {
+    private lazy var titleTextField: UITextField = {
         let nameTextField: UITextField = CustomTextField()
         nameTextField.backgroundColor = UIColor(named: K.colorBG3)
         nameTextField.layer.cornerRadius = 10
@@ -91,16 +91,14 @@ class FormCategoryController: UIViewController{
         return nameTextField
     }()
     
-    private let saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let saveButton: UIButton = UIButton()
         saveButton.backgroundColor = UIColor(named: K.colorGreenOne)
         saveButton.setTitle("auth_save_button".localized(), for: .normal)
         saveButton.layer.cornerRadius = 10
         return saveButton
     }()
-    
-    private let locale: String = Locale.current.regionCode!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()

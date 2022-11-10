@@ -45,3 +45,7 @@
 "remove_transaction_success" = "Sucesso ao remover transação";
 "remove_account_success" = "Sucesso ao remover conta";
 "remove_category_success" = "Sucesso ao remover categoria";
+"importer" = "Importar extratos";
+"import_transactions_button" = "Importar extrato";
+"import_file_transactions_button" = "Selecione o arquivo";
+"description_import_label" = "Você pode importar arquivos do tipo (ofx), um tipo de arquivo usado para armazenar informações financeiras, geralmente utilizado pelos bancos. Exporte os dados da sua conta bancária ou do extrato do seu cartão e salve no diretório do iCloud antes de importar.";

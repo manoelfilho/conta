@@ -36,7 +36,7 @@ class FormTransactionController: UIViewController {
         }
     }
         
-    private let formTransactionPresenter: FormTransactionPresenter = {
+    private lazy var formTransactionPresenter: FormTransactionPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService = AccountService(viewContext: context)
         let categoryService = CategoryService(viewContext: context)
@@ -49,22 +49,22 @@ class FormTransactionController: UIViewController {
     
     private var categories: [Category]?
     
-    private let scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
-    private let contentView = UIView()
+    private lazy var contentView = UIView()
     
-    private let cancellButton:UIButton = {
+    private lazy var cancellButton:UIButton = {
         let cancellButton: UIButton = UIButton()
         cancellButton.setTitle("new_transaction_cancell".localized(), for: .normal);
         cancellButton.tintColor = UIColor(named: K.colorText)
         return cancellButton
     }()
     
-    private let inputValue: UITextField = {
+    private lazy var inputValue: UITextField = {
         let inputValue: CustomTextField = CustomTextField()
         inputValue.padding = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 10)
         inputValue.tag = 1
@@ -78,7 +78,7 @@ class FormTransactionController: UIViewController {
         return inputValue
     }()
     
-    private let segmentedTypeControll: UISegmentedControl = {
+    private lazy var segmentedTypeControll: UISegmentedControl = {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         let segmentedTypeControll = UISegmentedControl(items: [Transaction.TYPE_TRANSACTION_DEBIT.localized(), Transaction.TYPE_TRANSACTION_CREDIT.localized()])
         segmentedTypeControll.selectedSegmentIndex = 0
@@ -89,7 +89,7 @@ class FormTransactionController: UIViewController {
         return segmentedTypeControll
     }()
     
-    private let datePicker: UIDatePicker = {
+    private lazy var datePicker: UIDatePicker = {
         let datePicker: UIDatePicker = UIDatePicker()
         datePicker.date = .now
         datePicker.datePickerMode = .date
@@ -98,7 +98,7 @@ class FormTransactionController: UIViewController {
         return datePicker
     }()
     
-    private let accountLabel: UILabel = {
+    private lazy var accountLabel: UILabel = {
         let accountsLabel: UILabel = .textLabel(
             text: "new_transaction_account".localized(),
             fontSize: 15,
@@ -109,7 +109,7 @@ class FormTransactionController: UIViewController {
         return accountsLabel
     }()
     
-    private let categoryLabel: UILabel = {
+    private lazy var categoryLabel: UILabel = {
         let categoryLabel: UILabel = .textLabel(
             text: "new_transaction_category".localized(),
             fontSize: 15,
@@ -120,7 +120,7 @@ class FormTransactionController: UIViewController {
         return categoryLabel
     }()
     
-    private let inputDescription: UITextField = {
+    private lazy var inputDescription: UITextField = {
         let inputDescription: CustomTextField = CustomTextField()
         inputDescription.tag = 2
         //inputDescription.padding = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
@@ -135,7 +135,7 @@ class FormTransactionController: UIViewController {
         return inputDescription
     }()
     
-    private let stackViewInputValue: UIStackView = {
+    private lazy var stackViewInputValue: UIStackView = {
         let stackViewInputValue: UIStackView = UIStackView()
         stackViewInputValue.distribution = .fillProportionally
         stackViewInputValue.alignment = .center
@@ -144,33 +144,33 @@ class FormTransactionController: UIViewController {
         
     }()
     
-    private let wrapperAccountButtons: UIScrollView = {
+    private lazy var wrapperAccountButtons: UIScrollView = {
         let wrapperAccountButtons: UIScrollView = UIScrollView()
         wrapperAccountButtons.showsHorizontalScrollIndicator = false
         wrapperAccountButtons.isDirectionalLockEnabled = true
         return wrapperAccountButtons
     }()
     
-    private let stackAccountButtons: UIStackView = {
+    private lazy var stackAccountButtons: UIStackView = {
         let stackAccountButtons: UIStackView = UIStackView()
         stackAccountButtons.spacing = 10
         return stackAccountButtons
     }()
     
-    private let wrapperCategoryButtons: UIScrollView = {
+    private lazy var wrapperCategoryButtons: UIScrollView = {
         let wrapperCategoryButtons: UIScrollView = UIScrollView()
         wrapperCategoryButtons.showsHorizontalScrollIndicator = false
         wrapperCategoryButtons.isDirectionalLockEnabled = true
         return wrapperCategoryButtons
     }()
     
-    private let stackCategoryButtons: UIStackView = {
+    private lazy var stackCategoryButtons: UIStackView = {
         let stackCategoryButtons: UIStackView = UIStackView()
         stackCategoryButtons.spacing = 10
         return stackCategoryButtons
     }()
     
-    private let stackViewDescription: UIStackView = {
+    private lazy var stackViewDescription: UIStackView = {
         let stackViewDescription: UIStackView = UIStackView()
         stackViewDescription.distribution = .fillProportionally
         stackViewDescription.alignment = .center
@@ -185,7 +185,7 @@ class FormTransactionController: UIViewController {
         return stackViewDescription
     }()
     
-    private let saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let saveButton: UIButton = UIButton()
         saveButton.backgroundColor = UIColor(named: K.colorGreenOne)
         saveButton.setTitle("new_transaction_save_transaction".localized(), for: .normal)
@@ -278,30 +278,90 @@ extension FormTransactionController {
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
-        cancellButton.fill(top: contentView.topAnchor,leading: nil,bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0), size: .init(width: 100, height: 20)
+        cancellButton.fill(
+                top: contentView.topAnchor,
+                leading: nil,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 20, left: 0, bottom: 0, right: 0), size: .init(width: 100, height: 20)
         )
-        
-        stackViewInputValue.fill(top: cancellButton.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 50))
-        
-        segmentedTypeControll.fill(top: stackViewInputValue.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30))
-        
-        datePicker.fill(top: segmentedTypeControll.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 50))
 
-        accountLabel.fill(top: datePicker.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
+        stackViewInputValue.fill(
+                top: cancellButton.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 50)
+        )
 
-        wrapperAccountButtons.fill(top: accountLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 60))
-        
+        segmentedTypeControll.fill(
+                top: stackViewInputValue.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 30)
+        )
+
+        datePicker.fill(
+                top: segmentedTypeControll.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 50)
+        )
+
+        accountLabel.fill(
+                top: datePicker.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 20, left: 20, bottom: 0, right: 20)
+        )
+
+        wrapperAccountButtons.fill(
+                top: accountLabel.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 60)
+        )
+
         stackAccountButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
-        
-        categoryLabel.fill(top: stackAccountButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
 
-        wrapperCategoryButtons.fill(top: categoryLabel.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 120))
+        categoryLabel.fill(
+                top: stackAccountButtons.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(
+                top: 20, left: 20, bottom: 0, right: 20)
+        )
+
+        wrapperCategoryButtons.fill(
+                top: categoryLabel.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 15, left: 0, bottom: 0, right: 0), size: .init(width: contentView.bounds.width, height: 120)
+        )
 
         stackCategoryButtons.fillSuperview(padding: .init(top: 0, left: 20, bottom: 0, right: 20))
 
-        stackViewDescription.fill(top: stackCategoryButtons.bottomAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 40))
+        stackViewDescription.fill(
+                top: stackCategoryButtons.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: nil,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 20, left: 20, bottom: 0, right: 20), size: .init(width: contentView.bounds.width, height: 40)
+        )
 
-        saveButton.fill(top: stackViewDescription.bottomAnchor, leading: contentView.leadingAnchor, bottom: contentView.bottomAnchor, trailing: contentView.trailingAnchor, padding: .init(top: 20, left: 20, bottom: 350, right: 20), size: .init(width: contentView.bounds.width, height: 40))
+        saveButton.fill(
+                top: stackViewDescription.bottomAnchor,
+                leading: contentView.leadingAnchor,
+                bottom: contentView.bottomAnchor,
+                trailing: contentView.trailingAnchor,
+                padding: .init(top: 20, left: 20, bottom: 350, right: 20), size: .init(width: contentView.bounds.width, height: 40)
+        )
         
     }
     
