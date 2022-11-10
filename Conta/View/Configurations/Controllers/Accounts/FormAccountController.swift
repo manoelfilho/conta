@@ -162,18 +162,43 @@ class FormAccountController: UIViewController{
         formView.addArrangedSubview(saveButton)
         view.addSubview(formView)
         
-        cancellButton.fill(top: view.topAnchor,leading: nil,bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0), size: .init(width: 100, height: 20))
-        headerView.fill(top: cancellButton.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 50, left: 0, bottom: 0, right: 0))
-        formView.fill(top: headerView.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 20, bottom: 20, right: 20))
+        cancellButton.fill(
+            top: view.topAnchor,
+            leading: nil,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 20, left: 0, bottom: 0, right: 0), size: .init(width: 100, height: 20)
+        )
+        
+        headerView.fill(
+            top: cancellButton.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 50, left: 0, bottom: 0, right: 0)
+        )
+        
+        formView.fill(
+            top: headerView.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 20, bottom: 20, right: 20)
+        )
+        
         
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
+       
         titleTextField.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
-        
+       
         valueTextField.translatesAutoresizingMaskIntoConstraints = false
+        
         valueTextField.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         
         saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
         saveButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+        
     }
     
     func setViewDelegate(formAccountControllerDelegate: FormAccountControllerProtocol?){
