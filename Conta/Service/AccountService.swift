@@ -78,11 +78,13 @@ class AccountService {
                 requestTransaction.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateAccount])
                 let lastTransaction = try viewContext.fetch(requestTransaction).first
                 
+                var date: Date = Date()
+                if let lastTransaction = lastTransaction { date = lastTransaction.date! }
                 
                 var predicates: [NSPredicate] = []
                 //Month and Year filters
-                let filterMonth = Calendar.current.dateComponents([.month], from: lastTransaction!.date!).month!
-                let filterYear = Calendar.current.dateComponents([.year], from: lastTransaction!.date!).year!
+                let filterMonth = Calendar.current.dateComponents([.month], from: date).month!
+                let filterYear = Calendar.current.dateComponents([.year], from: date).year!
                 let componentsFirstDayOfMonth = DateComponents(year: filterYear, month: filterMonth, day: 1)
                 let calendarFirstDay = Calendar.current
                 let firstDay = calendarFirstDay.date(from: componentsFirstDayOfMonth)
