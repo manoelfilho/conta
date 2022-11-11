@@ -54,4 +54,21 @@ class AccountService {
         }
     }
     
+    func returnAccountsGrouped(completion: @escaping(Result<[Account], ServiceError>) -> Void) {
+        
+        let sortTitle = NSSortDescriptor.init(key: "title", ascending: true)
+        
+        let request = Account.fetchRequest()
+        
+        request.sortDescriptors = [sortTitle]
+        
+        do {
+            let transactions = try viewContext.fetch(request)
+            completion(.success(transactions))
+        }catch{
+            completion(.failure(.unexpectedError))
+        }
+        
+    }
+    
 }

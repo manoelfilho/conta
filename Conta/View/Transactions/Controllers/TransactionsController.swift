@@ -227,8 +227,10 @@ extension TransactionsController: TransactionsPresenterDelegate {
     func presentErrorTransactions(message: String) {}
     
     func presentTransactions(transactions: [Transaction]) {
-        self.transactions = transactions
-        tableTransactions.reloadData()
+        DispatchQueue.main.async {
+            self.transactions = transactions
+            self.tableTransactions.reloadData()
+        }
         transactionsPresenter.returnFirstOfAllTransactions()
     }
     
@@ -252,10 +254,11 @@ extension TransactionsController: TransactionsPresenterDelegate {
                 months.append((intMonth: calendarBeforeMonth.month!, strMonth: listMonths[calendarBeforeMonth.month!-1].uppercased(), intYear: calendarBeforeMonth.year!))
             }
         }
-            
         
-        self.months = months.reversed()
-        collectionViewMonths.reloadData()
+        DispatchQueue.main.async {
+            self.months = months.reversed()
+            self.collectionViewMonths.reloadData()
+        }
     }
     
 }

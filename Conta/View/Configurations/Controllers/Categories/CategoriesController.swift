@@ -56,7 +56,7 @@ class CategoriesController: UIViewController {
         
         view.backgroundColor = UIColor(named: K.colorBG1)
         
-        categoriesPresenter.setViewDelegate(categoryServiceDelegate: self)
+        categoriesPresenter.setViewDelegate(viewDelegate: self)
         
         tableCategories.delegate = self
         tableCategories.dataSource = self
@@ -103,8 +103,10 @@ extension CategoriesController: FormCategoryControllerProtocol{
 extension CategoriesController: CategoriesPresenterProtocol {
     
     func presentCategories(categories: [Category]) {
-        self.categories = categories
-        self.tableCategories.reloadData()
+        DispatchQueue.main.async {
+            self.categories = categories
+            self.tableCategories.reloadData()
+        }
     }
     
     func presentErrorCategories(message: String) {}

@@ -30,7 +30,7 @@ class BaseTabBarController: CustomTabBarController {
         
         viewControllers = [list, home, profile]
                 
-        selectedIndex = 0
+        selectedIndex = 1
         
     }
     

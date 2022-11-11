@@ -16,8 +16,8 @@ class CategoriesPresenter {
         self.categoryService = categoryService
     }
     
-    func setViewDelegate(categoryServiceDelegate: CategoriesPresenterProtocol?){
-        self.delegate = categoryServiceDelegate
+    func setViewDelegate(viewDelegate: CategoriesPresenterProtocol?){
+        self.delegate = viewDelegate
     }
     
     func returnCategories(filter: [String : Any]) {

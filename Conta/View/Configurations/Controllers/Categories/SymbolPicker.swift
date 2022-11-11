@@ -125,11 +125,15 @@ extension SymbolPicker: UITextFieldDelegate {
             
             if text.count >= 3 {
                 let filteredSymbols = self.symbolNames.filter { $0.range(of: text, options: [ .caseInsensitive, .anchored ]) != nil }
-                self.symbolNames = filteredSymbols
-                self.collectionSymbols.reloadData()
+                DispatchQueue.main.async {
+                    self.symbolNames = filteredSymbols
+                    self.collectionSymbols.reloadData()
+                }
             } else {
-                self.symbolNames = SymbolsCategories.shared.symbolNames
-                self.collectionSymbols.reloadData()
+                DispatchQueue.main.async {
+                    self.symbolNames = SymbolsCategories.shared.symbolNames
+                    self.collectionSymbols.reloadData()
+                }
             }
             
         }

@@ -56,7 +56,7 @@ class AccountsController: UIViewController {
         
         view.backgroundColor = UIColor(named: K.colorBG1)
         
-        accountsPresenter.setViewDelegate(accountServiceDelegate: self)
+        accountsPresenter.setViewDelegate(viewDelegate: self)
         
         tableAccounts.delegate = self
         tableAccounts.dataSource = self
@@ -125,8 +125,10 @@ extension AccountsController: FormAccountControllerProtocol{
 extension AccountsController: AccountsPresenterProtocol {
     
     func presentAccounts(accounts: [Account]) {
-        self.accounts = accounts
-        self.tableAccounts.reloadData()
+        DispatchQueue.main.async {
+            self.accounts = accounts
+            self.tableAccounts.reloadData()
+        }
     }
     
     func presentErrorAccounts(message: String) {}

@@ -16,8 +16,8 @@ class AccountsPresenter {
         self.accountService = accountService
     }
     
-    func setViewDelegate(accountServiceDelegate: AccountsPresenterProtocol?){
-        self.delegate = accountServiceDelegate
+    func setViewDelegate(viewDelegate: AccountsPresenterProtocol?){
+        self.delegate = viewDelegate
     }
     
     func returnAccounts(filter: [String : Any]) {

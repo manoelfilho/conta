@@ -51,5 +51,6 @@
 "description_import_label" = "...";
 "invalid_file_text" = "Invalid file";
 "alert_import_success" = "File imported with success!";
+"home_title_page" = "Accounts";
 
 
