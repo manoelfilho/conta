@@ -34,8 +34,11 @@ class HomeController: UICollectionViewController {
         collectionView.showsVerticalScrollIndicator = false
         
         homePresenter.setViewDelegate(viewDelegate: self)
-        homePresenter.returnAccountsGrouped()
                 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        homePresenter.returnAccountsGrouped()
     }
     
 }
@@ -72,7 +75,7 @@ extension HomeController{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.bounds.width, height: 100)
+        return .init(width: view.bounds.width, height: 120)
     }
     
 }

@@ -13,6 +13,7 @@
 		BB26B0DB291C50670006C70D /* ImporterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0DA291C50670006C70D /* ImporterController.swift */; };
 		BB26B0E0291DA5170006C70D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0DF291DA5170006C70D /* HomePresenter.swift */; };
 		BB26B0E2291DB7AC0006C70D /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0E1291DB7AC0006C70D /* HomeHeaderCell.swift */; };
+		BB26B0E4291DECC10006C70D /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */; };
 		BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E33872850D5B500A17E52 /* FormTransactionController.swift */; };
 		BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6346284D099B001103DE /* ScrollMonthCell.swift */; };
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
@@ -113,6 +114,7 @@
 		BB26B0DA291C50670006C70D /* ImporterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImporterController.swift; path = Conta/View/Configurations/Controllers/Importer/ImporterController.swift; sourceTree = SOURCE_ROOT; };
 		BB26B0DF291DA5170006C70D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		BB26B0E1291DB7AC0006C70D /* HomeHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
+		BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		BB4E33872850D5B500A17E52 /* FormTransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTransactionController.swift; sourceTree = "<group>"; };
 		BB5D6346284D099B001103DE /* ScrollMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMonthCell.swift; sourceTree = "<group>"; };
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				BB80BBF32867F62500EECE44 /* HomeCell.swift */,
 				BB26B0E1291DB7AC0006C70D /* HomeHeaderCell.swift */,
+				BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				BBD2A9B32860F27A002F77B8 /* FilterTransactionController.swift in Sources */,
 				BBF861DE284AEDAC00A56B24 /* Transaction.swift in Sources */,
 				BB80BBF628686BE300EECE44 /* AccountsPresenter.swift in Sources */,
+				BB26B0E4291DECC10006C70D /* CustomMarkerView.swift in Sources */,
 				BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */,
 				BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */,
 				BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */,
