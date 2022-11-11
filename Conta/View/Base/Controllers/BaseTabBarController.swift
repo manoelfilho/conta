@@ -15,22 +15,24 @@ class BaseTabBarController: CustomTabBarController {
             self.tabBar.scrollEdgeAppearance = appearance
         }
         
+        let chart = self.createTabBarItem(
+            viewController: ChartController(),
+            imageName: "chart.bar.fill",
+            imageSelectedName: "chart.bar.fill")
+        
         let list = self.createTabBarItem(
             viewController: TransactionsController(),
-            imageName: "list.bullet",
-            imageSelectedName: "list.bullet")
-        let home = self.createTabBarItem(
-            viewController: HomeController(),
             imageName: "house.fill",
             imageSelectedName: "house.fill")
-        let profile = self.createTabBarItem(
+        
+        let configuration = self.createTabBarItem(
             viewController: ConfigurationsController(),
             imageName: "gear",
             imageSelectedName: "gear")
         
-        viewControllers = [list, home, profile]
+        viewControllers = [chart, list, configuration]
                 
-        selectedIndex = 1
+        selectedIndex = 0
         
     }
     

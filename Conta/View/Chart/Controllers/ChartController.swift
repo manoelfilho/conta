@@ -1,14 +1,14 @@
 import Foundation
 import UIKit
 
-class HomeController: UICollectionViewController {
+class ChartController: UICollectionViewController {
     
-    var accounts: [Account] = []
+    var accounts: [String:[Transaction]] = [:]
     
-    private lazy var homePresenter: HomePresenter = {
+    private lazy var chartPresenter: ChartPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService: AccountService = AccountService(viewContext: context)
-        let homePresenter: HomePresenter = HomePresenter(accountService: accountService)
+        let homePresenter: ChartPresenter = ChartPresenter(accountService: accountService)
         return homePresenter
     }()
         
@@ -33,19 +33,19 @@ class HomeController: UICollectionViewController {
         
         collectionView.showsVerticalScrollIndicator = false
         
-        homePresenter.setViewDelegate(viewDelegate: self)
+        chartPresenter.setViewDelegate(viewDelegate: self)
                 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        homePresenter.returnAccountsGrouped()
+        chartPresenter.returnAccountsGrouped()
     }
     
 }
 
-extension HomeController: HomePresenterProtocol {
+extension ChartController: ChartPresenterProtocol {
     
-    func presentAccounts(accounts: [Account]) {
+    func presentAccounts(accounts: [String:[Transaction]]) {
         DispatchQueue.main.async {
             self.accounts = accounts
             self.collectionView.reloadData()
@@ -57,7 +57,7 @@ extension HomeController: HomePresenterProtocol {
 }
 
 
-extension HomeController{
+extension ChartController{
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeHeaderCell.homeHeaderCell, for: indexPath) as! HomeHeaderCell
@@ -70,7 +70,9 @@ extension HomeController{
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.homeCell, for: indexPath) as! HomeCell
-        cell.account = accounts[indexPath.row]
+        let title = Array(accounts.keys)[indexPath.row]
+        cell.title = title
+        cell.transactions = accounts[title]
         return cell
     }
     
@@ -80,7 +82,7 @@ extension HomeController{
     
 }
 
-extension HomeController: UICollectionViewDelegateFlowLayout {
+extension ChartController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.bounds.width - 40, height: 200 )

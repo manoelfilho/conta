@@ -239,6 +239,7 @@ extension ImporterController: UIDocumentPickerDelegate {
             }
             
         } else {
+            
             let alert = UIAlertController(title: "alert_warning".localized(), message: "alert_fill_all_fields".localized(), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true, completion: nil)
@@ -434,22 +435,22 @@ extension ImporterController: FilterTransactionPresenterProtocol {
     
     @objc private func chooseAccount(sender:UIButton){
         for view in stackAccountButtons.arrangedSubviews {
-            if let button = view as? UIButton, button.tag != sender.tag {
-                button.configuration!.baseBackgroundColor = UIColor(named: K.colorBG2)
+            if let button = view as? UIButton, button.tag == sender.tag {
+                button.configuration!.baseBackgroundColor = UIColor(named: K.colorGreenOne)
                 self.account = self.accounts![sender.tag-1]
             }else if let button = view as? UIButton {
-                button.configuration!.baseBackgroundColor = UIColor(named: K.colorGreenOne)
+                button.configuration!.baseBackgroundColor = UIColor(named: K.colorBG2)
             }
         }
     }
     
     @objc private func chooseCategory(sender:UIButton){
         for view in stackCategoryButtons.arrangedSubviews {
-            if let button = view as? UIStackView, button.arrangedSubviews[0].tag != sender.tag {
-                button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorBG2)
+            if let button = view as? UIStackView, button.arrangedSubviews[0].tag == sender.tag {
+                button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorGreenOne)
                 self.category = self.categories![sender.tag-1]
             }else if let button = view as? UIStackView {
-                button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorGreenOne)
+                button.arrangedSubviews[0].backgroundColor = UIColor(named: K.colorBG2)
             }
         }
     }

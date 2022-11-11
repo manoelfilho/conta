@@ -51,4 +51,5 @@
 "description_import_label" = "Você pode importar arquivos do tipo (ofc), um tipo de arquivo usado para armazenar informações financeiras, geralmente utilizado pelos bancos. Exporte os dados da sua conta bancária ou do extrato do seu cartão e salve no diretório do iCloud antes de importar.";
 "invalid_file_text" = "Arquivo inválido";
 "alert_import_success" = "Extrato importado com sucesso!";
-"home_title_page" = "Contas";
+"chart_title_page" = "Contas";
+"chart_description_page" = "Movimentações do último mês";

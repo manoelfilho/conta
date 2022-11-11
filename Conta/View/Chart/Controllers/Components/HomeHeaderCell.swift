@@ -9,9 +9,14 @@ class HomeHeaderCell: UICollectionReusableView {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 90))
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
-        let nameLabel: UILabel = .textLabel(text: "home_title_page".localized(), fontSize: 30, color: .white, type: .Semibold)
+        let nameAndDescriptionStack = UIStackView()
+        let nameLabel: UILabel = .textLabel(text: "chart_title_page".localized(), fontSize: 30, color: .white, type: .Semibold)
+        let descriptionLabel: UILabel = .textLabel(text: "chart_description_page".localized(), fontSize: 15, color: .white, type: .Regular)
         let userImage = UIImageView(image: UIImage(named: "icon_wallet"))
-        headerStackView.addArrangedSubview(nameLabel)
+        nameAndDescriptionStack.addArrangedSubview(nameLabel)
+        nameAndDescriptionStack.addArrangedSubview(descriptionLabel)
+        nameAndDescriptionStack.axis = .vertical
+        headerStackView.addArrangedSubview(nameAndDescriptionStack)
         headerStackView.addArrangedSubview(userImage)
         headerView.addSubview(headerStackView)
         headerStackView.distribution = .equalCentering

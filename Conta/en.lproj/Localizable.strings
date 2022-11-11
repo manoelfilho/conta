@@ -51,6 +51,7 @@
 "description_import_label" = "...";
 "invalid_file_text" = "Invalid file";
 "alert_import_success" = "File imported with success!";
-"home_title_page" = "Accounts";
+"chart_title_page" = "Accounts";
+"chart_description_page" = "Transactions of last month";
 
 

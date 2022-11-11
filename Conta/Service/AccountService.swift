@@ -54,17 +54,47 @@ class AccountService {
         }
     }
     
-    func returnAccountsGrouped(completion: @escaping(Result<[Account], ServiceError>) -> Void) {
+    //return one dictionary of account with transactions of month [String:[Transaction]]
+    func returnAccountsGrouped(completion: @escaping(Result<[String:[Transaction]], ServiceError>) -> Void) {
         
+        var finalData: [String:[Transaction]] = [:]
+
         let sortTitle = NSSortDescriptor.init(key: "title", ascending: true)
-        
         let request = Account.fetchRequest()
-        
         request.sortDescriptors = [sortTitle]
         
         do {
-            let transactions = try viewContext.fetch(request)
-            completion(.success(transactions))
+            
+            let accounts = try viewContext.fetch(request)
+            
+            for account in accounts {
+                
+                var predicates: [NSPredicate] = []
+                //Month and Year filters
+                let filterMonth = Calendar.current.dateComponents([.month], from: Date()).month!
+                let filterYear = Calendar.current.dateComponents([.year], from: Date()).year!
+                let componentsFirstDayOfMonth = DateComponents(year: filterYear, month: filterMonth, day: 1)
+                let calendarFirstDay = Calendar.current
+                let firstDay = calendarFirstDay.date(from: componentsFirstDayOfMonth)
+                let lastDay = firstDay!.endOfMonth()
+                
+                let predicatePeriod = NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [firstDay!, lastDay])
+                predicates.append(predicatePeriod)
+                
+                let sdSortDate = NSSortDescriptor.init(key: "date", ascending: true)
+                
+                let requestTransactions = Transaction.fetchRequest()
+                requestTransactions.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+                requestTransactions.sortDescriptors = [sdSortDate]
+                
+                let transactions = try viewContext.fetch(requestTransactions)
+                
+                finalData[account.title!] = transactions
+                
+            }
+            
+            completion(.success(finalData))
+            
         }catch{
             completion(.failure(.unexpectedError))
         }

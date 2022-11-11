@@ -11,7 +11,7 @@ class TransactionService {
     
     func getTransactions(filter: [String:Any], completion: @escaping (Result<[Transaction], ServiceError>) -> Void) {
         
-        var predicates: [NSPredicate] = []
+        var predicates: [NSPredicate] = [] 
 
         //KeyWord
         if let keyword = filter["keyWord"] {
