@@ -77,7 +77,8 @@ class ConfigurationsController: UIViewController{
             top: tableOptions.bottomAnchor,
             leading: view.leadingAnchor,
             bottom: view.bottomAnchor,
-            trailing: view.trailingAnchor
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 0, bottom: 100, right: 0)
         )
         
         labelFooter.fillSuperview(padding: .init(top: 0, left: 25, bottom: 25, right: 25))

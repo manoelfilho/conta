@@ -15,6 +15,8 @@
 		BB26B0E2291DB7AC0006C70D /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0E1291DB7AC0006C70D /* HomeHeaderCell.swift */; };
 		BB26B0E4291DECC10006C70D /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */; };
 		BB38001B291E8EA40056DD78 /* RandonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38001A291E8EA40056DD78 /* RandonColors.swift */; };
+		BB38001D291E9E190056DD78 /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38001C291E9E190056DD78 /* TransactionDetailViewController.swift */; };
+		BB38001F291EA3620056DD78 /* TransactionsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38001E291EA3620056DD78 /* TransactionsListController.swift */; };
 		BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E33872850D5B500A17E52 /* FormTransactionController.swift */; };
 		BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6346284D099B001103DE /* ScrollMonthCell.swift */; };
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
@@ -117,6 +119,8 @@
 		BB26B0E1291DB7AC0006C70D /* HomeHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
 		BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		BB38001A291E8EA40056DD78 /* RandonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandonColors.swift; sourceTree = "<group>"; };
+		BB38001C291E9E190056DD78 /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		BB38001E291EA3620056DD78 /* TransactionsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListController.swift; sourceTree = "<group>"; };
 		BB4E33872850D5B500A17E52 /* FormTransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTransactionController.swift; sourceTree = "<group>"; };
 		BB5D6346284D099B001103DE /* ScrollMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMonthCell.swift; sourceTree = "<group>"; };
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				BBEC06612849699D002D0311 /* ChartController.swift */,
+				BB38001E291EA3620056DD78 /* TransactionsListController.swift */,
+				BB38001C291E9E190056DD78 /* TransactionDetailViewController.swift */,
 				BB80BBF22867F5E800EECE44 /* Components */,
 			);
 			path = Controllers;
@@ -822,6 +828,7 @@
 				BB26B0E0291DA5170006C70D /* ChartPresenter.swift in Sources */,
 				BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */,
 				BBEC063028495DDE002D0311 /* conta.xcdatamodeld in Sources */,
+				BB38001D291E9E190056DD78 /* TransactionDetailViewController.swift in Sources */,
 				BB80BC0A2868EAB700EECE44 /* SymbolPicker.swift in Sources */,
 				BBF861DC284AED8100A56B24 /* Category.swift in Sources */,
 				BBAD8E5E2852EE2A000074D9 /* ViewExtensions.swift in Sources */,
@@ -834,6 +841,7 @@
 				BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */,
 				BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */,
 				BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */,
+				BB38001F291EA3620056DD78 /* TransactionsListController.swift in Sources */,
 				BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */,
 				BB80BC0E2869159100EECE44 /* SymbolCell.swift in Sources */,
 				BB9C630B2859715500FDF7B2 /* TransactionsPresenter.swift in Sources */,

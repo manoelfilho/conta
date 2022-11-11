@@ -80,12 +80,45 @@ extension ChartController{
         return .init(width: view.bounds.width, height: 120)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //pega a celula clicada
+        if let cell = collectionView.cellForItem(at: indexPath){
+                        
+            //pegando a posicao exata onde a celula foi clicada
+            if let frame = cell.superview?.convert(cell.frame, to: nil) {
+                
+                tabBarController?.tabBar.isHidden = true
+                
+                let modalView = TransactionDetailViewController()
+                
+                let title = Array(accounts.keys)[indexPath.row]
+                
+                modalView.frame = frame
+                modalView.titlePage = title
+                modalView.transactions = accounts[title]
+                
+                //onde o modal deve carregar
+                modalView.modalPresentationStyle = .overCurrentContext
+                
+                modalView.handleClose = {
+                    self.tabBarController?.tabBar.isHidden = false
+                }
+                
+                self.present(modalView, animated: true)
+            
+            }
+        }
+        
+    }
+
+    
 }
 
 extension ChartController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.bounds.width - 40, height: 200 )
+        return .init(width: view.bounds.width - 40, height: 250 )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

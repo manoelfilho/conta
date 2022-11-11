@@ -64,19 +64,30 @@ class AccountService {
         request.sortDescriptors = [sortTitle]
         
         do {
-            
+        
             let accounts = try viewContext.fetch(request)
             
             for account in accounts {
                 
+                let predicateAccount = NSPredicate(format: "account.id == %@", account.id! as CVarArg)
+                
+                //last transaction
+                let sortDate = NSSortDescriptor.init(key: "date", ascending: false)
+                let requestTransaction = Transaction.fetchRequest()
+                requestTransaction.sortDescriptors = [sortDate]
+                requestTransaction.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateAccount])
+                let lastTransaction = try viewContext.fetch(requestTransaction).first
+                
+                
                 var predicates: [NSPredicate] = []
                 //Month and Year filters
-                let filterMonth = Calendar.current.dateComponents([.month], from: Date()).month!
-                let filterYear = Calendar.current.dateComponents([.year], from: Date()).year!
+                let filterMonth = Calendar.current.dateComponents([.month], from: lastTransaction!.date!).month!
+                let filterYear = Calendar.current.dateComponents([.year], from: lastTransaction!.date!).year!
                 let componentsFirstDayOfMonth = DateComponents(year: filterYear, month: filterMonth, day: 1)
                 let calendarFirstDay = Calendar.current
                 let firstDay = calendarFirstDay.date(from: componentsFirstDayOfMonth)
                 let lastDay = firstDay!.endOfMonth()
+                predicates.append(predicateAccount)
                 
                 let predicatePeriod = NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [firstDay!, lastDay])
                 predicates.append(predicatePeriod)

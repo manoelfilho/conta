@@ -74,7 +74,7 @@ class HomeCell: UICollectionViewCell, ChartViewDelegate {
     }
     
     private lazy var headerLabel: UILabel = {
-        let headerLabel: UILabel = .textLabel(text: "home_title_page".localized(), fontSize: 15, color: .white, type: .Bold)
+        let headerLabel: UILabel = .textLabel(text: "home_title_page".localized(), fontSize: 18, color: .white, type: .Bold)
         return headerLabel
     }()
     
@@ -115,7 +115,7 @@ class HomeCell: UICollectionViewCell, ChartViewDelegate {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 20, left: 10, bottom: 0, right: 0)
+            padding: .init(top: 20, left: 20, bottom: 0, right: 0)
         )
         
         chartView.fill(

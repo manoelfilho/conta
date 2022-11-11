@@ -51,5 +51,11 @@ extension UIButton {
         return roundedIconButton
     }
     
+    static func getCloseButton() -> UIButton {
+        let buttom = UIButton()
+        buttom.setImage(UIImage(named: "fechar"), for: .normal)
+        buttom.layer.zPosition = 2
+        return buttom
+    }
     
 }
