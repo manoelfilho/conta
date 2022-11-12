@@ -21,12 +21,13 @@ class CategoriesPresenter {
     }
     
     func returnCategories(filter: [String : Any]) {
-        categoryService.getCategories(filter: filter) { categories in
+        categoryService.getCategories(filter: filter) { [weak self] categories in
+            guard self != nil else { return }
             switch categories {
             case .success(let categories):
-                self.delegate?.presentCategories(categories: categories)
+                self?.delegate?.presentCategories(categories: categories)
             case .failure(let error):
-                self.delegate?.presentErrorCategories(message: error.localizedDescription)
+                self?.delegate?.presentErrorCategories(message: error.localizedDescription)
             }
         }
     }

@@ -21,12 +21,13 @@ class ChartPresenter {
     }
     
     func returnAccountsGrouped() {
-        accountService.returnAccountsGrouped() { accounts in
+        accountService.returnAccountsGrouped() { [weak self] accounts in
+            guard self != nil else { return }
             switch accounts {
             case .success(let accounts):
-                self.delegate?.presentAccounts(accounts: accounts)
+                self?.delegate?.presentAccounts(accounts: accounts)
             case .failure(let error):
-                self.delegate?.presentErrorAccounts(message: error.localizedDescription)
+                self?.delegate?.presentErrorAccounts(message: error.localizedDescription)
             }
         }
     }

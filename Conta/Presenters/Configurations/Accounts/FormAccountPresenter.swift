@@ -20,12 +20,13 @@ class FormAccountPresenter {
     }
     
     func createAccount(){
-        accountService.saveAccount { result in
+        accountService.saveAccount { [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .success(_):
-                self.delegate?.showSuccess(message: "new_transaction_success".localized())
+                self?.delegate?.showSuccess(message: "new_transaction_success".localized())
             case .failure(_):
-                self.delegate?.showError(message: "error_register_transaction".localized())
+                self?.delegate?.showError(message: "error_register_transaction".localized())
             }
         }
     }
