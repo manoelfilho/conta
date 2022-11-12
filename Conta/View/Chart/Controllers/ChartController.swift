@@ -28,8 +28,8 @@ class ChartController: UICollectionViewController {
         
         collectionView.backgroundColor = UIColor(named: K.colorBG1)
         
-        collectionView.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.homeCell)
-        collectionView.register(HomeHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeaderCell.homeHeaderCell)
+        collectionView.register(ChartCell.self, forCellWithReuseIdentifier: ChartCell.homeCell)
+        collectionView.register(HeaderChartController.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderChartController.homeHeaderCell)
         
         collectionView.showsVerticalScrollIndicator = false
         
@@ -60,7 +60,7 @@ extension ChartController: ChartPresenterProtocol {
 extension ChartController{
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeHeaderCell.homeHeaderCell, for: indexPath) as! HomeHeaderCell
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderChartController.homeHeaderCell, for: indexPath) as! HeaderChartController
         return header
     }
     
@@ -69,7 +69,7 @@ extension ChartController{
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.homeCell, for: indexPath) as! HomeCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCell.homeCell, for: indexPath) as! ChartCell
         let title = Array(accounts.keys)[indexPath.row]
         cell.title = title
         cell.transactions = accounts[title]
@@ -80,37 +80,7 @@ extension ChartController{
         return .init(width: view.bounds.width, height: 120)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //pega a celula clicada
-        if let cell = collectionView.cellForItem(at: indexPath){
-                        
-            //pegando a posicao exata onde a celula foi clicada
-            if let frame = cell.superview?.convert(cell.frame, to: nil) {
-                
-                tabBarController?.tabBar.isHidden = true
-                
-                let modalView = TransactionDetailViewController()
-                
-                let title = Array(accounts.keys)[indexPath.row]
-                
-                modalView.frame = frame
-                modalView.titlePage = title
-                modalView.transactions = accounts[title]
-                
-                //onde o modal deve carregar
-                modalView.modalPresentationStyle = .overCurrentContext
-                
-                modalView.handleClose = {
-                    self.tabBarController?.tabBar.isHidden = false
-                }
-                
-                self.present(modalView, animated: true)
-            
-            }
-        }
-        
-    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
 
     
 }

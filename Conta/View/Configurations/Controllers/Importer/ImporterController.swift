@@ -162,8 +162,6 @@ extension ImporterController: UIDocumentPickerDelegate {
             self.importButton.backgroundColor = UIColor(named: K.colorBG4)
         }
         
-        //navigationController?.dismiss(animated: true, completion: nil)
-        
     }
     
     @objc func importFile(){

@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import Charts
 
-class HomeCell: UICollectionViewCell, ChartViewDelegate {
+class ChartCell: UICollectionViewCell, ChartViewDelegate {
     
     static var homeCell = "homeCell"
     
@@ -49,7 +49,7 @@ class HomeCell: UICollectionViewCell, ChartViewDelegate {
                         yValues.append(ChartDataEntry(x: doubleDay, y: round(sum * 100) / 100.0))
                     }
                     
-                    let color = generateRandomColor()
+                    let color = generateRandomHexadecimalColor()
                     
                     let set = LineChartDataSet(entries: yValues, label: category)
                     set.drawCirclesEnabled = false
@@ -78,7 +78,7 @@ class HomeCell: UICollectionViewCell, ChartViewDelegate {
         return headerLabel
     }()
     
-    var chartView: LineChartView = {
+    private lazy var chartView: LineChartView = {
         var lineChartView = LineChartView()
         lineChartView.rightAxis.enabled = false
         lineChartView.leftAxis.enabled = false

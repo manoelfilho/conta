@@ -2,6 +2,7 @@ import Foundation
 import Charts
 
 class CustomMarkerView: MarkerView {
+    
     var text = ""
 
     override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {

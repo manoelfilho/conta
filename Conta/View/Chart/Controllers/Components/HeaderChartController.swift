@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class HomeHeaderCell: UICollectionReusableView {
+class HeaderChartController: UICollectionReusableView {
     
     static var homeHeaderCell = "homeHeaderCell"
     
