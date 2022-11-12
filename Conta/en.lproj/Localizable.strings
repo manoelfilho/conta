@@ -48,7 +48,7 @@
 "importer" = "Importer data";
 "import_transactions_button" = "Import data";
 "import_file_transactions_button" = "Select the file";
-"description_import_label" = "...";
+"description_import_label" = "You can import files of type (OFC), a type of file used to store financial information, commonly used by banks. Export your bank account or card statement data and save to iCloud directory before importing.";
 "invalid_file_text" = "Invalid file";
 "alert_import_success" = "File imported with success!";
 "chart_title_page" = "Accounts";
