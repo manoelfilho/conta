@@ -14,11 +14,12 @@
 		BB26B0E0291DA5170006C70D /* ChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0DF291DA5170006C70D /* ChartPresenter.swift */; };
 		BB26B0E4291DECC10006C70D /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */; };
 		BB38001B291E8EA40056DD78 /* RandonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38001A291E8EA40056DD78 /* RandonColors.swift */; };
-		BB380023291FCF720056DD78 /* HeaderChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB380022291FCF720056DD78 /* HeaderChartController.swift */; };
+		BB380023291FCF720056DD78 /* HeaderChartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB380022291FCF720056DD78 /* HeaderChartsController.swift */; };
 		BB4E33882850D5B500A17E52 /* FormTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E33872850D5B500A17E52 /* FormTransactionController.swift */; };
 		BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6346284D099B001103DE /* ScrollMonthCell.swift */; };
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
 		BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */; };
+		BB63B90429232870003AFEB5 /* ChartDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63B90329232870003AFEB5 /* ChartDetailView.swift */; };
 		BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */; };
 		BB80BBF42867F62500EECE44 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF32867F62500EECE44 /* ChartCell.swift */; };
 		BB80BBF628686BE300EECE44 /* AccountsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */; };
@@ -58,7 +59,8 @@
 		BBEC064C28495DE2002D0311 /* contaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC064B28495DE2002D0311 /* contaUITestsLaunchTests.swift */; };
 		BBEC065C2849662B002D0311 /* ConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC065B2849662B002D0311 /* ConstraintExtensions.swift */; };
 		BBEC065F28496773002D0311 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC065E28496773002D0311 /* BaseTabBarController.swift */; };
-		BBEC06622849699D002D0311 /* ChartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC06612849699D002D0311 /* ChartController.swift */; };
+		BBEC06622849699D002D0311 /* ChartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC06612849699D002D0311 /* ChartsController.swift */; };
+		BBF0B11C29241E0F004743A4 /* ChartDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0B11B29241E0F004743A4 /* ChartDetailController.swift */; };
 		BBF861D1284A58FB00A56B24 /* LabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF861D0284A58FB00A56B24 /* LabelExtensions.swift */; };
 		BBF861DA284AED6000A56B24 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF861D9284AED6000A56B24 /* Account.swift */; };
 		BBF861DC284AED8100A56B24 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF861DB284AED8100A56B24 /* Category.swift */; };
@@ -116,11 +118,12 @@
 		BB26B0DF291DA5170006C70D /* ChartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPresenter.swift; sourceTree = "<group>"; };
 		BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		BB38001A291E8EA40056DD78 /* RandonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandonColors.swift; sourceTree = "<group>"; };
-		BB380022291FCF720056DD78 /* HeaderChartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderChartController.swift; sourceTree = "<group>"; };
+		BB380022291FCF720056DD78 /* HeaderChartsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderChartsController.swift; sourceTree = "<group>"; };
 		BB4E33872850D5B500A17E52 /* FormTransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTransactionController.swift; sourceTree = "<group>"; };
 		BB5D6346284D099B001103DE /* ScrollMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollMonthCell.swift; sourceTree = "<group>"; };
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
+		BB63B90329232870003AFEB5 /* ChartDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDetailView.swift; sourceTree = "<group>"; };
 		BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionPresenter.swift; sourceTree = "<group>"; };
 		BB80BBF32867F62500EECE44 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPresenter.swift; sourceTree = "<group>"; };
@@ -165,7 +168,8 @@
 		BBEC064B28495DE2002D0311 /* contaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BBEC065B2849662B002D0311 /* ConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintExtensions.swift; sourceTree = "<group>"; };
 		BBEC065E28496773002D0311 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		BBEC06612849699D002D0311 /* ChartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartController.swift; sourceTree = "<group>"; };
+		BBEC06612849699D002D0311 /* ChartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsController.swift; sourceTree = "<group>"; };
+		BBF0B11B29241E0F004743A4 /* ChartDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDetailController.swift; sourceTree = "<group>"; };
 		BBF861D0284A58FB00A56B24 /* LabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtensions.swift; sourceTree = "<group>"; };
 		BBF861D9284AED6000A56B24 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		BBF861DB284AED8100A56B24 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -254,8 +258,9 @@
 		BB80BBF22867F5E800EECE44 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				BB380022291FCF720056DD78 /* HeaderChartController.swift */,
+				BB380022291FCF720056DD78 /* HeaderChartsController.swift */,
 				BB80BBF32867F62500EECE44 /* ChartCell.swift */,
+				BB63B90329232870003AFEB5 /* ChartDetailView.swift */,
 				BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */,
 				BB38001A291E8EA40056DD78 /* RandonColors.swift */,
 			);
@@ -294,7 +299,8 @@
 		BB9C630628596DBD00FDF7B2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BBEC06612849699D002D0311 /* ChartController.swift */,
+				BBEC06612849699D002D0311 /* ChartsController.swift */,
+				BBF0B11B29241E0F004743A4 /* ChartDetailController.swift */,
 				BB80BBF22867F5E800EECE44 /* Components */,
 			);
 			path = Controllers;
@@ -358,7 +364,7 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		BBDC20B0285A752F00E0A5D1 /* Util */ = {
+		BBDC20B0285A752F00E0A5D1 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				BBFC3471285A87D3000D1B25 /* SF-Pro-Display-Black.otf */,
@@ -380,7 +386,7 @@
 				BBFC346C285A87D1000D1B25 /* SF-Pro-Display-Ultralight.otf */,
 				BBFC347A285A87D7000D1B25 /* SF-Pro-Display-UltralightItalic.otf */,
 			);
-			path = Util;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		BBE7145728677F1300CBD90F /* Accounts */ = {
@@ -488,7 +494,7 @@
 				BBF861D8284AED4B00A56B24 /* Model */,
 				BBEC065A284962C6002D0311 /* View */,
 				BB9C630928596E5900FDF7B2 /* Presenters */,
-				BBDC20B0285A752F00E0A5D1 /* Util */,
+				BBDC20B0285A752F00E0A5D1 /* Fonts */,
 				BBEC063128495DE2002D0311 /* Assets.xcassets */,
 				BBEC063628495DE2002D0311 /* Info.plist */,
 				BBF861E5284BA23F00A56B24 /* Localizable.strings */,
@@ -525,7 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				BB9C630728596DE200FDF7B2 /* Base */,
-				BBEC066028496975002D0311 /* Chart */,
+				BBEC066028496975002D0311 /* Charts */,
 				BBF86256284BC08200A56B24 /* Transactions */,
 				BBCEB6662863D0E800D6C0ED /* Configurations */,
 				BBEC065D284966F0002D0311 /* Lib */,
@@ -552,12 +558,12 @@
 			path = Lib;
 			sourceTree = "<group>";
 		};
-		BBEC066028496975002D0311 /* Chart */ = {
+		BBEC066028496975002D0311 /* Charts */ = {
 			isa = PBXGroup;
 			children = (
 				BB9C630628596DBD00FDF7B2 /* Controllers */,
 			);
-			path = Chart;
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		BBF861D8284AED4B00A56B24 /* Model */ = {
@@ -599,7 +605,7 @@
 				BBEC061E28495DDE002D0311 /* Sources */,
 				BBEC061F28495DDE002D0311 /* Frameworks */,
 				BBEC062028495DDE002D0311 /* Resources */,
-				654138B175FB4E1F4CCF6F46 /* [CP] Embed Pods Frameworks */,
+				422AAACA093533CF95F8184E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -736,7 +742,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		654138B175FB4E1F4CCF6F46 /* [CP] Embed Pods Frameworks */ = {
+		422AAACA093533CF95F8184E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -784,6 +790,7 @@
 			files = (
 				BBEC065C2849662B002D0311 /* ConstraintExtensions.swift in Sources */,
 				BB80BBFE28689D3500EECE44 /* FormAccountPresenter.swift in Sources */,
+				BBF0B11C29241E0F004743A4 /* ChartDetailController.swift in Sources */,
 				BB8DE31D2850524600AB1077 /* Constants.swift in Sources */,
 				BBCEB6682863D11400D6C0ED /* ConfigurationsController.swift in Sources */,
 				BB80BBFA2868735800EECE44 /* AccountCell.swift in Sources */,
@@ -795,7 +802,8 @@
 				BB04DD09285A0F9D00287495 /* FormTransactionPresenter.swift in Sources */,
 				BBF8625C284C13AC00A56B24 /* ControllerExtensions.swift in Sources */,
 				BB80BC082868B38200EECE44 /* CategoryCell.swift in Sources */,
-				BBEC06622849699D002D0311 /* ChartController.swift in Sources */,
+				BB63B90429232870003AFEB5 /* ChartDetailView.swift in Sources */,
+				BBEC06622849699D002D0311 /* ChartsController.swift in Sources */,
 				BBFC3494285A8844000D1B25 /* Auth.swift in Sources */,
 				BBE714552867541C00CBD90F /* ConfigurationCell.swift in Sources */,
 				BBF861E0284B9F0800A56B24 /* StringExtension.swift in Sources */,
@@ -805,7 +813,7 @@
 				BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */,
 				BBEC065F28496773002D0311 /* BaseTabBarController.swift in Sources */,
 				BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */,
-				BB380023291FCF720056DD78 /* HeaderChartController.swift in Sources */,
+				BB380023291FCF720056DD78 /* HeaderChartsController.swift in Sources */,
 				BB80BBF42867F62500EECE44 /* ChartCell.swift in Sources */,
 				BB80BC022868ADA700EECE44 /* FormCategoryPresenter.swift in Sources */,
 				BBB811862849BDC300BC67EF /* TransactionsController.swift in Sources */,

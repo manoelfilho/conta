@@ -1,6 +1,7 @@
 import UIKit
 
 class BaseTabBarController: CustomTabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,7 +17,7 @@ class BaseTabBarController: CustomTabBarController {
         }
         
         let chart = self.createTabBarItem(
-            viewController: ChartController(),
+            viewController: ChartsController(),
             imageName: "chart.bar.fill",
             imageSelectedName: "chart.bar.fill")
         
@@ -35,7 +36,6 @@ class BaseTabBarController: CustomTabBarController {
         selectedIndex = 0
         
     }
-    
     
     private func createTabBarItem(viewController: UIViewController, imageName: String, imageSelectedName: String) -> UIViewController {
         

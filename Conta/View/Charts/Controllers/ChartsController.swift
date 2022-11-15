@@ -1,15 +1,15 @@
 import Foundation
 import UIKit
 
-class ChartController: UICollectionViewController {
+class ChartsController: UICollectionViewController {
     
     var accounts: [String:[Transaction]] = [:]
     
     private lazy var chartPresenter: ChartPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService: AccountService = AccountService(viewContext: context)
-        let homePresenter: ChartPresenter = ChartPresenter(accountService: accountService)
-        return homePresenter
+        let chartPresenter: ChartPresenter = ChartPresenter(accountService: accountService)
+        return chartPresenter
     }()
         
     init(){
@@ -21,29 +21,26 @@ class ChartController: UICollectionViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         navigationController?.navigationBar.isHidden = true
-        
-        collectionView.backgroundColor = UIColor(named: K.colorBG1)
-        
-        collectionView.register(ChartCell.self, forCellWithReuseIdentifier: ChartCell.homeCell)
-        collectionView.register(HeaderChartController.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderChartController.homeHeaderCell)
-        
-        collectionView.showsVerticalScrollIndicator = false
-        
         chartPresenter.setViewDelegate(viewDelegate: self)
-                
+        configView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         chartPresenter.returnAccountsGrouped()
     }
     
+    func configView() {
+        collectionView.backgroundColor = UIColor(named: K.colorBG1)
+        collectionView.register(ChartCell.self, forCellWithReuseIdentifier: ChartCell.chartCell)
+        collectionView.register(HeaderChartsController.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderChartsController.homeHeaderCell)
+        collectionView.showsVerticalScrollIndicator = false
+    }
+    
 }
 
-extension ChartController: ChartPresenterProtocol {
+extension ChartsController: ChartPresenterProtocol {
     
     func presentAccounts(accounts: [String:[Transaction]]) {
         DispatchQueue.main.async {
@@ -56,11 +53,24 @@ extension ChartController: ChartPresenterProtocol {
     
 }
 
+extension ChartsController: ChartCellDelegate {
+    func showDetails(account: String, transactions: [Transaction]) {
+        let chartDetailController = ChartDetailController()
+        
+        chartDetailController.chartDetailView.transactions = transactions
+        chartDetailController.chartDetailView.title = account
+        chartDetailController.transactions = transactions
+        
+        chartDetailController.modalTransitionStyle = .coverVertical
+        present(chartDetailController, animated: true, completion: nil)
+    }
+}
 
-extension ChartController{
+
+extension ChartsController{
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderChartController.homeHeaderCell, for: indexPath) as! HeaderChartController
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderChartsController.homeHeaderCell, for: indexPath) as! HeaderChartsController
         return header
     }
     
@@ -69,7 +79,8 @@ extension ChartController{
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCell.homeCell, for: indexPath) as! ChartCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCell.chartCell, for: indexPath) as! ChartCell
+        cell.setViewDelegate(chartCellDelegate: self)
         let title = Array(accounts.keys)[indexPath.row]
         cell.title = title
         cell.transactions = accounts[title]
@@ -85,10 +96,10 @@ extension ChartController{
     
 }
 
-extension ChartController: UICollectionViewDelegateFlowLayout {
+extension ChartsController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.bounds.width - 40, height: 250 )
+        return .init(width: view.bounds.width - 40, height: 200 )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

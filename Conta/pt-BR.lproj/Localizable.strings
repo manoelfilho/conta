@@ -53,3 +53,5 @@
 "alert_import_success" = "Extrato importado com sucesso!";
 "chart_title_page" = "Contas";
 "chart_description_page" = "Movimentações do último mês";
+"month" = "mês";
+"transactions" = "transações";

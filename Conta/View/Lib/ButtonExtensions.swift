@@ -40,11 +40,11 @@ extension UIButton {
         return button
     }
     
-    static func roundedSymbolButton(symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, color: UIColor, size:CGSize, cornerRadius: CGFloat) -> CustomButton {
+    static func roundedSymbolButton(symbolName: String, pointSize: CGFloat, weight: UIImage.SymbolWeight, scale: UIImage.SymbolScale, color: UIColor, size:CGSize, cornerRadius: CGFloat, ofSize: CGFloat = 20) -> CustomButton {
         let roundedIconButton: CustomButton = CustomButton()
         roundedIconButton.size(size: size)
         roundedIconButton.layer.cornerRadius = cornerRadius
-        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 20), scale: .large)
+        let config = UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: ofSize), scale: .large)
         roundedIconButton.setImage(UIImage(systemName: symbolName, withConfiguration: config), for: .normal)
         roundedIconButton.backgroundColor = color
         roundedIconButton.tintColor = .white

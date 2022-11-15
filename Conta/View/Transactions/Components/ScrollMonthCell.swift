@@ -12,13 +12,14 @@ class ScrollMonthCell: UICollectionViewCell {
         }
     }
     
-    let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let titleLabel: UILabel = .textLabel(text: "MONTH", fontSize: 18, color: UIColor(named: K.colorText)!)
         return titleLabel
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addSubview(titleLabel)
         
         titleLabel.fill(

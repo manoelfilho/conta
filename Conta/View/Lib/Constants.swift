@@ -17,7 +17,5 @@ class K {
     static let colorBG3 = "BG3"
     static let colorBG4 = "BG4"
     static let colorBG5 = "BG5"
-    
-    static let margin = 20
         
 }

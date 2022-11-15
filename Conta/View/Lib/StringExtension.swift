@@ -42,12 +42,10 @@ extension String {
         return number
     }
     
-    //Get the filname from a String
     func fileName() -> String{
         return URL(filePath: self).deletingPathExtension().lastPathComponent
     }
     
-    //Get the extension from a String
     func fileExtension() -> String {
         return URL(fileURLWithPath: self).pathExtension
     }

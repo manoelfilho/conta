@@ -53,5 +53,7 @@
 "alert_import_success" = "File imported with success!";
 "chart_title_page" = "Accounts";
 "chart_description_page" = "Transactions of last month";
+"month" = "month";
+"transactions" = "transactions";
 
 

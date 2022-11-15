@@ -54,7 +54,6 @@ class AccountService {
         }
     }
     
-    //return one dictionary of account with transactions of month [String:[Transaction]]
     func returnAccountsGrouped(completion: @escaping(Result<[String:[Transaction]], ServiceError>) -> Void) {
         
         var finalData: [String:[Transaction]] = [:]
@@ -81,24 +80,29 @@ class AccountService {
                 var date: Date = Date()
                 if let lastTransaction = lastTransaction { date = lastTransaction.date! }
                 
-                var predicates: [NSPredicate] = []
-                //Month and Year filters
+                //transactions
+                
+                var predicatesTransactions: [NSPredicate] = []
+                var sortDescriptors: [NSSortDescriptor] = []
+                
+                //getting month and year
                 let filterMonth = Calendar.current.dateComponents([.month], from: date).month!
                 let filterYear = Calendar.current.dateComponents([.year], from: date).year!
                 let componentsFirstDayOfMonth = DateComponents(year: filterYear, month: filterMonth, day: 1)
                 let calendarFirstDay = Calendar.current
                 let firstDay = calendarFirstDay.date(from: componentsFirstDayOfMonth)
                 let lastDay = firstDay!.endOfMonth()
-                predicates.append(predicateAccount)
                 
                 let predicatePeriod = NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [firstDay!, lastDay])
-                predicates.append(predicatePeriod)
-                
                 let sdSortDate = NSSortDescriptor.init(key: "date", ascending: true)
                 
+                predicatesTransactions.append(predicateAccount)
+                predicatesTransactions.append(predicatePeriod)
+                sortDescriptors.append(sdSortDate)
+                
                 let requestTransactions = Transaction.fetchRequest()
-                requestTransactions.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-                requestTransactions.sortDescriptors = [sdSortDate]
+                requestTransactions.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicatesTransactions)
+                requestTransactions.sortDescriptors = sortDescriptors
                 
                 let transactions = try viewContext.fetch(requestTransactions)
                 
