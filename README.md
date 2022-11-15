@@ -19,9 +19,9 @@
 | - | - | - |
 | <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot7.PNG" alt="drawing" width="200"/> | <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot8.PNG" alt="drawing" width="200"/> | <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot9.PNG" alt="drawing" width="200"/> |
 
-| Importação de extratos  | Tela de gráficos |
-| - | - |
-| <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot10.PNG" alt="drawing" width="200"/> | <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot11.PNG" alt="drawing" width="200"/> |
+| Importação de extratos  | Tela de gráficos | Gráfico detalhado |
+| - | - | - |
+| <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot10.PNG" alt="drawing" width="200"/> | <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot11.PNG" alt="drawing" width="200"/> | <img src="https://github.com/manoelfilho/conta/blob/master/Preview/screenshot12.PNG" alt="drawing" width="200"/> |
 
 
 ### Ferramentas utilizadas
