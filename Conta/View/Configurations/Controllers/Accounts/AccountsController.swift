@@ -68,7 +68,6 @@ class AccountsController: UIViewController {
     }
     
     private func configView(){
-        
         tabBarController?.tabBar.isHidden = true
         
         buttonAdd.addTarget(self, action: #selector(addAccount), for: .touchUpInside)

@@ -48,6 +48,7 @@ class ConfigurationsController: UIViewController{
         
         super.viewDidLoad()
         
+        navigationController?.navigationBar.topItem?.title = ""
         view.backgroundColor = UIColor(named: K.colorBG1)
         
         tableOptions.delegate = self

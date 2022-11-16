@@ -40,8 +40,9 @@ class BaseTabBarController: CustomTabBarController {
     private func createTabBarItem(viewController: UIViewController, imageName: String, imageSelectedName: String) -> UIViewController {
         
         let navController = UINavigationController(rootViewController: viewController)
-        
         navController.navigationBar.prefersLargeTitles = true
+        navController.navigationBar.tintColor = .white
+        
         viewController.tabBarItem.image = UIImage(systemName: imageName, withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
         viewController.tabBarItem.selectedImage = UIImage(systemName: imageSelectedName)
         
