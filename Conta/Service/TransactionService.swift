@@ -79,6 +79,29 @@ class TransactionService {
         }
     }
     
+    func getFirstOfAccountTransactions(accountId: UUID, completion: @escaping(Result<Transaction, ServiceError>) -> Void){
+        
+        var predicates: [NSPredicate] = []
+        let filterAccountId = accountId
+        let predicateAccount = NSPredicate(format: "account.id == %@", filterAccountId as CVarArg)
+        predicates.append(predicateAccount)
+        
+        let sortDate = NSSortDescriptor.init(key: "date", ascending: true)
+        let request = Transaction.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        request.sortDescriptors = [sortDate]
+        
+        do {
+            let transaction = try viewContext.fetch(request).first
+            if let savedTransaction = transaction {
+                completion(.success(savedTransaction))
+            }
+        }catch{
+            completion(.failure(.unexpectedError))
+        }
+        
+    }
+    
     func saveTransaction(completion: @escaping (Result<Bool, ServiceError>) -> Void){
         do {
             try viewContext.save()

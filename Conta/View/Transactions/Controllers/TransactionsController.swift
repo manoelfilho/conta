@@ -119,14 +119,11 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let indexPath = IndexPath(item: months.count-1, section: 0)
-        collectionViewMonths.scrollToItem(at:indexPath, at: .right, animated: true)
         loadData()
     }
     
     private func loadData(){
         transactionsPresenter.returnTransactions(with: filter.options)
-        transactionsPresenter.returnFirstOfAllTransactions()
     }
     
 }
@@ -258,6 +255,8 @@ extension TransactionsController: TransactionsPresenterDelegate {
         DispatchQueue.main.async {
             self.months = months.reversed()
             self.collectionViewMonths.reloadData()
+            let indexPath = IndexPath(item: self.months.count-1, section: 0)
+            self.collectionViewMonths.scrollToItem(at:indexPath, at: .right, animated: true)
         }
     }
     

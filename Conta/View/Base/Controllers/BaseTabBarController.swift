@@ -33,7 +33,7 @@ class BaseTabBarController: CustomTabBarController {
         
         viewControllers = [chart, list, configuration]
                 
-        selectedIndex = 0
+        selectedIndex = 1
         
     }
     

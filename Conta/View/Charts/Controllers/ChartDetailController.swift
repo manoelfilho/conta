@@ -69,6 +69,12 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
         tableTransactions.delegate = self
         tableTransactions.dataSource = self
         
+        if transactions.count > 0 {
+            let accountId = transactions[0].account!.id
+            filter.options["accountId"] = accountId
+            transactionsPresenter.returnFirstOfAccountTransactions(accountId: accountId!)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,9 +140,42 @@ extension ChartDetailController {
 //MARK: TRANSACTIONSPRESENTER DELEGATE
 extension ChartDetailController: TransactionsPresenterDelegate {
     
-    func presentTransactions(transactions: [Transaction]) {}
+    func presentTransactions(transactions: [Transaction]) {
+        DispatchQueue.main.async {
+            self.transactions = transactions
+            self.chartDetailView.transactions = transactions
+            self.tableTransactions.reloadData()
+        }
+    }
     
-    func presentFirstOfAllTransactions(transaction: Transaction) {}
+    func presentFirstOfAllTransactions(transaction: Transaction) {
+        let listMonths: [String] = Calendar.current.shortMonthSymbols
+        var months:[(intMonth: Int, strMonth: String, intYear: Int)] = []
+        
+        let now = Date()
+        let calendar = Calendar.current.dateComponents([.month, .year], from: now)
+        
+        months.append((intMonth: calendar.month!, strMonth: listMonths[calendar.month!-1].uppercased(), intYear: calendar.year!))
+        
+        let startDateComponents = Calendar.current.dateComponents([.year, .month], from: transaction.date!)
+        let endDateComponents = Calendar.current.dateComponents([.year, .month], from: now)
+        let diffInDate = Calendar.current.dateComponents([.month], from: startDateComponents, to: endDateComponents).month!
+        
+        if diffInDate > 0 {
+            for m in (1...diffInDate){
+                let dateBeforeMonth = Calendar.current.date(byAdding: .month, value: -m, to: now)
+                let calendarBeforeMonth = Calendar.current.dateComponents([.month, .year], from: dateBeforeMonth!)
+                months.append((intMonth: calendarBeforeMonth.month!, strMonth: listMonths[calendarBeforeMonth.month!-1].uppercased(), intYear: calendarBeforeMonth.year!))
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.months = months.reversed()
+            self.collectionViewMonths.reloadData()
+            let indexPath = IndexPath(item: self.months.count-1, section: 0)
+            self.collectionViewMonths.scrollToItem(at:indexPath, at: .right, animated: true)
+        }
+    }
     
     func presentErrorTransactions(message: String) {}
     
@@ -168,27 +207,7 @@ extension ChartDetailController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let trash = UIContextualAction(style: .destructive, title: "delete_transaction".localized()) { (action, vieew, completionHandler) in
-            let dialogMessage = UIAlertController(title: "alert_warning".localized(), message: "confirm_removal_transaction".localized(), preferredStyle: .alert)
-            let ok = UIAlertAction(title: "confirm_removal_ok".localized(), style: .default, handler: { (action) -> Void in
-                self.transactionsPresenter.removeTransaction(self.transactions[indexPath.row])
-                self.transactions.remove(at: indexPath.row)
-            })
-            let cancel = UIAlertAction(title: "confirm_removal_not".localized(), style: .cancel) { (action) -> Void in }
-            dialogMessage.addAction(ok)
-            dialogMessage.addAction(cancel)
-            self.present(dialogMessage, animated: true, completion: nil)
-        }
         
-        trash.image = UIImage(named: "trash")
-        trash.backgroundColor = UIColor(named: K.colorRedOne)
-        let configuration = UISwipeActionsConfiguration(actions: [trash])
-        configuration.performsFirstActionWithFullSwipe = false
-        return configuration
-    }
-    
 }
 
 //MARK: COLLECTIONVIE DELEGATE

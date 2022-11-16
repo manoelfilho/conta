@@ -45,6 +45,18 @@ class TransactionsPresenter {
         }
     }
     
+    func returnFirstOfAccountTransactions(accountId: UUID){
+        transactionService.getFirstOfAccountTransactions(accountId: accountId) { [weak self] transaction in
+            guard let self = self else { return }
+            switch transaction {
+            case .success(let transaction):
+                self.delegate?.presentFirstOfAllTransactions(transaction: transaction)
+            case .failure(_):
+                self.delegate?.presentErrorTransactions(message: "error_return_data".localized())
+            }
+        }
+    }
+    
     func removeTransaction(_ transaction: Transaction){
         transactionService.removeTransaction(transaction) { [weak self] operation in
             guard let self = self else { return }
