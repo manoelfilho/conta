@@ -119,6 +119,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        filter.clearOptions()
         loadData()
     }
     

@@ -79,6 +79,7 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        filter.clearOptions()
     }
     
 }
