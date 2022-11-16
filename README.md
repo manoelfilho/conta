@@ -1,10 +1,9 @@
 # conta
+Conta é um app para controle financeiro que permite o cadastro de movimentações bancárias. Pode ser usado para transações de débito e crédito. As informações podem ser agrupadas por contas ou cartões e categorias. Cada conta deve ter uma cor, título e um saldo inicial. Cada categoria pode ter um símbolo (Apple SF Symbols) e um título. Cada movimentação deve estar associada a uma conta e um categoria. De modo o geral, o app permite acompanhar todas as transações bancárias de contas e cartões. 
 
-> Conta é um app para controle financeiro que permite o cadastro de movimentações bancárias. Pode ser usado para transações de débito e crédito. As informações podem ser agrupadas por contas ou cartões e categorias. Cada conta deve ter uma cor, título e um saldo inicial. Cada categoria pode ter um símbolo (Apple SF Symbols) e um título. Cada movimentação deve estar associada a uma conta e um categoria. De modo o geral, o app permite acompanhar todas as transações bancárias de suas contas e cartões. 
+Cada transação pode ser registrada manualmente. Se o usuário preferir pode usar o recurso de importação de extrato. Essa funcionalidade consegue importar arquivos no formato OFC, um tipo de arquivo usado para armazenar informações financeiras, geralmente utilizado pelos bancos. Dessa forma, o Extrato OFC é um extrato bancário. Para cada importação o usuário deve selecionar uma conta e uma categoria padrão. Depois de importadas, as transações pode ser modificadas e associadas a categorias diferentes. O arquivo deve estar salvo no iCloud do usuário.
 
-> Cada transação pode ser registrada manualmente. Se o usuário preferir pode usar o recurso de importação de extrato. Essa funcionalidade consegue importar arquivos no formato OFC, um tipo de arquivo usado para armazenar informações financeiras, geralmente utilizado pelos bancos. Dessa forma, o Extrato OFC é um extrato bancário, só que transformado neste formato. Para cada importação o usuário deve selecionar uma conta e uma categoria padrão. Depois de importadas, as transações pode ser modificadas e associadas a categorias diferentes. O arquivo deve estar salvo no iCloud do usuário.
-
-> Todas as informações ficam salvas no CoreData do iPhone. Nada é compartilhado na internet. Portanto, uma vez deletado do app, todas as informações també serão removidas.
+Todas as informações ficam salvas no CoreData do iPhone. Nada é compartilhado na internet. Portanto, uma vez deletado do app, todas as informações també serão removidas.
 
 
 | Tela inicial - Transações  | Cadastro/ Edição | Filtro |
@@ -32,7 +31,7 @@
 
 
 ### Especificações
-> App desenvolvido para iPhones com iOS na versão 16.0 ou superior. Código feito de modo programático sem o uso de Storyboards e auto-layout. Segue o padrão MVP - Model View Presenter. O app usa o recurso do CoreData e salva os dados no próprio aparelho. O projeto tem como objetivo permitir a importação de extratos bancários (contas e cartões) de arquivos salvos no iCloud Drive.
+App desenvolvido para iPhones com iOS na versão 16.0 ou superior. Código feito de modo programático sem o uso de Storyboards e auto-layout. Segue o padrão MVP - Model View Presenter. O app usa o recurso do CoreData e salva os dados no próprio aparelho. O projeto tem como objetivo permitir a importação de extratos bancários (contas e cartões) de arquivos salvos no iCloud Drive.
 
 ### Ajustes e melhorias
 
@@ -42,7 +41,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [X] Cadastro de contas
 - [X] Cadastro de categorias de transações
 - [X] Filtros na Tela geral de transações
-- [ ] Tela com gastos por contas
+- [X] Tela com gastos por contas
 - [X] Importação de extratos
 - [ ] Backup dos dados no iCloud Drive
 
