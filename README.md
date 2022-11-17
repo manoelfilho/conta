@@ -5,6 +5,12 @@ Cada transação pode ser registrada manualmente. Se o usuário preferir pode us
 
 Todas as informações ficam salvas no CoreData do iPhone. Nada é compartilhado na internet. Portanto, uma vez deletado do app, todas as informações també serão removidas.
 
+## cadastrando contas
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vi/8vQG8niHjkA)
+
+## importando arquivos
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vi/vKzgVmmhQxU)
+
 
 | Tela inicial - Transações  | Cadastro/ Edição | Filtro |
 | - | - | - |
