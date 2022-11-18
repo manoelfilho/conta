@@ -73,6 +73,11 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
         return collectionViewMonths
     }()
     
+    private lazy var emptyView: EmptyView = {
+        let emptyView: EmptyView = EmptyView()
+        return emptyView
+    }()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -122,7 +127,7 @@ extension ChartDetailController {
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = UIColor(named: K.colorBG2)
         
-        chartDetailView.size(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width - 100))
+        chartDetailView.size(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width - 150))
         
         closeButton.addTarget(self, action: #selector(handleCloseClick), for: .touchUpInside)
         
@@ -141,7 +146,7 @@ extension ChartDetailController {
             leading: view.leadingAnchor,
             bottom: nil,
             trailing: view.trailingAnchor,
-            padding: .init(top: 70, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 50, left: 20, bottom: 0, right: 20)
         )
         
         chartDetailView.fill(
@@ -149,7 +154,7 @@ extension ChartDetailController {
             leading: view.leadingAnchor,
             bottom: nil,
             trailing: view.trailingAnchor,
-            padding: .init(top: 20, left: 0, bottom: 0, right: 0)
+            padding: .init(top: 10, left: 0, bottom: 0, right: 0)
         )
         
         borderScrollViewMonths.fill(
@@ -193,6 +198,14 @@ extension ChartDetailController: TransactionsPresenterDelegate {
             self.transactions = transactions
             self.chartDetailView.transactions = transactions
             self.tableTransactions.reloadData()
+            
+            if transactions.count == 0 {
+                self.tableTransactions.backgroundView = self.emptyView
+                self.chartDetailView.isHidden = true
+            } else {
+                self.tableTransactions.backgroundView = nil
+                self.chartDetailView.isHidden = false
+            }
         }
     }
     

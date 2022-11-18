@@ -55,5 +55,6 @@
 "chart_description_page" = "Transactions of last month";
 "month" = "month";
 "transactions" = "transactions";
+"without_transactions" = "without transactions for the month";
 
 

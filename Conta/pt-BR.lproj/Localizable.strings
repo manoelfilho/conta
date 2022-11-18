@@ -55,3 +55,4 @@
 "chart_description_page" = "Movimentações do último mês";
 "month" = "mês";
 "transactions" = "transações";
+"without_transactions" = "Sem movimentações para o mês";

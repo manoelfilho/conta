@@ -1,4 +1,5 @@
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -10,10 +11,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = BaseTabBarController()
+        
         window?.makeKeyAndVisible()
-        
         window?.overrideUserInterfaceStyle = .dark
-        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

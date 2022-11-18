@@ -91,7 +91,13 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return buttonAdd
     }()
     
+    private lazy var emptyView: EmptyView = {
+        let emptyView: EmptyView = EmptyView()
+        return emptyView
+    }()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.configView()
@@ -158,7 +164,7 @@ extension TransactionsController {
             leading: view.leadingAnchor,
             bottom: nil,
             trailing: view.trailingAnchor,
-            padding: .init(top: 70, left: 20, bottom: 0, right: 20)
+            padding: .init(top: 50, left: 20, bottom: 0, right: 20)
         )
         
         borderScrollViewMonths.fill(
@@ -229,6 +235,13 @@ extension TransactionsController: TransactionsPresenterDelegate {
         DispatchQueue.main.async {
             self.transactions = transactions
             self.tableTransactions.reloadData()
+            
+            if transactions.count == 0 {
+                self.tableTransactions.backgroundView = self.emptyView
+            } else {
+                self.tableTransactions.backgroundView = nil
+            }
+            
         }
     }
     

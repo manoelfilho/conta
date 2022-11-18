@@ -20,6 +20,7 @@
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
 		BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */; };
 		BB63B90429232870003AFEB5 /* ChartDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63B90329232870003AFEB5 /* ChartDetailView.swift */; };
+		BB6445E62927AF580026EAA8 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6445E52927AF580026EAA8 /* EmptyView.swift */; };
 		BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */; };
 		BB80BBF42867F62500EECE44 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF32867F62500EECE44 /* ChartCell.swift */; };
 		BB80BBF628686BE300EECE44 /* AccountsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */; };
@@ -88,7 +89,6 @@
 		BBFC348D285A87D8000D1B25 /* SF-Pro-Display-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBFC347B285A87D7000D1B25 /* SF-Pro-Display-SemiboldItalic.otf */; };
 		BBFC348E285A87D8000D1B25 /* SF-Pro-Display-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBFC347C285A87D8000D1B25 /* SF-Pro-Display-LightItalic.otf */; };
 		BBFC348F285A87D8000D1B25 /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBFC347D285A87D8000D1B25 /* SF-Pro-Display-RegularItalic.otf */; };
-		BBFC3494285A8844000D1B25 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC3490285A8843000D1B25 /* Auth.swift */; };
 		F3B4519494F84D0CAF2643A4 /* Pods_conta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FB959F3C56A7D5823A9FEC /* Pods_conta.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +125,7 @@
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
 		BB63B90329232870003AFEB5 /* ChartDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDetailView.swift; sourceTree = "<group>"; };
+		BB6445E52927AF580026EAA8 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionPresenter.swift; sourceTree = "<group>"; };
 		BB80BBF32867F62500EECE44 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPresenter.swift; sourceTree = "<group>"; };
@@ -199,7 +200,6 @@
 		BBFC347B285A87D7000D1B25 /* SF-Pro-Display-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-SemiboldItalic.otf"; sourceTree = "<group>"; };
 		BBFC347C285A87D8000D1B25 /* SF-Pro-Display-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-LightItalic.otf"; sourceTree = "<group>"; };
 		BBFC347D285A87D8000D1B25 /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
-		BBFC3490285A8843000D1B25 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		E7CFB1677554047AAF903FC7 /* Pods-conta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conta.debug.xcconfig"; path = "Target Support Files/Pods-conta/Pods-conta.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +244,14 @@
 				BB26B0DF291DA5170006C70D /* ChartsPresenter.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		BB6445E42927AF360026EAA8 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				BB6445E52927AF580026EAA8 /* EmptyView.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		BB6D64192852311E00A710E7 /* Service */ = {
@@ -545,6 +553,7 @@
 				BBEC066028496975002D0311 /* Charts */,
 				BBF86256284BC08200A56B24 /* Transactions */,
 				BBCEB6662863D0E800D6C0ED /* Configurations */,
+				BB6445E42927AF360026EAA8 /* General */,
 				BBEC065D284966F0002D0311 /* Lib */,
 				BBEC063328495DE2002D0311 /* LaunchScreen.storyboard */,
 				BBEC062528495DDE002D0311 /* AppDelegate.swift */,
@@ -580,7 +589,6 @@
 		BBF861D8284AED4B00A56B24 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BBFC3490285A8843000D1B25 /* Auth.swift */,
 				BBF861D9284AED6000A56B24 /* Account.swift */,
 				BBF861DB284AED8100A56B24 /* Category.swift */,
 				BBF861DD284AEDAC00A56B24 /* Transaction.swift */,
@@ -815,10 +823,10 @@
 				BB80BC082868B38200EECE44 /* CategoryCell.swift in Sources */,
 				BB63B90429232870003AFEB5 /* ChartDetailView.swift in Sources */,
 				BBEC06622849699D002D0311 /* ChartsController.swift in Sources */,
-				BBFC3494285A8844000D1B25 /* Auth.swift in Sources */,
 				BBE714552867541C00CBD90F /* ConfigurationCell.swift in Sources */,
 				BBF861E0284B9F0800A56B24 /* StringExtension.swift in Sources */,
 				BBE7145B28677FA700CBD90F /* AccountsController.swift in Sources */,
+				BB6445E62927AF580026EAA8 /* EmptyView.swift in Sources */,
 				BBF861D1284A58FB00A56B24 /* LabelExtensions.swift in Sources */,
 				BB247C1E285D4FF1005AE1C3 /* DateExtensions.swift in Sources */,
 				BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */,
