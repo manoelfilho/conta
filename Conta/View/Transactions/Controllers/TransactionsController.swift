@@ -125,6 +125,7 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
     
     private func loadData(){
         transactionsPresenter.returnTransactions(with: filter.options)
+        transactionsPresenter.returnFirstOfAllTransactions()
     }
     
 }
@@ -229,7 +230,6 @@ extension TransactionsController: TransactionsPresenterDelegate {
             self.transactions = transactions
             self.tableTransactions.reloadData()
         }
-        transactionsPresenter.returnFirstOfAllTransactions()
     }
     
     func presentFirstOfAllTransactions(transaction: Transaction) {

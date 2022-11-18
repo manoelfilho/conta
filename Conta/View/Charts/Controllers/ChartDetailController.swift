@@ -2,6 +2,14 @@ import UIKit
 
 class ChartDetailController: UIViewController, UITableViewDataSource, UICollectionViewDataSource {
     
+    var titlePage: String? {
+        didSet {
+            if let titlePage = titlePage {
+                headerLabel.text = titlePage
+            }
+        }
+    }
+    
     private lazy var notificationCenter = TransactionNotifications.shared
     
     private lazy var filter = TransactionsFilter.shared
@@ -12,8 +20,24 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
         let transactionsPresenter: TransactionsPresenter = TransactionsPresenter(transactionService: transactionService)
         return transactionsPresenter
     }()
+
+    private lazy var headerStackView: UIStackView = {
+        let stack: UIStackView = UIStackView()
+        stack.alignment = .center
+        stack.distribution = .equalCentering
+        return stack
+    }()
+
+    private lazy var headerLabel: UILabel = {
+        let headerLabel: UILabel = .textLabel(text: "home_title_page".localized(), fontSize: 20, color: .white, type: .Bold)
+        return headerLabel
+    }()
+
+    private let closeButton: UIButton = .getCloseButton()
     
     var transactions: [Transaction] = []
+    
+    var accountId: UUID?
     
     var chartDetailView: ChartDetailView = ChartDetailView()
     
@@ -71,7 +95,7 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
         
         if transactions.count > 0 {
             let accountId = transactions[0].account!.id
-            filter.options["accountId"] = accountId
+            self.accountId = accountId
             transactionsPresenter.returnFirstOfAccountTransactions(accountId: accountId!)
         }
         
@@ -79,6 +103,11 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        filter.clearOptions()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         filter.clearOptions()
     }
     
@@ -91,18 +120,32 @@ extension ChartDetailController {
         
         //MARK: CONFIG VIEWS
         navigationController?.navigationBar.isHidden = true
-        view.backgroundColor = UIColor(named: K.colorBG1)
+        view.backgroundColor = UIColor(named: K.colorBG2)
         
-        chartDetailView.size(size: .init(width: UIScreen.main.bounds.width, height: 300))
+        chartDetailView.size(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width - 100))
+        
+        closeButton.addTarget(self, action: #selector(handleCloseClick), for: .touchUpInside)
+        
+        headerStackView.addArrangedSubview(headerLabel)
+        headerStackView.addArrangedSubview(closeButton)
         
         //MARK: VIEWS AND CONSTRAINTS
+        view.addSubview(headerStackView)
         view.addSubview(chartDetailView)
         view.addSubview(borderScrollViewMonths)
         view.addSubview(collectionViewMonths)
         view.addSubview(tableTransactions)
         
-        chartDetailView.fill(
+        headerStackView.fill(
             top: view.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: nil,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 70, left: 20, bottom: 0, right: 20)
+        )
+        
+        chartDetailView.fill(
+            top: headerStackView.bottomAnchor,
             leading: view.leadingAnchor,
             bottom: nil,
             trailing: view.trailingAnchor,
@@ -134,6 +177,10 @@ extension ChartDetailController {
             padding: .init(top: 5, left: 0, bottom: 0, right: 0)
         )
         
+    }
+    
+    @objc func handleCloseClick() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -184,13 +231,6 @@ extension ChartDetailController: TransactionsPresenterDelegate {
     
 }
 
-//MARK: FORMTRANSACTIONSCONTROLLER DELEGATE
-extension ChartDetailController: FormTransactionControllerProtocol {
-    
-    func didCloseFormTransaction() {}
-    
-}
-
 //MARK: TABLEVIEW DELEGATE
 extension ChartDetailController: UITableViewDelegate {
     
@@ -217,6 +257,7 @@ extension ChartDetailController: UICollectionViewDelegate, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         filter.options["month"] = months[indexPath.row].intMonth
         filter.options["year"] = months[indexPath.row].intYear
+        filter.options["accountId"] = self.accountId
         _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)
     }
     

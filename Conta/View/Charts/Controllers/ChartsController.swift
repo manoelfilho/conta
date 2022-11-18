@@ -5,10 +5,10 @@ class ChartsController: UICollectionViewController {
     
     var accounts: [String:[Transaction]] = [:]
     
-    private lazy var chartPresenter: ChartPresenter = {
+    private lazy var chartPresenter: ChartsPresenter = {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let accountService: AccountService = AccountService(viewContext: context)
-        let chartPresenter: ChartPresenter = ChartPresenter(accountService: accountService)
+        let chartPresenter: ChartsPresenter = ChartsPresenter(accountService: accountService)
         return chartPresenter
     }()
         
@@ -40,7 +40,7 @@ class ChartsController: UICollectionViewController {
     
 }
 
-extension ChartsController: ChartPresenterProtocol {
+extension ChartsController: ChartsPresenterProtocol {
     
     func presentAccounts(accounts: [String:[Transaction]]) {
         DispatchQueue.main.async {
@@ -58,10 +58,10 @@ extension ChartsController: ChartCellDelegate {
         let chartDetailController = ChartDetailController()
         
         chartDetailController.chartDetailView.transactions = transactions
-        chartDetailController.chartDetailView.title = account
+        chartDetailController.titlePage = account
         chartDetailController.transactions = transactions
         
-        chartDetailController.modalTransitionStyle = .coverVertical
+        chartDetailController.modalPresentationStyle = .fullScreen
         present(chartDetailController, animated: true, completion: nil)
     }
 }

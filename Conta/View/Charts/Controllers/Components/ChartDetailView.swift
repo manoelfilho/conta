@@ -4,14 +4,6 @@ import Charts
 
 class ChartDetailView: UIView, ChartViewDelegate {
     
-    var title: String? {
-        didSet {
-            if let title = title {
-                headerLabel.text = title
-            }
-        }
-    }
-    
     var transactions: [Transaction]? {
         didSet {
             if let transactions = transactions {
@@ -25,18 +17,6 @@ class ChartDetailView: UIView, ChartViewDelegate {
             }
         }
     }
-    
-    private lazy var headerStackView: UIStackView = {
-        let stack: UIStackView = UIStackView()
-        stack.alignment = .center
-        stack.distribution = .equalCentering
-        return stack
-    }()
-    
-    private lazy var headerLabel: UILabel = {
-        let headerLabel: UILabel = .textLabel(text: "home_title_page".localized(), fontSize: 18, color: .white, type: .Bold)
-        return headerLabel
-    }()
     
     private lazy var lineChartView: LineChartView = {
         var lineChartView = LineChartView()
@@ -117,10 +97,7 @@ class ChartDetailView: UIView, ChartViewDelegate {
     func configView() {
         
         clipsToBounds = true
-        
-        headerStackView.addArrangedSubview(headerLabel)
       
-        addSubview(headerStackView)
         addSubview(lineChartView)
         
         upStack.addArrangedSubview(upSymbol)
@@ -135,16 +112,8 @@ class ChartDetailView: UIView, ChartViewDelegate {
         
         addSubview(footerView)
         
-        headerStackView.fill(
-            top: topAnchor,
-            leading: leadingAnchor,
-            bottom: nil,
-            trailing: trailingAnchor,
-            padding: .init(top: 0, left: 20, bottom: 0, right: 20)
-        )
-        
         lineChartView.fill(
-            top: headerLabel.bottomAnchor,
+            top: topAnchor,
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,

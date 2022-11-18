@@ -1,22 +1,22 @@
 import Foundation
 
 
-protocol ChartPresenterProtocol: NSObjectProtocol {
+protocol ChartsPresenterProtocol: NSObjectProtocol {
     func presentAccounts(accounts: [String:[Transaction]])
     func presentErrorAccounts(message: String)
 }
 
-class ChartPresenter {
+class ChartsPresenter {
     
     private let accountService: AccountService
     
-    weak private var delegate: ChartPresenterProtocol?
+    weak private var delegate: ChartsPresenterProtocol?
     
     init(accountService: AccountService) {
         self.accountService = accountService
     }
     
-    func setViewDelegate(viewDelegate: ChartPresenterProtocol?){
+    func setViewDelegate(viewDelegate: ChartsPresenterProtocol?){
         self.delegate = viewDelegate
     }
     

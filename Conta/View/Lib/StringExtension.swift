@@ -43,7 +43,7 @@ extension String {
     }
     
     func fileName() -> String{
-        return URL(filePath: self).deletingPathExtension().lastPathComponent
+        return URL(string: self)!.deletingPathExtension().lastPathComponent
     }
     
     func fileExtension() -> String {

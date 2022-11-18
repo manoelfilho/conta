@@ -11,7 +11,7 @@
 		BB04DD09285A0F9D00287495 /* FormTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */; };
 		BB247C1E285D4FF1005AE1C3 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB247C1D285D4FF1005AE1C3 /* DateExtensions.swift */; };
 		BB26B0DB291C50670006C70D /* ImporterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0DA291C50670006C70D /* ImporterController.swift */; };
-		BB26B0E0291DA5170006C70D /* ChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0DF291DA5170006C70D /* ChartPresenter.swift */; };
+		BB26B0E0291DA5170006C70D /* ChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0DF291DA5170006C70D /* ChartsPresenter.swift */; };
 		BB26B0E4291DECC10006C70D /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */; };
 		BB38001B291E8EA40056DD78 /* RandonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38001A291E8EA40056DD78 /* RandonColors.swift */; };
 		BB380023291FCF720056DD78 /* HeaderChartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB380022291FCF720056DD78 /* HeaderChartsController.swift */; };
@@ -35,6 +35,7 @@
 		BB80BC0C2868FCDE00EECE44 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC0B2868FCDE00EECE44 /* Symbols.swift */; };
 		BB80BC0E2869159100EECE44 /* SymbolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BC0D2869159100EECE44 /* SymbolCell.swift */; };
 		BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8372B428628B5300A405CE /* TransactionsFilter.swift */; };
+		BB895AAC29270561002B38EC /* OnBoardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB895AAB29270561002B38EC /* OnBoardingController.swift */; };
 		BB8DE31D2850524600AB1077 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8DE31C2850524600AB1077 /* Constants.swift */; };
 		BB8F955A2862504700B654AC /* TransactionNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F95592862504700B654AC /* TransactionNotifications.swift */; };
 		BB9C630B2859715500FDF7B2 /* TransactionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C630A2859715500FDF7B2 /* TransactionsPresenter.swift */; };
@@ -115,7 +116,7 @@
 		BB04DD08285A0F9D00287495 /* FormTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTransactionPresenter.swift; sourceTree = "<group>"; };
 		BB247C1D285D4FF1005AE1C3 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		BB26B0DA291C50670006C70D /* ImporterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImporterController.swift; path = Conta/View/Configurations/Controllers/Importer/ImporterController.swift; sourceTree = SOURCE_ROOT; };
-		BB26B0DF291DA5170006C70D /* ChartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPresenter.swift; sourceTree = "<group>"; };
+		BB26B0DF291DA5170006C70D /* ChartsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPresenter.swift; sourceTree = "<group>"; };
 		BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		BB38001A291E8EA40056DD78 /* RandonColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandonColors.swift; sourceTree = "<group>"; };
 		BB380022291FCF720056DD78 /* HeaderChartsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderChartsController.swift; sourceTree = "<group>"; };
@@ -139,6 +140,8 @@
 		BB80BC0B2868FCDE00EECE44 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		BB80BC0D2869159100EECE44 /* SymbolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCell.swift; sourceTree = "<group>"; };
 		BB8372B428628B5300A405CE /* TransactionsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsFilter.swift; sourceTree = "<group>"; };
+		BB895AAA2926C359002B38EC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		BB895AAB29270561002B38EC /* OnBoardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingController.swift; sourceTree = "<group>"; };
 		BB8DE31C2850524600AB1077 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB8F95592862504700B654AC /* TransactionNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNotifications.swift; sourceTree = "<group>"; };
 		BB9C63032859396900FDF7B2 /* conta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = conta.entitlements; path = conta/conta.entitlements; sourceTree = "<group>"; };
@@ -159,7 +162,6 @@
 		BBEC062728495DDE002D0311 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BBEC062F28495DDE002D0311 /* conta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = conta.xcdatamodel; sourceTree = "<group>"; };
 		BBEC063128495DE2002D0311 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BBEC063428495DE2002D0311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBEC063628495DE2002D0311 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBEC063B28495DE2002D0311 /* contaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBEC063F28495DE2002D0311 /* contaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contaTests.swift; sourceTree = "<group>"; };
@@ -236,12 +238,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		BB26B0DE291DA4FC0006C70D /* Chart */ = {
+		BB26B0DE291DA4FC0006C70D /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				BB26B0DF291DA5170006C70D /* ChartPresenter.swift */,
+				BB26B0DF291DA5170006C70D /* ChartsPresenter.swift */,
 			);
-			path = Chart;
+			path = Charts;
 			sourceTree = "<group>";
 		};
 		BB6D64192852311E00A710E7 /* Service */ = {
@@ -265,6 +267,14 @@
 				BB38001A291E8EA40056DD78 /* RandonColors.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		BB8E7FD02925A64300F61BF9 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				BB895AAB29270561002B38EC /* OnBoardingController.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		BB8F95582862502100B654AC /* Notifications */ = {
@@ -326,9 +336,9 @@
 		BB9C630928596E5900FDF7B2 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				BB26B0DE291DA4FC0006C70D /* Chart */,
-				BBE7145D2867802200CBD90F /* Configurations */,
+				BB26B0DE291DA4FC0006C70D /* Charts */,
 				BBE7145C28677FFD00CBD90F /* Transactions */,
+				BBE7145D2867802200CBD90F /* Configurations */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -531,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				BB9C630728596DE200FDF7B2 /* Base */,
+				BB8E7FD02925A64300F61BF9 /* OnBoarding */,
 				BBEC066028496975002D0311 /* Charts */,
 				BBF86256284BC08200A56B24 /* Transactions */,
 				BBCEB6662863D0E800D6C0ED /* Configurations */,
@@ -605,7 +616,7 @@
 				BBEC061E28495DDE002D0311 /* Sources */,
 				BBEC061F28495DDE002D0311 /* Frameworks */,
 				BBEC062028495DDE002D0311 /* Resources */,
-				422AAACA093533CF95F8184E /* [CP] Embed Pods Frameworks */,
+				CC8B7A033E45EE22ED80BE09 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -681,7 +692,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				"pt-BR",
 			);
 			mainGroup = BBEC061928495DDE002D0311;
@@ -742,7 +752,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		422AAACA093533CF95F8184E /* [CP] Embed Pods Frameworks */ = {
+		CC8B7A033E45EE22ED80BE09 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -800,6 +810,7 @@
 				BBF861DA284AED6000A56B24 /* Account.swift in Sources */,
 				BBCAFA9A28496FA300C0F683 /* ColorExtensions.swift in Sources */,
 				BB04DD09285A0F9D00287495 /* FormTransactionPresenter.swift in Sources */,
+				BB895AAC29270561002B38EC /* OnBoardingController.swift in Sources */,
 				BBF8625C284C13AC00A56B24 /* ControllerExtensions.swift in Sources */,
 				BB80BC082868B38200EECE44 /* CategoryCell.swift in Sources */,
 				BB63B90429232870003AFEB5 /* ChartDetailView.swift in Sources */,
@@ -827,7 +838,7 @@
 				BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */,
 				BB38001B291E8EA40056DD78 /* RandonColors.swift in Sources */,
 				BB04DD07285A0D6600287495 /* AccountService.swift in Sources */,
-				BB26B0E0291DA5170006C70D /* ChartPresenter.swift in Sources */,
+				BB26B0E0291DA5170006C70D /* ChartsPresenter.swift in Sources */,
 				BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */,
 				BBEC063028495DDE002D0311 /* conta.xcdatamodeld in Sources */,
 				BB80BC0A2868EAB700EECE44 /* SymbolPicker.swift in Sources */,
@@ -884,7 +895,7 @@
 		BBEC063328495DE2002D0311 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBEC063428495DE2002D0311 /* Base */,
+				BB895AAA2926C359002B38EC /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -952,7 +963,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1007,7 +1018,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1038,7 +1049,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1074,7 +1085,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1098,7 +1109,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 56EQ48SVZJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1118,7 +1129,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 56EQ48SVZJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1137,7 +1148,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 56EQ48SVZJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1156,7 +1167,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 56EQ48SVZJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
