@@ -36,7 +36,12 @@ Todas as informações ficam salvas no CoreData do iPhone. Nada é compartilhado
 
 
 ### Especificações
-App desenvolvido para iPhones com iOS na versão 16.0 ou superior. Código feito de modo programático sem o uso de Storyboards e auto-layout. Segue o padrão MVP - Model View Presenter. O app usa o recurso do CoreData e salva os dados no próprio aparelho. O projeto tem como objetivo permitir a importação de extratos bancários (contas e cartões) de arquivos salvos no iCloud Drive.
+App desenvolvido para iPhones com iOS na versão 15.0 ou superior. Código feito de modo programático sem o uso de Storyboards e auto-layout. Segue o padrão MVP - Model View Presenter. 
+O app usa o recurso do CoreData e salva os dados no próprio aparelho. O projeto tem como objetivo permitir a importação de extratos bancários (contas e cartões) de arquivos salvos no iCloud Drive.
+
+###Dependências
+
+- Charts -> https://github.com/danielgindi/Charts
 
 ### Ajustes e melhorias
 
