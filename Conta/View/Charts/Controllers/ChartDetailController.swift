@@ -73,8 +73,8 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
         return collectionViewMonths
     }()
     
-    private lazy var emptyView: EmptyView = {
-        let emptyView: EmptyView = EmptyView()
+    private lazy var emptyView: EmptyTableView = {
+        let emptyView: EmptyTableView = EmptyTableView()
         return emptyView
     }()
     
@@ -102,6 +102,9 @@ class ChartDetailController: UIViewController, UITableViewDataSource, UICollecti
             let accountId = transactions[0].account!.id
             self.accountId = accountId
             transactionsPresenter.returnFirstOfAccountTransactions(accountId: accountId!)
+        } else {
+            chartDetailView.isHidden = true
+            tableTransactions.backgroundView = emptyView
         }
         
     }
@@ -268,6 +271,7 @@ extension ChartDetailController: UITableViewDelegate {
 extension ChartDetailController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         filter.options["month"] = months[indexPath.row].intMonth
         filter.options["year"] = months[indexPath.row].intYear
         filter.options["accountId"] = self.accountId

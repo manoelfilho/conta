@@ -14,9 +14,7 @@ class ConfigurationsController: UIViewController{
         headerView.backgroundColor = UIColor(named: K.colorBG1)
         let headerStackView = UIStackView()
         let nameLabel: UILabel = .textLabel(text: "configurations_title_page".localized(), fontSize: 30, color: .white, type: .Semibold)
-        let userImage = UIImageView(image: UIImage(named: "icon_gear"))
         headerStackView.addArrangedSubview(nameLabel)
-        headerStackView.addArrangedSubview(userImage)
         headerView.addSubview(headerStackView)
         headerStackView.distribution = .equalCentering
         headerStackView.alignment = .center

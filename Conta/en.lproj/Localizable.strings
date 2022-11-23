@@ -1,8 +1,8 @@
 "home_search" = "Search";
 "symbolpicker_search" = "Search";
-"new_transaction_cancell" = "Cancell";
+"new_transaction_cancell" = "Cancel";
 "new_transaction_clear" = "Clear";
-"new_transaction_value" = "$ 0";
+"new_transaction_value" = "$ 0.00";
 "new_transaction_credit" = "Credit";
 "new_transaction_debit" = "Debit";
 "new_transaction_account" = "Account";
@@ -23,7 +23,7 @@
 "delete_transaction" = "Delete";
 "confirm_removal_transaction" = "Confirm removal?";
 "confirm_removal_ok" = "Ok";
-"confirm_removal_not" = "Cancell";
+"confirm_removal_not" = "Cancel";
 "configurations_title_page" = "Configurations";
 "configurations_personal_data" = "Personal data";
 "configurations_account" = "Accounts";
@@ -35,7 +35,6 @@
 "auth_register_email" = "Email";
 "auth_save_button" = "Save";
 "accounts_title_page" = "Accounts";
-"label_foot_account" = "XXX";
 "account_register_title" = "Account";
 "account_register_initial_value" = "$ 0.00";
 "categories_title_page" = "Categories";
@@ -56,5 +55,9 @@
 "month" = "month";
 "transactions" = "transactions";
 "without_transactions" = "without transactions for the month";
+"without_chart_data" = "no transactions";
+"on_boarding_text_page_one" = "Locate your debits and credits grouped by accounts, categories and months";
+"on_boarding_text_page_two" = "Follow the evolution of expenses month by month with the help of the line chart";
+"on_boarding_text_page_three" = "Import bank statements (.OFC files) from your bank or card";
 
 

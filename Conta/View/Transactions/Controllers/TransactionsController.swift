@@ -91,8 +91,8 @@ class TransactionsController: UIViewController, UITableViewDataSource, UICollect
         return buttonAdd
     }()
     
-    private lazy var emptyView: EmptyView = {
-        let emptyView: EmptyView = EmptyView()
+    private lazy var emptyView: EmptyTableView = {
+        let emptyView: EmptyTableView = EmptyTableView()
         return emptyView
     }()
     
@@ -349,6 +349,7 @@ extension TransactionsController: UITableViewDelegate {
 extension TransactionsController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         filter.options["month"] = months[indexPath.row].intMonth
         filter.options["year"] = months[indexPath.row].intYear
         _ = try? notificationCenter.postNotification(TransactionsFilter.nameNotification, object: filter.options)

@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class EmptyView: UIView {
+class EmptyTableView: UIView {
     
     override init(frame: CGRect) {
        super.init(frame: frame)
@@ -13,7 +13,7 @@ class EmptyView: UIView {
     }
     
     func configView(){
-        let label: UILabel = .textLabel(text: "without_transactions".localized().uppercased(), fontSize: 20, color: UIColor(named: K.colorText)!)
+        let label: UILabel = .textLabel(text: "without_transactions".localized().uppercased(), fontSize: 15, color: UIColor(named: K.colorText)!)
         addSubview(label)
         label.centralizeSuperview()
     }

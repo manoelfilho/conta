@@ -20,7 +20,9 @@
 		BB5D6349284D9EB9001103DE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */; };
 		BB5D634D284E3AB2001103DE /* ButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */; };
 		BB63B90429232870003AFEB5 /* ChartDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63B90329232870003AFEB5 /* ChartDetailView.swift */; };
-		BB6445E62927AF580026EAA8 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6445E52927AF580026EAA8 /* EmptyView.swift */; };
+		BB6445E62927AF580026EAA8 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6445E52927AF580026EAA8 /* EmptyTableView.swift */; };
+		BB6445E82928E91B0026EAA8 /* ChartCellEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6445E72928E91B0026EAA8 /* ChartCellEmpty.swift */; };
+		BB6445EA2928EBF20026EAA8 /* EmptyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6445E92928EBF20026EAA8 /* EmptyChartView.swift */; };
 		BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */; };
 		BB80BBF42867F62500EECE44 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF32867F62500EECE44 /* ChartCell.swift */; };
 		BB80BBF628686BE300EECE44 /* AccountsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */; };
@@ -44,6 +46,12 @@
 		BBAD8E5E2852EE2A000074D9 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAD8E5D2852EE2A000074D9 /* ViewExtensions.swift */; };
 		BBB811862849BDC300BC67EF /* TransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB811852849BDC300BC67EF /* TransactionsController.swift */; };
 		BBB81189284A532200BC67EF /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB81188284A532200BC67EF /* TransactionCell.swift */; };
+		BBBA6279292E665100766712 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA6278292E665100766712 /* ViewController1.swift */; };
+		BBBA627B292E681D00766712 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA627A292E681D00766712 /* ViewController2.swift */; };
+		BBBA627D292E6CC900766712 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA627C292E6CC900766712 /* ViewController3.swift */; };
+		BBBA628D292E6F4300766712 /* upload2.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBA628A292E6F4200766712 /* upload2.json */; };
+		BBBA628E292E6F4300766712 /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBA628B292E6F4300766712 /* list.json */; };
+		BBBA628F292E6F4300766712 /* chart.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBA628C292E6F4300766712 /* chart.json */; };
 		BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0F0285B63B200945CBB /* CategoryService.swift */; };
 		BBC4B0FD285B83BC00945CBB /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0FC285B83BC00945CBB /* ServiceError.swift */; };
 		BBCAFA9A28496FA300C0F683 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */; };
@@ -125,7 +133,9 @@
 		BB5D6348284D9EB9001103DE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		BB5D634C284E3AB2001103DE /* ButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtensions.swift; sourceTree = "<group>"; };
 		BB63B90329232870003AFEB5 /* ChartDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDetailView.swift; sourceTree = "<group>"; };
-		BB6445E52927AF580026EAA8 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		BB6445E52927AF580026EAA8 /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
+		BB6445E72928E91B0026EAA8 /* ChartCellEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartCellEmpty.swift; sourceTree = "<group>"; };
+		BB6445E92928EBF20026EAA8 /* EmptyChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyChartView.swift; sourceTree = "<group>"; };
 		BB77C0BC286119E100280E05 /* FilterTransactionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionPresenter.swift; sourceTree = "<group>"; };
 		BB80BBF32867F62500EECE44 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		BB80BBF528686BE300EECE44 /* AccountsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPresenter.swift; sourceTree = "<group>"; };
@@ -151,6 +161,12 @@
 		BBAD8E5D2852EE2A000074D9 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		BBB811852849BDC300BC67EF /* TransactionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsController.swift; sourceTree = "<group>"; };
 		BBB81188284A532200BC67EF /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		BBBA6278292E665100766712 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		BBBA627A292E681D00766712 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		BBBA627C292E6CC900766712 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		BBBA628A292E6F4200766712 /* upload2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = upload2.json; sourceTree = "<group>"; };
+		BBBA628B292E6F4300766712 /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
+		BBBA628C292E6F4300766712 /* chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chart.json; sourceTree = "<group>"; };
 		BBC4B0F0285B63B200945CBB /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		BBC4B0FC285B83BC00945CBB /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
@@ -249,7 +265,8 @@
 		BB6445E42927AF360026EAA8 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				BB6445E52927AF580026EAA8 /* EmptyView.swift */,
+				BB6445E52927AF580026EAA8 /* EmptyTableView.swift */,
+				BB6445E92928EBF20026EAA8 /* EmptyChartView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -270,6 +287,7 @@
 			children = (
 				BB380022291FCF720056DD78 /* HeaderChartsController.swift */,
 				BB80BBF32867F62500EECE44 /* ChartCell.swift */,
+				BB6445E72928E91B0026EAA8 /* ChartCellEmpty.swift */,
 				BB63B90329232870003AFEB5 /* ChartDetailView.swift */,
 				BB26B0E3291DECC10006C70D /* CustomMarkerView.swift */,
 				BB38001A291E8EA40056DD78 /* RandonColors.swift */,
@@ -281,6 +299,9 @@
 			isa = PBXGroup;
 			children = (
 				BB895AAB29270561002B38EC /* OnBoardingController.swift */,
+				BBBA6278292E665100766712 /* ViewController1.swift */,
+				BBBA627A292E681D00766712 /* ViewController2.swift */,
+				BBBA627C292E6CC900766712 /* ViewController3.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -349,6 +370,16 @@
 				BBE7145D2867802200CBD90F /* Configurations */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		BBBA6271292E65A500766712 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				BBBA628C292E6F4300766712 /* chart.json */,
+				BBBA628B292E6F4300766712 /* list.json */,
+				BBBA628A292E6F4200766712 /* upload2.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		BBCEB6662863D0E800D6C0ED /* Configurations */ = {
@@ -512,6 +543,7 @@
 				BBF861D8284AED4B00A56B24 /* Model */,
 				BBEC065A284962C6002D0311 /* View */,
 				BB9C630928596E5900FDF7B2 /* Presenters */,
+				BBBA6271292E65A500766712 /* Lottie */,
 				BBDC20B0285A752F00E0A5D1 /* Fonts */,
 				BBEC063128495DE2002D0311 /* Assets.xcassets */,
 				BBEC063628495DE2002D0311 /* Info.plist */,
@@ -726,11 +758,14 @@
 				BBFC3486285A87D8000D1B25 /* SF-Pro-Display-Medium.otf in Resources */,
 				BBFC348C285A87D8000D1B25 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				BBFC347F285A87D8000D1B25 /* SF-Pro-Display-Thin.otf in Resources */,
+				BBBA628D292E6F4300766712 /* upload2.json in Resources */,
 				BBFC348B285A87D8000D1B25 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				BBFC348D285A87D8000D1B25 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 				BBFC3485285A87D8000D1B25 /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				BBFC3480285A87D8000D1B25 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
+				BBBA628F292E6F4300766712 /* chart.json in Resources */,
 				BBFC348A285A87D8000D1B25 /* SF-Pro-Display-Bold.otf in Resources */,
+				BBBA628E292E6F4300766712 /* list.json in Resources */,
 				BBFC3483285A87D8000D1B25 /* SF-Pro-Display-Black.otf in Resources */,
 				BBEC063528495DE2002D0311 /* LaunchScreen.storyboard in Resources */,
 				BBFC3482285A87D8000D1B25 /* SF-Pro-Display-Heavy.otf in Resources */,
@@ -826,7 +861,7 @@
 				BBE714552867541C00CBD90F /* ConfigurationCell.swift in Sources */,
 				BBF861E0284B9F0800A56B24 /* StringExtension.swift in Sources */,
 				BBE7145B28677FA700CBD90F /* AccountsController.swift in Sources */,
-				BB6445E62927AF580026EAA8 /* EmptyView.swift in Sources */,
+				BB6445E62927AF580026EAA8 /* EmptyTableView.swift in Sources */,
 				BBF861D1284A58FB00A56B24 /* LabelExtensions.swift in Sources */,
 				BB247C1E285D4FF1005AE1C3 /* DateExtensions.swift in Sources */,
 				BB8372B528628B5300A405CE /* TransactionsFilter.swift in Sources */,
@@ -838,9 +873,12 @@
 				BBB811862849BDC300BC67EF /* TransactionsController.swift in Sources */,
 				BBB81189284A532200BC67EF /* TransactionCell.swift in Sources */,
 				BBEC062628495DDE002D0311 /* AppDelegate.swift in Sources */,
+				BBBA6279292E665100766712 /* ViewController1.swift in Sources */,
+				BBBA627B292E681D00766712 /* ViewController2.swift in Sources */,
 				BB80BC042868AF5A00EECE44 /* CategoriesController.swift in Sources */,
 				BB9C630D285971EE00FDF7B2 /* TransactionService.swift in Sources */,
 				BB80BBFC2868812D00EECE44 /* FormAccountController.swift in Sources */,
+				BB6445E82928E91B0026EAA8 /* ChartCellEmpty.swift in Sources */,
 				BB80BC062868B12800EECE44 /* FormCategoryController.swift in Sources */,
 				BB26B0DB291C50670006C70D /* ImporterController.swift in Sources */,
 				BB5D6347284D099B001103DE /* ScrollMonthCell.swift in Sources */,
@@ -848,7 +886,9 @@
 				BB04DD07285A0D6600287495 /* AccountService.swift in Sources */,
 				BB26B0E0291DA5170006C70D /* ChartsPresenter.swift in Sources */,
 				BBEC062828495DDE002D0311 /* SceneDelegate.swift in Sources */,
+				BB6445EA2928EBF20026EAA8 /* EmptyChartView.swift in Sources */,
 				BBEC063028495DDE002D0311 /* conta.xcdatamodeld in Sources */,
+				BBBA627D292E6CC900766712 /* ViewController3.swift in Sources */,
 				BB80BC0A2868EAB700EECE44 /* SymbolPicker.swift in Sources */,
 				BBF861DC284AED8100A56B24 /* Category.swift in Sources */,
 				BBAD8E5E2852EE2A000074D9 /* ViewExtensions.swift in Sources */,

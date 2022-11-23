@@ -12,6 +12,12 @@ class K {
     static let colorRedTwo = "Red2"
     static let colorRedThree = "Red3"
     
+    static let colorOrangeOne = "Orange1"
+    static let colorOrangeTwo = "Orange2"
+    
+    static let colorYellowOne = "Yellow1"
+    static let colorYellowTwo = "Yellow2"
+    
     static let colorBG1 = "BG1"
     static let colorBG2 = "BG2"
     static let colorBG3 = "BG3"

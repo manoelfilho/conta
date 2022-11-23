@@ -12,12 +12,10 @@ class HeaderChartsController: UICollectionReusableView {
         let nameAndDescriptionStack = UIStackView()
         let nameLabel: UILabel = .textLabel(text: "chart_title_page".localized(), fontSize: 30, color: .white, type: .Semibold)
         let descriptionLabel: UILabel = .textLabel(text: "chart_description_page".localized(), fontSize: 15, color: .white, type: .Regular)
-        let userImage = UIImageView(image: UIImage(named: "icon_wallet"))
         nameAndDescriptionStack.addArrangedSubview(nameLabel)
         nameAndDescriptionStack.addArrangedSubview(descriptionLabel)
         nameAndDescriptionStack.axis = .vertical
         headerStackView.addArrangedSubview(nameAndDescriptionStack)
-        headerStackView.addArrangedSubview(userImage)
         headerView.addSubview(headerStackView)
         headerStackView.distribution = .equalCentering
         headerStackView.alignment = .center

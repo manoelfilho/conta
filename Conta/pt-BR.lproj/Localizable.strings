@@ -2,7 +2,7 @@
 "symbolpicker_search" = "Buscar - somente inglês";
 "new_transaction_cancell" = "Cancelar";
 "new_transaction_clear" = "Limpar";
-"new_transaction_value" = "R$ 0";
+"new_transaction_value" = "R$ 0.00";
 "new_transaction_credit" = "Crédito";
 "new_transaction_debit" = "Débito";
 "new_transaction_account" = "Conta";
@@ -35,7 +35,6 @@
 "auth_register_email" = "Email";
 "auth_save_button" = "Salvar";
 "accounts_title_page" = "Contas";
-"label_foot_account" = "XXX";
 "account_register_title" = "Conta";
 "account_register_initial_value" = "R$ 0,00";
 "categories_title_page" = "Categorias";
@@ -56,3 +55,7 @@
 "month" = "mês";
 "transactions" = "transações";
 "without_transactions" = "Sem movimentações para o mês";
+"without_chart_data" = "Nenhuma transação";
+"on_boarding_text_page_one" = "Localize seus débitos e créditos agrupados por contas, categorias e meses";
+"on_boarding_text_page_two" = "Acompanhe a evolução dos gastos mês a mês de com auxílio do gráfico de linha";
+"on_boarding_text_page_three" = "Importe extratos bancários (arquivos .OFC) do seu banco ou cartão";

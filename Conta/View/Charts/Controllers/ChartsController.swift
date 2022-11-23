@@ -34,6 +34,7 @@ class ChartsController: UICollectionViewController {
     func configView() {
         collectionView.backgroundColor = UIColor(named: K.colorBG1)
         collectionView.register(ChartCell.self, forCellWithReuseIdentifier: ChartCell.chartCell)
+        collectionView.register(ChartCellEmpty.self, forCellWithReuseIdentifier: ChartCellEmpty.chartCellEmpty)
         collectionView.register(HeaderChartsController.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderChartsController.homeHeaderCell)
         collectionView.showsVerticalScrollIndicator = false
     }
@@ -79,12 +80,20 @@ extension ChartsController{
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCell.chartCell, for: indexPath) as! ChartCell
-        cell.setViewDelegate(chartCellDelegate: self)
         let title = Array(accounts.keys)[indexPath.row]
-        cell.title = title
-        cell.transactions = accounts[title]
-        return cell
+        let transactions = accounts[title]
+        
+        if transactions!.count > 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCell.chartCell, for: indexPath) as! ChartCell
+            cell.setViewDelegate(chartCellDelegate: self)
+            cell.title = title
+            cell.transactions = transactions
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartCellEmpty.chartCellEmpty, for: indexPath) as! ChartCellEmpty
+            cell.title = title
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

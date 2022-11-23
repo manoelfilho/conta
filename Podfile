@@ -7,5 +7,6 @@ target 'conta' do
 
   # Pods for conta
   pod 'Charts'
+  pod 'lottie-ios'
 
 end
