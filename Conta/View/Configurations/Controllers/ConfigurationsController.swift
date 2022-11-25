@@ -6,7 +6,8 @@ class ConfigurationsController: UIViewController{
     private lazy var optionsTable: [String:String] = [
         "wallet.pass":"configurations_account",
         "tag":"configurations_categories",
-        "gear":"configurations_import"
+        "gear":"configurations_import",
+        "info.circle":"configurations_info"
     ]
     
     private lazy var headerView: UIView = {
@@ -106,6 +107,16 @@ extension ConfigurationsController: UITableViewDelegate, UITableViewDataSource {
             categoriesController.modalTransitionStyle = .coverVertical
             self.navigationController?.pushViewController(categoriesController, animated: true)
             
+        case 2:
+            let importerController = ImporterController()
+            importerController.modalTransitionStyle = .coverVertical
+            self.navigationController?.pushViewController(importerController, animated: true)
+            
+        case 3:
+            let infoController = InfoController()
+            infoController.modalTransitionStyle = .coverVertical
+            self.navigationController?.pushViewController(infoController, animated: true)
+            
         default:
             let importerController = ImporterController()
             importerController.modalTransitionStyle = .coverVertical
@@ -126,7 +137,9 @@ extension ConfigurationsController: UITableViewDelegate, UITableViewDataSource {
                 cell.configCell = ConfigCell(title: self.optionsTable["tag"]?.localized(), symbolName: "tag.fill", color: "#FFC542")
             case 2:
                 cell.configCell = ConfigCell(title: self.optionsTable["gear"]?.localized(), symbolName: "gear", color: "#005DF2")
-            default:
+            case 3:
+                cell.configCell = ConfigCell(title: self.optionsTable["info.circle"]?.localized(), symbolName: "info.circle", color: "#25C685")
+                default:
                 cell.configCell = ConfigCell(title: self.optionsTable["person"]?.localized(), symbolName: "person", color: "#FF565E")
         }
         return cell

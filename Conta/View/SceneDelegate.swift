@@ -10,7 +10,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = OnBoardingController()
+        
+        let defaults = UserDefaults.standard
+        let closeOnBoarding = defaults.bool(forKey: "closeOnBoarding") as? Bool ?? false
+       
+        if closeOnBoarding {
+            window?.rootViewController = BaseTabBarController()
+        } else {
+            window?.rootViewController = OnBoardingController()
+        }
         
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = .dark

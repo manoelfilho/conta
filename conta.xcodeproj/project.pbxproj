@@ -52,11 +52,14 @@
 		BBBA628D292E6F4300766712 /* upload2.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBA628A292E6F4200766712 /* upload2.json */; };
 		BBBA628E292E6F4300766712 /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBA628B292E6F4300766712 /* list.json */; };
 		BBBA628F292E6F4300766712 /* chart.json in Resources */ = {isa = PBXBuildFile; fileRef = BBBA628C292E6F4300766712 /* chart.json */; };
+		BBBA6291292E792A00766712 /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBA6290292E792A00766712 /* ViewController4.swift */; };
 		BBC4B0F1285B63B200945CBB /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0F0285B63B200945CBB /* CategoryService.swift */; };
 		BBC4B0FD285B83BC00945CBB /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4B0FC285B83BC00945CBB /* ServiceError.swift */; };
 		BBCAFA9A28496FA300C0F683 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */; };
 		BBCEB6682863D11400D6C0ED /* ConfigurationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCEB6672863D11400D6C0ED /* ConfigurationsController.swift */; };
 		BBD2A9B32860F27A002F77B8 /* FilterTransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */; };
+		BBD43A07292E9FD2008D7B68 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD43A06292E9FD2008D7B68 /* InfoController.swift */; };
+		BBD43A09292EA601008D7B68 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD43A08292EA601008D7B68 /* InfoCell.swift */; };
 		BBE714552867541C00CBD90F /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE714542867541C00CBD90F /* ConfigurationCell.swift */; };
 		BBE7145B28677FA700CBD90F /* AccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE7145A28677FA700CBD90F /* AccountsController.swift */; };
 		BBEC062628495DDE002D0311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062528495DDE002D0311 /* AppDelegate.swift */; };
@@ -64,9 +67,6 @@
 		BBEC063028495DDE002D0311 /* conta.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBEC062E28495DDE002D0311 /* conta.xcdatamodeld */; };
 		BBEC063228495DE2002D0311 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBEC063128495DE2002D0311 /* Assets.xcassets */; };
 		BBEC063528495DE2002D0311 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBEC063328495DE2002D0311 /* LaunchScreen.storyboard */; };
-		BBEC064028495DE2002D0311 /* contaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC063F28495DE2002D0311 /* contaTests.swift */; };
-		BBEC064A28495DE2002D0311 /* contaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC064928495DE2002D0311 /* contaUITests.swift */; };
-		BBEC064C28495DE2002D0311 /* contaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC064B28495DE2002D0311 /* contaUITestsLaunchTests.swift */; };
 		BBEC065C2849662B002D0311 /* ConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC065B2849662B002D0311 /* ConstraintExtensions.swift */; };
 		BBEC065F28496773002D0311 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC065E28496773002D0311 /* BaseTabBarController.swift */; };
 		BBEC06622849699D002D0311 /* ChartsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC06612849699D002D0311 /* ChartsController.swift */; };
@@ -99,23 +99,6 @@
 		BBFC348F285A87D8000D1B25 /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BBFC347D285A87D8000D1B25 /* SF-Pro-Display-RegularItalic.otf */; };
 		F3B4519494F84D0CAF2643A4 /* Pods_conta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FB959F3C56A7D5823A9FEC /* Pods_conta.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BBEC063C28495DE2002D0311 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BBEC061A28495DDE002D0311 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BBEC062128495DDE002D0311;
-			remoteInfo = conta;
-		};
-		BBEC064628495DE2002D0311 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BBEC061A28495DDE002D0311 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BBEC062128495DDE002D0311;
-			remoteInfo = conta;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4164F69DC4EF0BEB15FF74ED /* Pods-conta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conta.release.xcconfig"; path = "Target Support Files/Pods-conta/Pods-conta.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,11 +150,14 @@
 		BBBA628A292E6F4200766712 /* upload2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = upload2.json; sourceTree = "<group>"; };
 		BBBA628B292E6F4300766712 /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
 		BBBA628C292E6F4300766712 /* chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chart.json; sourceTree = "<group>"; };
+		BBBA6290292E792A00766712 /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		BBC4B0F0285B63B200945CBB /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		BBC4B0FC285B83BC00945CBB /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		BBCAFA9928496FA300C0F683 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		BBCEB6672863D11400D6C0ED /* ConfigurationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsController.swift; sourceTree = "<group>"; };
 		BBD2A9B22860F27A002F77B8 /* FilterTransactionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterTransactionController.swift; sourceTree = "<group>"; };
+		BBD43A06292E9FD2008D7B68 /* InfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
+		BBD43A08292EA601008D7B68 /* InfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		BBE714542867541C00CBD90F /* ConfigurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCell.swift; sourceTree = "<group>"; };
 		BBE7145A28677FA700CBD90F /* AccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsController.swift; sourceTree = "<group>"; };
 		BBEC062228495DDE002D0311 /* conta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,11 +166,6 @@
 		BBEC062F28495DDE002D0311 /* conta.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = conta.xcdatamodel; sourceTree = "<group>"; };
 		BBEC063128495DE2002D0311 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBEC063628495DE2002D0311 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BBEC063B28495DE2002D0311 /* contaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBEC063F28495DE2002D0311 /* contaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contaTests.swift; sourceTree = "<group>"; };
-		BBEC064528495DE2002D0311 /* contaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = contaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBEC064928495DE2002D0311 /* contaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contaUITests.swift; sourceTree = "<group>"; };
-		BBEC064B28495DE2002D0311 /* contaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BBEC065B2849662B002D0311 /* ConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintExtensions.swift; sourceTree = "<group>"; };
 		BBEC065E28496773002D0311 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		BBEC06612849699D002D0311 /* ChartsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsController.swift; sourceTree = "<group>"; };
@@ -225,20 +206,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3B4519494F84D0CAF2643A4 /* Pods_conta.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEC063828495DE2002D0311 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEC064228495DE2002D0311 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +269,7 @@
 				BBBA6278292E665100766712 /* ViewController1.swift */,
 				BBBA627A292E681D00766712 /* ViewController2.swift */,
 				BBBA627C292E6CC900766712 /* ViewController3.swift */,
+				BBBA6290292E792A00766712 /* ViewController4.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -382,6 +350,14 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		BBBA6292292E905100766712 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				BBD43A06292E9FD2008D7B68 /* InfoController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		BBCEB6662863D0E800D6C0ED /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				BBE714542867541C00CBD90F /* ConfigurationCell.swift */,
+				BBD43A08292EA601008D7B68 /* InfoCell.swift */,
 				BB80BBF92868735800EECE44 /* AccountCell.swift */,
 				BB80BC072868B38200EECE44 /* CategoryCell.swift */,
 				BB80BC0D2869159100EECE44 /* SymbolCell.swift */,
@@ -409,6 +386,7 @@
 				BBE7145728677F1300CBD90F /* Accounts */,
 				BBE7145828677F2200CBD90F /* Categories */,
 				BBE7145928677F5500CBD90F /* Importer */,
+				BBBA6292292E905100766712 /* Info */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -516,8 +494,6 @@
 			children = (
 				BB9C63032859396900FDF7B2 /* conta.entitlements */,
 				BBEC062428495DDE002D0311 /* Conta */,
-				BBEC063E28495DE2002D0311 /* ContaTests */,
-				BBEC064828495DE2002D0311 /* ContaUITests */,
 				BBEC062328495DDE002D0311 /* Products */,
 				89927AC1C510C51F6EE52FFC /* Pods */,
 				C61166A3DD739DEF2410F832 /* Frameworks */,
@@ -528,8 +504,6 @@
 			isa = PBXGroup;
 			children = (
 				BBEC062228495DDE002D0311 /* conta.app */,
-				BBEC063B28495DE2002D0311 /* contaTests.xctest */,
-				BBEC064528495DE2002D0311 /* contaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -550,23 +524,6 @@
 				BBF861E5284BA23F00A56B24 /* Localizable.strings */,
 			);
 			path = Conta;
-			sourceTree = "<group>";
-		};
-		BBEC063E28495DE2002D0311 /* ContaTests */ = {
-			isa = PBXGroup;
-			children = (
-				BBEC063F28495DE2002D0311 /* contaTests.swift */,
-			);
-			path = ContaTests;
-			sourceTree = "<group>";
-		};
-		BBEC064828495DE2002D0311 /* ContaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BBEC064928495DE2002D0311 /* contaUITests.swift */,
-				BBEC064B28495DE2002D0311 /* contaUITestsLaunchTests.swift */,
-			);
-			path = ContaUITests;
 			sourceTree = "<group>";
 		};
 		BBEC06582849629D002D0311 /* CoreData */ = {
@@ -667,42 +624,6 @@
 			productReference = BBEC062228495DDE002D0311 /* conta.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BBEC063A28495DE2002D0311 /* contaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BBEC065228495DE2002D0311 /* Build configuration list for PBXNativeTarget "contaTests" */;
-			buildPhases = (
-				BBEC063728495DE2002D0311 /* Sources */,
-				BBEC063828495DE2002D0311 /* Frameworks */,
-				BBEC063928495DE2002D0311 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BBEC063D28495DE2002D0311 /* PBXTargetDependency */,
-			);
-			name = contaTests;
-			productName = contaTests;
-			productReference = BBEC063B28495DE2002D0311 /* contaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		BBEC064428495DE2002D0311 /* contaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BBEC065528495DE2002D0311 /* Build configuration list for PBXNativeTarget "contaUITests" */;
-			buildPhases = (
-				BBEC064128495DE2002D0311 /* Sources */,
-				BBEC064228495DE2002D0311 /* Frameworks */,
-				BBEC064328495DE2002D0311 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BBEC064728495DE2002D0311 /* PBXTargetDependency */,
-			);
-			name = contaUITests;
-			productName = contaUITests;
-			productReference = BBEC064528495DE2002D0311 /* contaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -715,14 +636,6 @@
 				TargetAttributes = {
 					BBEC062128495DDE002D0311 = {
 						CreatedOnToolsVersion = 13.4;
-					};
-					BBEC063A28495DE2002D0311 = {
-						CreatedOnToolsVersion = 13.4;
-						TestTargetID = BBEC062128495DDE002D0311;
-					};
-					BBEC064428495DE2002D0311 = {
-						CreatedOnToolsVersion = 13.4;
-						TestTargetID = BBEC062128495DDE002D0311;
 					};
 				};
 			};
@@ -740,8 +653,6 @@
 			projectRoot = "";
 			targets = (
 				BBEC062128495DDE002D0311 /* conta */,
-				BBEC063A28495DE2002D0311 /* contaTests */,
-				BBEC064428495DE2002D0311 /* contaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -775,20 +686,6 @@
 				BBEC063228495DE2002D0311 /* Assets.xcassets in Resources */,
 				BBFC3489285A87D8000D1B25 /* SF-Pro-Display-Regular.otf in Resources */,
 				BBFC347E285A87D8000D1B25 /* SF-Pro-Display-Ultralight.otf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEC063928495DE2002D0311 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEC064328495DE2002D0311 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +752,7 @@
 				BB04DD09285A0F9D00287495 /* FormTransactionPresenter.swift in Sources */,
 				BB895AAC29270561002B38EC /* OnBoardingController.swift in Sources */,
 				BBF8625C284C13AC00A56B24 /* ControllerExtensions.swift in Sources */,
+				BBD43A07292E9FD2008D7B68 /* InfoController.swift in Sources */,
 				BB80BC082868B38200EECE44 /* CategoryCell.swift in Sources */,
 				BB63B90429232870003AFEB5 /* ChartDetailView.swift in Sources */,
 				BBEC06622849699D002D0311 /* ChartsController.swift in Sources */,
@@ -876,6 +774,7 @@
 				BBBA6279292E665100766712 /* ViewController1.swift in Sources */,
 				BBBA627B292E681D00766712 /* ViewController2.swift in Sources */,
 				BB80BC042868AF5A00EECE44 /* CategoriesController.swift in Sources */,
+				BBBA6291292E792A00766712 /* ViewController4.swift in Sources */,
 				BB9C630D285971EE00FDF7B2 /* TransactionService.swift in Sources */,
 				BB80BBFC2868812D00EECE44 /* FormAccountController.swift in Sources */,
 				BB6445E82928E91B0026EAA8 /* ChartCellEmpty.swift in Sources */,
@@ -904,40 +803,11 @@
 				BB77C0BD286119E100280E05 /* FilterTransactionPresenter.swift in Sources */,
 				BB80BC0E2869159100EECE44 /* SymbolCell.swift in Sources */,
 				BB9C630B2859715500FDF7B2 /* TransactionsPresenter.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEC063728495DE2002D0311 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BBEC064028495DE2002D0311 /* contaTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BBEC064128495DE2002D0311 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BBEC064C28495DE2002D0311 /* contaUITestsLaunchTests.swift in Sources */,
-				BBEC064A28495DE2002D0311 /* contaUITests.swift in Sources */,
+				BBD43A09292EA601008D7B68 /* InfoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BBEC063D28495DE2002D0311 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BBEC062128495DDE002D0311 /* conta */;
-			targetProxy = BBEC063C28495DE2002D0311 /* PBXContainerItemProxy */;
-		};
-		BBEC064728495DE2002D0311 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BBEC062128495DDE002D0311 /* conta */;
-			targetProxy = BBEC064628495DE2002D0311 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BBEC063328495DE2002D0311 /* LaunchScreen.storyboard */ = {
@@ -1148,84 +1018,6 @@
 			};
 			name = Release;
 		};
-		BBEC065328495DE2002D0311 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56EQ48SVZJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/conta.app/conta";
-			};
-			name = Debug;
-		};
-		BBEC065428495DE2002D0311 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56EQ48SVZJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/conta.app/conta";
-			};
-			name = Release;
-		};
-		BBEC065628495DE2002D0311 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56EQ48SVZJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = conta;
-			};
-			name = Debug;
-		};
-		BBEC065728495DE2002D0311 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56EQ48SVZJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = br.eti.manoelfilho.contaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = conta;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1243,24 +1035,6 @@
 			buildConfigurations = (
 				BBEC065028495DE2002D0311 /* Debug */,
 				BBEC065128495DE2002D0311 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BBEC065228495DE2002D0311 /* Build configuration list for PBXNativeTarget "contaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BBEC065328495DE2002D0311 /* Debug */,
-				BBEC065428495DE2002D0311 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BBEC065528495DE2002D0311 /* Build configuration list for PBXNativeTarget "contaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BBEC065628495DE2002D0311 /* Debug */,
-				BBEC065728495DE2002D0311 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

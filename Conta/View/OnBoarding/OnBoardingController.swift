@@ -62,6 +62,7 @@ extension OnBoardingController {
         pages.append(ViewController1())
         pages.append(ViewController2())
         pages.append(ViewController3())
+        pages.append(ViewController4())
         
         buttonFoward.addTarget(self, action: #selector(goForward), for: .touchUpInside)
         buttonBackward.addTarget(self, action: #selector(goBack), for: .touchUpInside)
@@ -112,18 +113,27 @@ extension OnBoardingController {
 
 // MARK: - Actions
 extension OnBoardingController {
+    
     @objc func goForward(){
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         guard let currentViewController = self.viewControllers?.first else { return print("Failed to get current view controller") }
         guard let nextViewController = self.dataSource?.pageViewController( self, viewControllerAfter: currentViewController) else { return }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+        
+        let pageNumber = pages.firstIndex(of: nextViewController)
+        pageControl.currentPage = pageNumber!
     }
+    
     @objc func goBack(){
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         guard let currentViewController = self.viewControllers?.first else { return print("Failed to get current view controller") }
         guard let beforeViewController = self.dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([beforeViewController], direction: .reverse, animated: true, completion: nil)
+        
+        let pageNumber = pages.firstIndex(of: beforeViewController)
+        pageControl.currentPage = pageNumber!
     }
+    
 }
 
 // MARK: - DataSources
