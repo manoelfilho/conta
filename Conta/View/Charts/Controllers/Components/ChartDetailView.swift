@@ -174,7 +174,7 @@ extension ChartDetailView {
             if transaction.value > 0.0 { sumCredit += transaction.value }
         }
         
-        var yValues: [ChartDataEntry] = []
+        let yValues: [ChartDataEntry] = []
         
         for category in categories {
 

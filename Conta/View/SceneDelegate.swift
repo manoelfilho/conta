@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let defaults = UserDefaults.standard
-        let closeOnBoarding = defaults.bool(forKey: "closeOnBoarding") as? Bool ?? false
+        let closeOnBoarding = defaults.bool(forKey: "closeOnBoarding")
        
         if closeOnBoarding {
             window?.rootViewController = BaseTabBarController()
