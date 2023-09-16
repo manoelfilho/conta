@@ -34,6 +34,7 @@ final class TransactionNotifications {
         } else {
             notificationsStorage[className] = [name: [closure]]
         }
+        
     }
     
     func postNotification(_ name: String, object: Any) throws {
